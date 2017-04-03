@@ -1,1 +1,14 @@
 <h2>Liste des joueurs</h2>
+
+<ul class="players">
+  <li *ngFor="let player of players" class="players"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+    <span class="badge">{{player.id}}</span>
+    <span>{{player.name}}</span>
+    <button class="delete"
+	    (click)="delete(player); $event.stopPropagation()">
+      X
+    </button>
+  </li>
+</ul>

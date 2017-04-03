@@ -1,1 +1,16 @@
 <h2>Liste des parties</h2>
+
+<ul class="parties">
+  <li *ngFor="let party of parties" class="party"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(party)"
+      >
+    <span class="badge">{{party.id}}</span>
+    <span>{{party.name}}</span>
+    <button class="delete"
+	    (click)="delete(party); $event.stopPropagation()">
+      X
+    </button>
+
+  </li>
+</ul>
