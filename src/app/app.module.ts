@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 import {DashboardComponent } from './dashboard/dashboard.component';
 import { ListPartiesComponent } from './party/list-parties.component';
+import { PartyComponent } from './party/party.component';
 import { ListPlayersComponent } from './player/list-players.component';
 
 
@@ -24,7 +25,8 @@ import { PlayerService } from './player/player.service';
 	AppComponent,
 	DashboardComponent,
 	ListPartiesComponent,
-	ListPlayersComponent
+	ListPlayersComponent,
+	PartyComponent
     ],
     imports: [
 	BrowserModule,

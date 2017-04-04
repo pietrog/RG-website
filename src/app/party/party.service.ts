@@ -25,6 +25,14 @@ export class PartyService {
 	    .catch(this.handleError);
     }
 
+    getParty(id: number): Promise<Party> {
+	const url = `${this.listPartiesUrl}/${id}`;
+	return this.http.get(url)
+	    .toPromise()
+	    .then(response => response.json().data as Party)
+	    .catch(this.handleError);
+    }
+    
     private handleError(error: any): Promise<any>{
 	console.error('an error occured', error);
 	return Promise.reject(error.message || error);

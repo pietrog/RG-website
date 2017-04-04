@@ -23,9 +23,13 @@ export class ListPartiesComponent implements OnInit{
 	this.partyService.getListOfParties().then(parties => this.parties = parties);
     }
 
+    gotoDetails(): void{
+	this.router.navigate(['/party/detail', this.selectedParty.id]);
+    }
 
     onSelect(party: Party): void {
 	this.selectedParty = party;
+	this.gotoDetails();
     }
     
     ngOnInit(): void {
