@@ -12,7 +12,7 @@ global.App = {
     port : tools.normalizePort(process.env.PORT || '3000'),
     //version : packageJson.version,
     root : path.join(__dirname, '..'),
-    front_end: path.join(__dirname, '../src'),
+    front_end: path.join(__dirname, '../dist'),
     appPath : function(path){
 	return this.root + '/' + path;
     },
@@ -30,15 +30,22 @@ global.App = {
 }
 
 console.log("PATH : " + App.front_end);
+App.app.set('superSecret', config.secret);
 
 //database connection
 mongoose.connect(config.database);
-App.app.set('superSecret', config.secret);
-
-App.app.use('/party', r_party);
-App.app.use('/team', r_team);
 
 App.app.use(express.static(App.front_end));
+
+App.app.use('/api/party', r_party);
+//App.app.use('/api/team', r_team);
+
+// Catch all other routes and return the index file
+App.app.get('*', (req, res) => {
+    console.log("here it is ! " + req.url);
+  res.sendFile(path.join(App.front_end, 'index.html'));
+});
+
 
 
 module.exports = App;

@@ -3,7 +3,16 @@ var express = require('express'),
     httphandler = require("../http_handlers"),
     Party = require("../model/party");
 
+
+
+router.get('/list', function(req, res){
+    console.log("IT WORKS !!! !!!");
+    httphandler.answerJSonSuccess(res, { data: "IT WORKS !!! "  });
+});
+
+
 router.get('/all', function(req, res){
+    console.log("HERE WE ARE !!!");
     Party.find({}, null, function(err, parties){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());

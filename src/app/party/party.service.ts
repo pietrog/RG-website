@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Party } from './party';
 
-import { Headers, Http } from '@angular/http';
+import { RequestMethod, RequestOptions, Headers, Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -13,12 +13,13 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PartyService {
 
-    private listPartiesUrl = "api/parties";
+    private listPartiesUrl = "api/party/all";
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}
 
     getListOfParties(): Promise<Party[]> {
+	console.log("coucou");
 	return this.http.get(this.listPartiesUrl)
 	    .toPromise()
 	    .then(response => response.json().data as Party[])

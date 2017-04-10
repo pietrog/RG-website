@@ -13,10 +13,6 @@ import { PartyComponent } from './party/party.component';
 import { ListPlayersComponent } from './player/list-players.component';
 
 
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-
 import { PartyService } from './party/party.service';
 import { PlayerService } from './player/player.service';
 
@@ -33,7 +29,6 @@ import { PlayerService } from './player/player.service';
 	FormsModule,
 	HttpModule,
 	AppRoutingModule,
-	InMemoryWebApiModule.forRoot(InMemoryDataService)
     ],
     providers: [
 	PartyService,
