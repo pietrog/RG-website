@@ -42,7 +42,7 @@ App.app.use('/api/party', r_party);
 
 // Catch all other routes and return the index file
 App.app.get('*', (req, res) => {
-    console.log("here it is ! " + req.url);
+    console.log("Not caught by routes ! " + req.url);
   res.sendFile(path.join(App.front_end, 'index.html'));
 });
 

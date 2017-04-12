@@ -4,28 +4,39 @@ var express = require('express'),
     Party = require("../model/party");
 
 
-
-router.get('/list', function(req, res){
-    console.log("IT WORKS !!! !!!");
-    httphandler.answerJSonSuccess(res, { data: "IT WORKS !!! "  });
-});
-
-
 router.get('/all', function(req, res){
-    console.log("HERE WE ARE !!!");
-    Party.find({}, null, function(err, parties){
+    console.log("HIPHIPHIP HOURRRRAAAAA");
+    const parties = {
+	"data": [{
+		"name": "p1",
+		"id": 12
+	}, {
+		"name": "p2",
+		"id": 13
+	}]
+    };
+    const data = "ahah";
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Accept', 'application/json');
+    res.status(200).json(parties);    
+    /*httphandler.answerJSonSuccess(res,
+				  [
+				      { name: "p1", id: 12 },
+				      { name: "p2", id: 13 }
+				  ]);*/
+    /*Party.find({}, null, function(err, parties){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
 	else
-	    httphandler.answerJSonSuccess(res, { result: "OH YEAAAAHHHH" });
-    });
+	    httphandler.answerJSonSuccess(res, [{ name: "p1", id: 12 }]);
+    });*/
 });
 
 router.post('/create', function(req, res, next){
     let party = new Party({
 	name: req.body.name,
-	started: false,
-	timer: req.body.timer
+	started: false
+	//timer: req.body.timer
     });
 
     party.save(function(err, party, nb_affected){
