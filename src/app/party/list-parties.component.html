@@ -7,19 +7,29 @@
 <router-outlet></router-outlet>
 
 <div>
-  <ul class="parties">
-    <li *ngFor="let party of parties" class="party"
+  <table class="parties">
+    <tr>
+      <th>Name</th>
+      <th>Started</th>
+      <th>Creation date</th>
+      <th>Start date</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let party of parties" class="party"
 	[class.selected]="hero === selectedHero"
 	(click)="onSelect(party)"
 	>
-      <span class="badge">{{party.id}}</span>
-      <span>{{party.name}}</span>
-      <button class="delete"
-	      (click)="delete(party); $event.stopPropagation()">
-	X
-      </button>
-      
-    </li>
-  </ul>
+      <td>{{party.name}}</td>
+      <td>{{party.started}}</td>
+      <td>{{party.creation_date}}</td>
+      <td>{{party.start_date}}</td>
+      <td>
+	<button class="delete"
+		(click)="delete(party); $event.stopPropagation()">
+	  x
+	</button>
+      </td>
+    </tr>
+  </table>
   
 </div>

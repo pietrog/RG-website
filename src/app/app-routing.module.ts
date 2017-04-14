@@ -14,6 +14,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'party/list', component: ListPartiesComponent },
     { path: 'player/list', component: ListPlayersComponent },
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
 
 @NgModule({

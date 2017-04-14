@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Team = require('./team.js');
 
+const Promise = require('bluebird');
+
+mongoose.Promise = global.Promise;
+
 var Party = new Schema({
     name: {
 	type: String,

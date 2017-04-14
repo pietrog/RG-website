@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { Party } from './party';
 
-import { RequestMethod, RequestOptions, Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -23,16 +23,17 @@ export class PartyService {
 
     constructor(private http: Http) {}
 
-    getListOfParties(): Promise<Party[]> {
-	const url = `${this.listPartiesUrl}/all`;
-	//const url = '/api/party/all';
+    private extractParties(res: Response) {
+
+	let body = res.json();
+	console.log("parties: " + body);
+	return body.data || {};
+    }
+
+    getListOfParties(): Observable<Party[]> {
+	const url = `/api/party/all`;
 	return this.http.get(url)
-	    .toPromise()
-	    .then(function(res){
-		console.log(res.toString());
-		return res.json().data;
-	    })
-		//response => response.json().data as Party[])
+	    .map(this.extractParties)
 	    .catch(this.handleError);
     }
 
@@ -45,10 +46,18 @@ export class PartyService {
     }
 
     saveParty(party: Party): Promise<Party> {
-	const url = `${this.listPartiesUrl}/save`;
-	return this.http.put(url, JSON.stringify(party), {headers: this.headers})
+	console.log("create");
+	const url = '/api/party/create';
+	return this.http.post(url, JSON.stringify(party), {headers: this.headers})
 	    .toPromise()
-	    .then(response => response.json() as Party)
+	    .then(response => response.json().data as Party)
+	    .catch(this.handleError);
+    }
+
+    delete(id: number): Observable<void> {
+	const url = `/api/party/${id}`;
+	return this.http.delete(url, { headers: this.headers })
+	    .map(this.extractParties)
 	    .catch(this.handleError);
     }
     

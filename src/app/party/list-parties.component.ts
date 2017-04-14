@@ -20,11 +20,26 @@ export class ListPartiesComponent implements OnInit{
     selectedParty: Party;
     
     getParties(): void {
-	this.partyService.getListOfParties().then(parties => this.parties = parties);
+	this.partyService.getListOfParties()
+	    .subscribe(
+		parties => this.parties = parties
+	    );
     }
 
     gotoDetails(): void{
-	this.router.navigate(['/party/detail', this.selectedParty.id]);
+	this.router.navigate(['/party/detail', this.selectedParty._id]);
+    }
+
+
+    delete(party: Party){
+	this.partyService
+	    .delete(party._id)
+	    .subscribe(
+		() => {
+		    this.parties = this.parties.filter(p => p !== party);
+		    if (this.selectedParty === party) { this.selectedParty = null; }
+		}
+	    );
     }
 
     onSelect(party: Party): void {

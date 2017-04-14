@@ -1,5 +1,6 @@
-var env         = process.env.NODE_ENV || 'development',
+let env         = process.env.NODE_ENV || 'development',
     express     = require('express'),
+    bodyParser = require('body-parser'),
     tools       = require('./tools'),
     path        = require('path'),
     mongoose    = require('mongoose'),
@@ -35,6 +36,7 @@ App.app.set('superSecret', config.secret);
 //database connection
 mongoose.connect(config.database);
 
+App.app.use(bodyParser.json());
 App.app.use(express.static(App.front_end));
 
 App.app.use('/api/party', r_party);

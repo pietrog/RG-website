@@ -15,7 +15,7 @@ global.HttpHandler = {
  * A success parameter set to true and data in data field
  */
 function AnswerJSONSuccess(response, data){
-    response.json(data);    
+    response.json({ "data": data } );    
 }
 
 /**

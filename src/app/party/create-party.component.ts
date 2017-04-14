@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { PartyService } from './party.service';
 import { Party } from './party';
@@ -14,14 +15,18 @@ export class CreatePartyComponent {
 
     constructor(
 	private partyService: PartyService,
+	private router: Router,
+	private route: ActivatedRoute,
 	private location: Location
     ) {}
 
     party: Party;
     
     save(): void {
-	//this.partyService.saveParty(this.party)
-	  //  .then()
+	this.partyService.saveParty(this.party)
+	    .then(party => {
+		this.router.navigate['/party/list'];
+	    });
     }
 
     goBack(): void {
@@ -30,6 +35,6 @@ export class CreatePartyComponent {
     
 
     ngOnInit(): void {
-	this.party = { name: "test", id: 18 };
+	this.party = new Party(12, "AA", false);
     }
 }
