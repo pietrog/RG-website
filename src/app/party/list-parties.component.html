@@ -16,7 +16,7 @@
       <th>Delete</th>
     </tr>
     <tr *ngFor="let party of parties" class="party"
-	[class.selected]="hero === selectedHero"
+	[class.selected]="party === selectedParty"
 	(click)="onSelect(party)"
 	>
       <td>{{party.name}}</td>

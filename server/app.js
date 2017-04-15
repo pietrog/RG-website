@@ -6,6 +6,7 @@ let env         = process.env.NODE_ENV || 'development',
     mongoose    = require('mongoose'),
     config      = require('./config/config.js'),
     r_party     = require('./route/party'),
+    r_player    = require('./route/player'),
     r_team      = require('./route/team');
 
 global.App = {
@@ -40,7 +41,7 @@ App.app.use(bodyParser.json());
 App.app.use(express.static(App.front_end));
 
 App.app.use('/api/party', r_party);
-//App.app.use('/api/team', r_team);
+App.app.use('/api/player', r_player);
 
 // Catch all other routes and return the index file
 App.app.get('*', (req, res) => {

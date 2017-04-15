@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var User = new Schema({
+var Player = new Schema({
     email: {
 	type: String,
 	require: true,
@@ -11,12 +11,9 @@ var User = new Schema({
 	type: String,
 	require: true
     },
-    team: {
-	type: Schema.types.ObjectId
-    },
     token: {
 	type: String
-    }
+    },
     score: {
 	type: Number,
 	require: true,
@@ -25,7 +22,7 @@ var User = new Schema({
     
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Player', Player);
 
 
 
