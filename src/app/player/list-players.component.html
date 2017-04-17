@@ -11,8 +11,8 @@
 	[class.selected]="player === selectedPlayer"
 	(click)="onSelect(player)"
 	>
-      <td>{{party.email}}</td>
-      <td>{{party.score}}</td>
+      <td>{{player.email}}</td>
+      <td>{{player.score}}</td>
       <td>
 	<button class="delete"
 		(click)="delete(player); $event.stopPropagation()">
@@ -24,7 +24,10 @@
   
 </div>
 
-<h3>Ajout joueur</h3>
+<h2>Ajout d'un joueur</h2>
 <div>
-  
+  <label>Nom du joueur:</label><input [(ngModel)]="player.email" placeholder="email" >
+  <button (click)="save()" ngDefaultControl>Ajouter</button>
+
 </div>
+<button (click)="goBack()">Retour</button>

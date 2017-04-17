@@ -26,7 +26,6 @@ router.get('/all', function(req, res){
 });
 
 router.post('/create', function(req, res, next){
-    console.log('ON EST EN PLACE !! ' + util.inspect(req.body.name));
     let party = new Party({
 	name: req.body.name
     });

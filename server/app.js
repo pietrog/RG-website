@@ -42,6 +42,7 @@ App.app.use(express.static(App.front_end));
 
 App.app.use('/api/party', r_party);
 App.app.use('/api/player', r_player);
+App.app.use('/api/teams', r_team);
 
 // Catch all other routes and return the index file
 App.app.get('*', (req, res) => {

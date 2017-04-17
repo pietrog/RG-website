@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Player } from './player';
+import { Team } from './team';
 
 import { Headers, Http, Response } from '@angular/http';
 
@@ -10,9 +10,9 @@ import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
-export class PlayerService {
+export class TeamService {
 
-    private listPartiesUrl = "/api/player";
+    private listTeamsUrl = "/api/teams";
     private headers = new Headers(
 	{
 	    'Content-Type': 'application/json',
@@ -28,31 +28,31 @@ export class PlayerService {
 	return body.data || {};
     }
 
-    getListOfPlayers(): Observable<Player[]> {
-	const url = `/api/player/all`;
+    getListOfTeams(): Observable<Team[]> {
+	const url = `/api/teams/all`;
 	return this.http.get(url)
 	    .map(this.extractData)
 	    .catch(this.handleError);
     }
 
-    getPlayer(id: number): Promise<Player> {
-	const url = `${this.listPartiesUrl}/${id}`;
+    getTeam(id: number): Promise<Team> {
+	const url = `${this.listTeamsUrl}/${id}`;
 	return this.http.get(url)
 	    .toPromise()
-	    .then(response => response.json().data as Player)
+	    .then(response => response.json().data as Team)
 	    .catch(this.handleError);
     }
 
-    savePlayer(player: Player): Promise<Player> {
-	const url = '/api/player/create';
-	return this.http.post(url, JSON.stringify(player), {headers: this.headers})
+    saveTeam(team: Team): Promise<Team> {
+	const url = '/api/teams/create';
+	return this.http.post(url, JSON.stringify(team), {headers: this.headers})
 	    .toPromise()
-	    .then(response => response.json().data as Player)
+	    .then(response => response.json().data as Team)
 	    .catch(this.handleError);
     }
 
     delete(id: number): Observable<void> {
-	const url = `/api/player/${id}`;
+	const url = `/api/teams/${id}`;
 	return this.http.delete(url, { headers: this.headers })
 	    .map(this.extractData)
 	    .catch(this.handleError);

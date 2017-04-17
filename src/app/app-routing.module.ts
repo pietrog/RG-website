@@ -7,6 +7,7 @@ import { ListPartiesComponent } from './party/list-parties.component';
 import { CreatePartyComponent } from './party/create-party.component';
 import { PartyComponent } from './party/party.component';
 import { ListPlayersComponent } from './player/list-players.component';
+import { ListTeamsComponent } from './team/list-teams.component';
 
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'party/create', component: CreatePartyComponent },
     { path: 'party/list', component: ListPartiesComponent },
     { path: 'player/list', component: ListPlayersComponent },
+    { path: 'team/list', component: ListTeamsComponent },
     { path: '', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
 

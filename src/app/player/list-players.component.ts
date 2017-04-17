@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Router } from '@angular/router';
 import { Player } from './player';
@@ -15,9 +14,13 @@ import { PlayerService } from './player.service';
 export class ListPlayersComponent implements OnInit {
 
 
-    constructor(private router: Router, private playerService: PlayerService) {}
+    constructor(
+	private router: Router,
+	private playerService: PlayerService,
+	private location: Location) {}
 
     players = [];
+    player: Player;
     selectedPlayer: Player;
     
     getPlayers(): void {
@@ -48,9 +51,22 @@ export class ListPlayersComponent implements OnInit {
 	this.selectedPlayer = player;
 	this.gotoDetails();
     }
+
+    save(): void {
+	this.playerService.savePlayer(this.player)
+	    .then(party => {
+		this.router.navigate['/player/list'];
+	    });
+    }
+
+    goBack(): void {
+	this.location.back();
+    }
+
     
     ngOnInit(): void {
 	this.getPlayers();
+	this.player = new Player("test", 0);
     }
 
     

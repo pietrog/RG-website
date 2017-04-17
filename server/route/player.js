@@ -17,10 +17,9 @@ router.get('/all', function(req, res){
 });
 
 router.post('/create', function(req, res, next){
-    let player = new User({
+    let player = new Player({
 	email: req.body.email
     });
-
     player.save(function(err, player, nb_affected){
 	if (err){
 	    httphandler.answerJSonFailure(res, err.toString());
@@ -37,7 +36,7 @@ router.delete('/:id', function (req, res){
 	    httphandler.answerJSonFailure(res, err.toString());
 	}
 	else{
-	    httphandler.answerJSonSuccess(res, user);
+	    httphandler.answerJSonSuccess(res, player);
 	}
     });
 });

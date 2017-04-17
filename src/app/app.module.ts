@@ -12,10 +12,12 @@ import { ListPartiesComponent } from './party/list-parties.component';
 import { CreatePartyComponent } from './party/create-party.component';
 import { PartyComponent } from './party/party.component';
 import { ListPlayersComponent } from './player/list-players.component';
+import { ListTeamsComponent } from './team/list-teams.component';
 
 
 import { PartyService } from './party/party.service';
 import { PlayerService } from './player/player.service';
+import { TeamService } from './team/team.service';
 
 @NgModule({
     declarations: [
@@ -23,6 +25,7 @@ import { PlayerService } from './player/player.service';
 	DashboardComponent,
 	ListPartiesComponent,
 	ListPlayersComponent,
+	ListTeamsComponent,
 	PartyComponent,
 	CreatePartyComponent
     ],
@@ -34,7 +37,8 @@ import { PlayerService } from './player/player.service';
     ],
     providers: [
 	PartyService,
-	PlayerService
+	PlayerService,
+	TeamService
     ],
     bootstrap: [AppComponent]
 })
