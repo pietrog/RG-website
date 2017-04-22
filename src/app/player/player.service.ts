@@ -35,6 +35,15 @@ export class PlayerService {
 	    .catch(this.handleError);
     }
 
+    getListOfPlayersWithIds(player_ids: number[]): Observable<Player[]> {
+	const url = `/api/player/allWithIds`;
+	let body = { list_ids: player_ids };
+	return this.http.post(url, body, {headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+
+    
     getPlayer(id: number): Promise<Player> {
 	const url = `${this.listPartiesUrl}/${id}`;
 	return this.http.get(url)

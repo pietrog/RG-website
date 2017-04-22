@@ -9,6 +9,10 @@ var TeamSchema = new Schema({
     score: {
 	type: Number,
 	require: true
+    },
+    user_list: [ Schema.Types.ObjectId ],
+    party_id: {
+	type: Schema.Types.ObjectId
     }
 });
 

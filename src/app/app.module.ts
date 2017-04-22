@@ -13,10 +13,12 @@ import { CreatePartyComponent } from './party/create-party.component';
 import { PartyComponent } from './party/party.component';
 import { ListPlayersComponent } from './player/list-players.component';
 import { ListTeamsComponent } from './team/list-teams.component';
+import { TeamDetail } from './team/team-detail.component';
 
 
 import { PartyService } from './party/party.service';
 import { PlayerService } from './player/player.service';
+import { PlayerDetail } from './player/player-detail.component';
 import { TeamService } from './team/team.service';
 
 @NgModule({
@@ -27,7 +29,9 @@ import { TeamService } from './team/team.service';
 	ListPlayersComponent,
 	ListTeamsComponent,
 	PartyComponent,
-	CreatePartyComponent
+	CreatePartyComponent,
+	TeamDetail,
+	PlayerDetail
     ],
     imports: [
 	BrowserModule,

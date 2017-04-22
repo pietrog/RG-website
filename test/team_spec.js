@@ -27,7 +27,7 @@ describe('Team model ', function(){
 		    name: "REDS",
 		    score: 0
 		});
-		
+
 		Team.create(team, function(err, obj){
 		    if (!err){
 			global_team = obj;
@@ -49,9 +49,6 @@ describe('Team model ', function(){
 	    done();
 	});
     });
-
-
-
 
 
 });

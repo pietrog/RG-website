@@ -35,14 +35,36 @@ export class TeamService {
 	    .catch(this.handleError);
     }
 
-    getTeam(id: number): Promise<Team> {
-	const url = `${this.listTeamsUrl}/${id}`;
+    getTeam(id: number): Observable<Team> {
+	const url = `${this.listTeamsUrl}/byId/${id}`;	
 	return this.http.get(url)
-	    .toPromise()
-	    .then(response => response.json().data as Team)
+	    .map(this.extractData)
 	    .catch(this.handleError);
     }
 
+    getTeamsById(hosting_party: number): Observable<Team[]> {
+	const url = `${this.listTeamsUrl}/allByParty/${hosting_party}`;
+	return this.http.get(url)
+	    .map(this.extractData)
+	    .catch(this.handleError);	
+    }
+
+    addTeamToParty(teamId: number, partyId: number): Observable<Team> {
+	const url = `${this.listTeamsUrl}/add_to_party`;
+	let body = { "id": teamId, "party_id": partyId };
+	return this.http.patch(url, body, {headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+
+    addPlayerToTeam(teamId: number, playerId: number): Observable<Team> {
+	const url = `${this.listTeamsUrl}/add-player`;
+	let body = { "id_team": teamId, "id_player": playerId };
+	return this.http.patch(url, body, {headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+    
     saveTeam(team: Team): Promise<Team> {
 	const url = '/api/teams/create';
 	return this.http.post(url, JSON.stringify(team), {headers: this.headers})

@@ -18,14 +18,21 @@ var Player = new Schema({
 	type: Number,
 	require: true,
 	default: 0
+    },
+    team: {
+	type: Schema.Types.ObjectId
     }
     
 });
 
-module.exports = mongoose.model('Player', Player);
-
-
-
 function EMailValidation(val){
     return val != null;
 }
+
+
+Player.statics.addToTeam = function(id_player, id_team, cb){
+    return this.findByIdAndUpdate(id_player, { team: id_team }, cb);
+};
+
+
+module.exports = mongoose.model('Player', Player);

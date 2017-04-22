@@ -1,4 +1,13 @@
-<h3>Liste des équipes</h3>
+
+<h3>Ajout d'une équipe</h3>
+<div>
+  <label>Nom de l'équipe:</label><input [(ngModel)]="team.name" placeholder="name" >
+  <button (click)="save()" ngDefaultControl>Ajouter</button>
+
+</div>
+
+
+<h2>Liste des équipes</h2>
 
 <div>
   <table class="teams">
@@ -24,10 +33,6 @@
   
 </div>
 
-<h2>Ajout d'une équipe</h2>
-<div>
-  <label>Nom de l'équipe:</label><input [(ngModel)]="team.name" placeholder="name" >
-  <button (click)="save()" ngDefaultControl>Ajouter</button>
+<team-detail [team]="selectedTeam"></team-detail>
 
-</div>
 <button (click)="goBack()">Retour</button>

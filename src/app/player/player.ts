@@ -3,6 +3,9 @@ export class Player {
     email: string;
     score: number;
 
+    team: number;
+    team_name: string;
+    
     constructor(email: string, score: number)
     {
 	this.email = email;

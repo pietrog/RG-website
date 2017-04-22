@@ -1,4 +1,26 @@
 <div *ngIf="party">
   <h1>Detail de la partie {{party.name}}</h1>
+
+  <table class="partie-list-team">
+    <tr>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Exclure</th>
+    </tr>
+    <tr *ngFor="let team of teams" 
+	[class.selected]="team === selectedTeam"
+	(click)="onSelect(team)"
+	>
+      <td>{{team.name}}</td>
+      <td>{{team.score}}</td>
+      <td>
+	<button class="delete"
+		(click)="exclude(team); $event.stopPropagation()">
+	  Exclure
+	</button>
+      </td>
+    </tr>
+  </table>
+
   
 </div>

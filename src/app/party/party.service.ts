@@ -46,12 +46,21 @@ export class PartyService {
     }
 
     saveParty(party: Party): Promise<Party> {
-	console.log("create");
 	const url = '/api/party/create';
 	return this.http.post(url, JSON.stringify(party), {headers: this.headers})
 	    .toPromise()
 	    .then(response => response.json().data as Party)
 	    .catch(this.handleError);
+    }
+
+    addTeamToParty(party: Party, teamid: number) {
+	const url = '/api/party/add-team';
+	const data = { "partyid": party._id, "teamid": teamid };
+	return this.http.post(url, data, {headers: this.headers})
+	    .toPromise()
+	    .then(response => response.json().data as Party)
+	    .catch(this.handleError);
+	
     }
 
     delete(id: number): Observable<void> {

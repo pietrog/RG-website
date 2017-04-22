@@ -1,4 +1,13 @@
-<h3>Liste des joueurs</h3>
+
+<h2>Ajout d'un joueur</h2>
+<div>
+  <label>Nom du joueur:</label><input [(ngModel)]="player.email" placeholder="email" >
+  <button (click)="save()" ngDefaultControl>Ajouter</button>
+
+</div>
+
+
+<h2>Liste des joueurs</h2>
 
 <div>
   <table class="players">
@@ -24,10 +33,6 @@
   
 </div>
 
-<h2>Ajout d'un joueur</h2>
-<div>
-  <label>Nom du joueur:</label><input [(ngModel)]="player.email" placeholder="email" >
-  <button (click)="save()" ngDefaultControl>Ajouter</button>
+<player-detail [player]="selectedPlayer"></player-detail>
 
-</div>
 <button (click)="goBack()">Retour</button>

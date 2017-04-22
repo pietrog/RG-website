@@ -62,5 +62,4 @@ Party.methods.stop_game = function(callback){
     this.save(callback);
 };
 
-
 module.exports = mongoose.model('Party', Party);

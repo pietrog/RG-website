@@ -35,6 +35,6 @@ export class CreatePartyComponent {
     
 
     ngOnInit(): void {
-	this.party = new Party(12, "AA", false);
+	this.party = new Party(12, "AA", false, []);
     }
 }

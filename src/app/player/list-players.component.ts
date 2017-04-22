@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ export class ListPlayersComponent implements OnInit {
     players = [];
     player: Player;
     selectedPlayer: Player;
+    @Input() teamID: number;
     
     getPlayers(): void {
 	this.playerService.getListOfPlayers()
@@ -30,11 +31,6 @@ export class ListPlayersComponent implements OnInit {
 		players => this.players = players
 	    );
     }
-
-    gotoDetails(): void{
-	this.router.navigate(['/player/detail', this.selectedPlayer._id]);
-    }
-
 
     delete(player: Player){
 	this.playerService
@@ -49,13 +45,12 @@ export class ListPlayersComponent implements OnInit {
 
     onSelect(player: Player): void {
 	this.selectedPlayer = player;
-	this.gotoDetails();
     }
 
     save(): void {
 	this.playerService.savePlayer(this.player)
 	    .then(party => {
-		this.router.navigate['/player/list'];
+		this.getPlayers();
 	    });
     }
 
@@ -66,7 +61,8 @@ export class ListPlayersComponent implements OnInit {
     
     ngOnInit(): void {
 	this.getPlayers();
-	this.player = new Player("test", 0);
+	
+	this.player = new Player("", 0);
     }
 
     

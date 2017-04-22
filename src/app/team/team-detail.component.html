@@ -1,0 +1,33 @@
+<div *ngIf="team">
+  <h2>Equipe {{team.name}}</h2>
+  <div>
+    <label>Score: </label>
+    {{team.score}}
+  </div>
+  <div>
+    <label>Partie:</label>
+    <select [(ngModel)]="selectedParty">
+      <option *ngFor="let party of parties" [ngValue]="party" class="sel-parties">
+	{{party.name}}
+      </option>
+    </select>
+    <button class="add" (click)="onSave()">
+      Save
+    </button>
+
+  </div>
+  <div>
+    <label>Liste des joueurs </label>
+    <table>
+      <tr>
+	<th>Joueur</th>
+	<th>Score</th>
+	<th>Exclure</th>
+      </tr>
+      <tr *ngFor="let player of player_list">
+	<td>{{player.email}}</td>
+	<td>{{player.score}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

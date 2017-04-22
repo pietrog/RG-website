@@ -26,11 +26,6 @@ export class ListPartiesComponent implements OnInit{
 	    );
     }
 
-    gotoDetails(): void{
-	this.router.navigate(['/party/detail', this.selectedParty._id]);
-    }
-
-
     delete(party: Party){
 	this.partyService
 	    .delete(party._id)
@@ -43,8 +38,7 @@ export class ListPartiesComponent implements OnInit{
     }
 
     onSelect(party: Party): void {
-	this.selectedParty = party;
-	this.gotoDetails();
+	this.selectedParty = party;	
     }
     
     ngOnInit(): void {

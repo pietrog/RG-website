@@ -33,11 +33,6 @@ export class ListTeamsComponent implements OnInit {
 	    );
     }
 
-    gotoDetails(): void{
-	this.router.navigate(['/team/detail', this.selectedTeam._id]);
-    }
-
-
     delete(team: Team){
 	this.teamService
 	    .delete(team._id)
@@ -51,10 +46,9 @@ export class ListTeamsComponent implements OnInit {
 
     onSelect(team: Team): void {
 	this.selectedTeam = team;
-	this.gotoDetails();
     }
 
-    save(): void {
+    save() {
 	this.teamService.saveTeam(this.team)
 	    .then(team => {
 		this.getTeams();
@@ -68,7 +62,7 @@ export class ListTeamsComponent implements OnInit {
     
     ngOnInit(): void {
 	this.getTeams();
-	this.team = new Team("test", 0);
+	this.team = new Team("test", 0, []);
     }
 
     

@@ -47,7 +47,6 @@ router.post('/start', function(err, res, next){
 
 
 router.delete('/:id', function (req, res){
-    console.log("HOURAA");
     Party.remove({_id: req.params.id}, function(err, party){
 	if (err){
 	    httphandler.answerJSonFailure(res, err.toString());
