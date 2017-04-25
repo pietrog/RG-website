@@ -46,6 +46,21 @@ router.post('/start', function(err, res, next){
 });
 
 
+router.patch('/add-goal', function(req, res, next) {
+    const party_id = req.body.party_id;
+    const goal_id = req.body.goal_id;
+    Party.findByIdAndUpdate(party_id, { goal_list: goal_id }, function(err, team){
+	if (err)
+	    httphandler.answerJSonFailure(res, err.toString());
+	else
+	{
+	    httphandler.answerJSonSuccess(res, team);
+	}	
+    });
+});
+
+
+
 router.delete('/:id', function (req, res){
     Party.remove({_id: req.params.id}, function(err, party){
 	if (err){

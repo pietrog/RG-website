@@ -1,9 +1,10 @@
 <div *ngIf="party">
-  <h1>Detail de la partie {{party.name}}</h1>
+  <h2>Detail de la partie {{party.name}}</h2>
 
+  <h3>Les equipes</h3>
   <table class="partie-list-team">
     <tr>
-      <th>Name</th>
+      <th>Nom</th>
       <th>Score</th>
       <th>Exclure</th>
     </tr>
@@ -22,5 +23,26 @@
     </tr>
   </table>
 
+  <h3>Les objectifs</h3>
+
+  <select [(ngModel)]="selectedGoal">
+    <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
+  </select>
+
+  <button (click)="addGoal()">Ajout de l'objectif</button>
+
+  <table class="goal-list-party">
+    <tr>
+      <th>Nom</th>
+      <th>Score</th>
+      <th>Etat</th>
+      <th>Sortir</th>
+    </tr>
+    <tr *ngFor="let goal of goalsInParty">
+      <td>{{goal.name}}</td>
+      <td>{{goal.number_of_points}}</td>
+      <td>Non valide</td>
+    </tr>
+  </table>
   
 </div>

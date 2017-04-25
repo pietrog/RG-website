@@ -7,6 +7,10 @@ import { PartyService } from './party.service';
 import { TeamService } from '../team/team.service'
 import { Team } from '../team/team'
 
+import { Goal } from '../goal/goal';
+import { GoalService } from '../goal/goal.service';
+
+
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -20,7 +24,8 @@ export class PartyComponent implements OnChanges {
     constructor(
 	private partyService: PartyService,
 	private teamService: TeamService,
-	private route: ActivatedRoute
+	private route: ActivatedRoute,
+	private goalService: GoalService
     ) {}
     
 
@@ -28,10 +33,20 @@ export class PartyComponent implements OnChanges {
     teams = [];
     selectedTeam: Team;
 
+    goals = [];
+    selectedGoal: Goal;
+    goalsInParty = [];
+
     onSelect(team: Team): void{
     }
 
     exclude(team: Team): void {
+    }
+
+    addGoal(): void {
+	this.partyService.addGoalToParty(this.party._id, this.selectedGoal._id)
+	    .subscribe(() => {});
+	
     }
 
     ngOnChanges(): void{
@@ -39,8 +54,18 @@ export class PartyComponent implements OnChanges {
 	    this.teamService.getTeamsById(this.party._id)
 		.subscribe(teams => {
 		    this.teams = teams;
+		    this.goalService.getListOfGoals()
+			.subscribe(goals => {
+			    this.goals = goals;
+			    this.goalsInParty = this.goals.filter(
+				goal => {
+				    this.party.goal_list.some(
+				    id => id === goal._id
+				    );
+				});
+			});
 		});
 	}
     }
-    
+   
 }

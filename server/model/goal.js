@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Goal = new Schema({
+var GoalSchema = new Schema({
     name: {
 	type: String,
 	required: true
@@ -13,11 +13,12 @@ var Goal = new Schema({
 	type: String,
 	required: true
     },
-    is_tagged: {
-	type: Boolean,
+    number_of_points: {
+	type: Number,
 	require: true
     },
-    party = Schema.Types.ObjectId
+    list_party: [ Schema.Types.ObjectId ]
+
 });
 
-module.exports = mongoose.model('Goal', Goal);
+module.exports = mongoose.model('Goal', GoalSchema);

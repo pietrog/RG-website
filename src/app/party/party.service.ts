@@ -24,9 +24,7 @@ export class PartyService {
     constructor(private http: Http) {}
 
     private extractParties(res: Response) {
-
 	let body = res.json();
-	console.log("parties: " + body);
 	return body.data || {};
     }
 
@@ -53,12 +51,12 @@ export class PartyService {
 	    .catch(this.handleError);
     }
 
-    addTeamToParty(party: Party, teamid: number) {
-	const url = '/api/party/add-team';
-	const data = { "partyid": party._id, "teamid": teamid };
-	return this.http.post(url, data, {headers: this.headers})
-	    .toPromise()
-	    .then(response => response.json().data as Party)
+    addGoalToParty(party_id: number, goal_id: number) {
+	console.log(party_id);
+	const url = '/api/party/add-goal';
+	const data = { "party_id": party_id, "goal_id": goal_id };
+	return this.http.patch(url, data, {headers: this.headers})
+	    .map(this.extractParties)
 	    .catch(this.handleError);
 	
     }

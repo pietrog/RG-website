@@ -7,7 +7,8 @@ let env         = process.env.NODE_ENV || 'development',
     config      = require('./config/config.js'),
     r_party     = require('./route/party'),
     r_player    = require('./route/player'),
-    r_team      = require('./route/team');
+    r_team      = require('./route/team'),
+    r_goal      = require('./route/goal');
 
 global.App = {
     app : express(),
@@ -43,6 +44,7 @@ App.app.use(express.static(App.front_end));
 App.app.use('/api/party', r_party);
 App.app.use('/api/player', r_player);
 App.app.use('/api/teams', r_team);
+App.app.use('/api/goals', r_goal);
 
 // Catch all other routes and return the index file
 App.app.get('*', (req, res) => {

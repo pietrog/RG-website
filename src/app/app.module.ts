@@ -15,6 +15,8 @@ import { ListPlayersComponent } from './player/list-players.component';
 import { ListTeamsComponent } from './team/list-teams.component';
 import { TeamDetail } from './team/team-detail.component';
 
+import { ListGoalsComponent } from './goal/list-goals.component';
+import { GoalService} from './goal/goal.service';
 
 import { PartyService } from './party/party.service';
 import { PlayerService } from './player/player.service';
@@ -28,6 +30,7 @@ import { TeamService } from './team/team.service';
 	ListPartiesComponent,
 	ListPlayersComponent,
 	ListTeamsComponent,
+	ListGoalsComponent,
 	PartyComponent,
 	CreatePartyComponent,
 	TeamDetail,
@@ -42,7 +45,8 @@ import { TeamService } from './team/team.service';
     providers: [
 	PartyService,
 	PlayerService,
-	TeamService
+	TeamService,
+	GoalService
     ],
     bootstrap: [AppComponent]
 })

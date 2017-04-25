@@ -1,0 +1,38 @@
+
+<h3>Ajout d'un objectif</h3>
+<div>
+  <label>Nom de l'objedctif:</label><input [(ngModel)]="goal.name" placeholder="name" >
+  <button (click)="save()" ngDefaultControl>Ajouter</button>
+
+</div>
+
+
+<h2>Liste des objectifs</h2>
+
+<div>
+  <table class="goals">
+    <tr>
+      <th>Nom</th>
+      <th>Nombre de points</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let goal of goals" class="goals"
+	[class.selected]="goal === selectedGoal"
+	(click)="onSelect(goal)"
+	>
+      <td>{{goal.name}}</td>
+      <td>{{goal.number_of_points}}</td>
+      <td>
+	<button class="delete"
+		(click)="delete(goal); $event.stopPropagation()">
+	  x
+	</button>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+
+
+<button (click)="goBack()">Retour</button>
