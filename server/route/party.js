@@ -60,6 +60,28 @@ router.patch('/add-goal', function(req, res, next) {
 });
 
 
+router.patch('/start-stop', function(req, res, next) {
+    const party_id = req.body.id;
+    const started = req.body.started;
+    Party.findById(party_id, function(err, party){
+	if (err)
+	    httphandler.answerJSonFailure(res, err.toString());
+	else
+	{
+	    if (!started){
+		party.start_game();
+		party.started = true;
+	    }
+	    else{
+		party.stop_game();
+		party.started = false;
+	    }
+	    httphandler.answerJSonSuccess(res, party);
+	}	
+    });
+});
+
+
 
 router.delete('/:id', function (req, res){
     Party.remove({_id: req.params.id}, function(err, party){

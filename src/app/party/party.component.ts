@@ -49,6 +49,14 @@ export class PartyComponent implements OnChanges {
 	
     }
 
+    startStopParty(): void {
+	this.partyService.startOrStopParty(this.party)
+	    .subscribe(party => {
+		this.party = party;
+	    });
+	
+    }
+    
     ngOnChanges(): void{
 	if (this.party){
 	    this.teamService.getTeamsById(this.party._id)

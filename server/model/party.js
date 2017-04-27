@@ -53,11 +53,13 @@ Party.methods.add_goal = function(goal_id, callback){
 };
 
 Party.methods.start_game = function(callback){
+    console.log("SATRARTTT");
     this.started = true;
     this.save(callback);
 };
 
 Party.methods.stop_game = function(callback){
+    console.log("SATRARTTT");
     this.started = false;
     this.save(callback);
 };

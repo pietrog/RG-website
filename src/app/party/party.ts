@@ -10,7 +10,7 @@ export class Party {
     constructor(name: string, started: boolean, team_list: number[], goal_list: number[])
     {
 	this.name = name;
-	this.started = true;
+	this.started = started;
 	//this.creation_date = creation_date;
 	//this.start_date = start_date;
 	this.team_list = team_list;

@@ -4,8 +4,15 @@
   <h3>Commandes</h3>
   <table>
     <tr>
-      <td>Demarrer/arreter</td>
-      <td><button>Demarrer</button></td>
+      <td>Start/Stop</td>
+      <td>
+	<div *ngIf="party.started">
+	  <button (click)="startStopParty()">Stop</button>
+	</div>
+	<div *ngIf="!party.started">
+	  <button (click)="startStopParty()">Start</button>
+	</div>
+      </td>
     </tr>
     <tr>
       <td>Retirer des points</td>

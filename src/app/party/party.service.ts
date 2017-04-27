@@ -52,7 +52,6 @@ export class PartyService {
     }
 
     addGoalToParty(party_id: number, goal_id: number): Observable<Party> {
-	console.log(party_id);
 	const url = '/api/party/add-goal';
 	const data = { "party_id": party_id, "goal_id": goal_id };
 	return this.http.patch(url, data, {headers: this.headers})
@@ -61,6 +60,15 @@ export class PartyService {
 	
     }
 
+    //Change the status of the party following what the user wants
+    startOrStopParty(party: Party): Observable<Party> {
+	const url = '/api/party/start-stop';
+	const data = { "id": party._id, "started": party.started };
+	return this.http.patch(url, data, {headers: this.headers})
+	    .map(this.extractParties)
+	    .catch(this.handleError);
+    }
+    
     delete(id: number): Observable<void> {
 	const url = `/api/party/${id}`;
 	return this.http.delete(url, { headers: this.headers })
