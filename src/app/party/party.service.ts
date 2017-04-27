@@ -51,7 +51,7 @@ export class PartyService {
 	    .catch(this.handleError);
     }
 
-    addGoalToParty(party_id: number, goal_id: number) {
+    addGoalToParty(party_id: number, goal_id: number): Observable<Party> {
 	console.log(party_id);
 	const url = '/api/party/add-goal';
 	const data = { "party_id": party_id, "goal_id": goal_id };

@@ -1,7 +1,8 @@
 
 <h3>Ajout d'un objectif</h3>
 <div>
-  <label>Nom de l'objedctif:</label><input [(ngModel)]="goal.name" placeholder="name" >
+  <label>Nom de l'objedctif:</label><input [(ngModel)]="goal.name" placeholder="name" ><br/>
+  <label>Score l'objedctif:</label><input [(ngModel)]="goal.number_of_points" placeholder="name" ><br/>
   <button (click)="save()" ngDefaultControl>Ajouter</button>
 
 </div>

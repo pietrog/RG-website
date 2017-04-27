@@ -57,15 +57,17 @@ export class PartyComponent implements OnChanges {
 		    this.goalService.getListOfGoals()
 			.subscribe(goals => {
 			    this.goals = goals;
-			    this.goalsInParty = this.goals.filter(
-				goal => {
-				    this.party.goal_list.some(
-				    id => id === goal._id
-				    );
-				});
+			    this.goalsInParty = [];
+			    for (const goal of this.goals){
+				for (const id of this.party.goal_list){
+				    if (id === goal._id)
+				    {
+					this.goalsInParty.push(goal);
+				    }
+				}
+			    }
 			});
 		});
 	}
-    }
-   
+    }   
 }
