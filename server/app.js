@@ -8,7 +8,8 @@ let env         = process.env.NODE_ENV || 'development',
     r_party     = require('./route/party'),
     r_player    = require('./route/player'),
     r_team      = require('./route/team'),
-    r_goal      = require('./route/goal');
+    r_goal      = require('./route/goal'),
+    r_device    = require('./route/device');
 
 global.App = {
     app : express(),
@@ -41,6 +42,7 @@ mongoose.connect(config.database);
 App.app.use(bodyParser.json());
 App.app.use(express.static(App.front_end));
 
+App.app.use('/api/device', r_device);
 App.app.use('/api/party', r_party);
 App.app.use('/api/player', r_player);
 App.app.use('/api/teams', r_team);

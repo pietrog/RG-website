@@ -16,5 +16,13 @@ var TeamSchema = new Schema({
     }
 });
 
+TeamSchema.methods.incrementScore = function(score, callback)
+{
+    if(!this.score)
+	this.score =0;
+    this.score += score;
+    this.save(callback);
+}
+
 
 module.exports = mongoose.model('Team', TeamSchema);

@@ -60,6 +60,22 @@ export class PlayerService {
 	    .catch(this.handleError);
     }
 
+    validateGoal(player: Player, scanned_code: string): Observable<any> {
+	const url = `/api/device/validateGoal`;
+	let body = { player_id: player._id, scanned_code: scanned_code };
+	return this.http.post(url, body, {headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+
+    healPlayer(player: Player): Observable<any> {
+	const url = `/api/device/healPlayer`;
+	let body = { player_id: player._id };
+	return this.http.post(url, body, {headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+    
     delete(id: number): Observable<void> {
 	const url = `/api/player/${id}`;
 	return this.http.delete(url, { headers: this.headers })

@@ -36,7 +36,7 @@ router.get('/byId/:id', function(req,res,next) {
 router.post('/create', function(req, res, next) {
     var goal = new Goal({
 	name: req.body.name,
-	code: "p",
+	code: req.body.code,
 	number_of_points: req.body.number_of_points
     });
 

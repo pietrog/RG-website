@@ -19,6 +19,8 @@ export class PlayerDetail implements OnChanges{
     teams: Team[];
     currentTeam: Team;
     error: any;
+    message: any;
+    scanned_code: string;
 
     constructor(
 	private teamService: TeamService,
@@ -33,6 +35,22 @@ export class PlayerDetail implements OnChanges{
 		this.router.navigate(['/dashboard']);
 	    });
 	
+    }
+
+    validateGoal(): void {
+	this.playerService.validateGoal(this.player, this.scanned_code)
+	    .subscribe(
+		result => this.message = result,
+		error => this.error = error
+	    );
+    }
+
+    healPlayer(): void {
+	this.playerService.healPlayer(this.player)
+	    .subscribe(
+		result => this.message = result,
+		error => this.error = error
+	    );
     }
     
     ngOnChanges(): void {
