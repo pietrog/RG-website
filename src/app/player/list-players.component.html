@@ -33,6 +33,13 @@
   
 </div>
 
+<div>
+  <button (click)="sendMessage()">Echo</button>
+  <div *ngIf="message">
+    {{message.text}}
+  </div>
+</div>
+
 <player-detail [player]="selectedPlayer"></player-detail>
 
 <button (click)="goBack()">Retour</button>

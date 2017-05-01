@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { Player } from './player';
 import { PlayerService } from './player.service';
 
+import { RTServer } from '../rt-server.service';
+
+
 @Component({
     selector: 'list-players',
     templateUrl: './list-players.component.html',
@@ -17,12 +20,17 @@ export class ListPlayersComponent implements OnInit {
     constructor(
 	private router: Router,
 	private playerService: PlayerService,
-	private location: Location) {}
+	private location: Location,
+	private rtServer: RTServer
+    ) {}
 
     players = [];
     player: Player;
     selectedPlayer: Player;
     @Input() teamID: number;
+    private socket;
+    connection;
+    message;
     
     getPlayers(): void {
 	this.playerService.getListOfPlayers()
@@ -58,12 +66,16 @@ export class ListPlayersComponent implements OnInit {
 	this.location.back();
     }
 
+    sendMessage() {
+	this.rtServer.sendEcho('test ioooooo');
+    }
     
     ngOnInit(): void {
 	this.getPlayers();
-	
 	this.player = new Player("", 0);
+	this.connection = this.rtServer.getEcho().subscribe(message => {
+	    this.message = message;
+	});
     }
-
     
 }

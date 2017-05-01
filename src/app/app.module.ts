@@ -22,6 +22,7 @@ import { PartyService } from './party/party.service';
 import { PlayerService } from './player/player.service';
 import { PlayerDetail } from './player/player-detail.component';
 import { TeamService } from './team/team.service';
+import { RTServer } from './rt-server.service';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import { TeamService } from './team/team.service';
 	PartyService,
 	PlayerService,
 	TeamService,
-	GoalService
+	GoalService,
+	RTServer
     ],
     bootstrap: [AppComponent]
 })
