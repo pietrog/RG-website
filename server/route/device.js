@@ -8,9 +8,10 @@ const util = require('util');
 
 
 router.post('/validateGoal', function(req, res){
+
     const id_player = req.body.player_id;
-    const scanned_code = req.body.scanned_code;
-    
+    const scanned_code = req.body.scanned_code.text;
+
     Player.findById(id_player, null, function(err, player){
 	if (err)
 	    return httphandler.answerJSonFailure(res, err.toString());
@@ -23,19 +24,17 @@ router.post('/validateGoal', function(req, res){
 		else
 		{
 		    const score = goal.number_of_points;
-		    console.log("target score: " + score);
 		    player.incrementScore(score, function(err) {
 			if (player.team)
 			{
-
 			    Team.findById(player.team, null, function(err, team) {
 				team.incrementScore(score, function(err) {				   
-				    return httphandler.answerJSonSuccess(res, team);
+				    return httphandler.answerJSonSuccess(res, score);
 				});
 			    });
 			}
 			else
-			    return httphandler.answerJSonSuccess(res, updated_p);
+			    return httphandler.answerJSonSuccess(res, score );
 		    });
 		}
 	    });

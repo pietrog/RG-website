@@ -20,6 +20,10 @@ export class RTServer {
 	    this.socket.on('echo', (data) => {
 		observer.next(data);		
 	    });
+	    this.socket.on('b_message', (data) => {
+		console.log('coucocuocu');
+		observer.next(data);
+	    });
 	    return () => {
 		this.socket.disconnect();
 	    }
@@ -27,5 +31,5 @@ export class RTServer {
 
 	return obs;
     }
-    
+
 }

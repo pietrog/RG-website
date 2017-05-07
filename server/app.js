@@ -71,6 +71,8 @@ App.app.get('*', (req, res) => {
 App.io.on('connection', function(socket) {
     console.log("A user is connected ");
 
+    socket.broadcast.emit('b_message', 'A user is connected !!!!');
+
     socket.on('echoTest', (message) => {
 	App.io.emit('echo', {type: 'new-message', text: message});
     });
