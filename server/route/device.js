@@ -17,12 +17,20 @@ router.post('/validateGoal', function(req, res){
 	    return httphandler.answerJSonFailure(res, err.toString());
 	else
 	{
+	    if (!player)
+	    {
+		return httphandler.answerJSonFailure(res);
+	    }
 	    //get the objective
 	    Goal.findOne({ code: scanned_code }, null, function(err, goal) {
 		if (err)
 		    return httphandler.answerJSonFailure(res, err.toString());
 		else
 		{
+		    if (!goal)
+		    {
+			return httphandler.answerJSonFailure(res);
+		    }
 		    const score = goal.number_of_points;
 		    player.incrementScore(score, function(err) {
 			if (player.team)
