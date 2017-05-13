@@ -30,7 +30,7 @@ export class ListPlayersComponent implements OnInit {
     @Input() teamID: number;
     private socket;
     connection;
-    message;
+    messages = [];
     
     getPlayers(): void {
 	this.playerService.getListOfPlayers()
@@ -73,9 +73,10 @@ export class ListPlayersComponent implements OnInit {
     ngOnInit(): void {
 	this.getPlayers();
 	this.player = new Player("", 0);
-	this.connection = this.rtServer.getEcho().subscribe(message => {
+	this.messages = this.rtServer.getMessages();
+	/*this.connection = this.rtServer.getEcho().subscribe(message => {
 	    this.message = message;
-	});
+	});*/
     }
     
 }

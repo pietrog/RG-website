@@ -78,7 +78,8 @@ App.io.on('connection', function(socket) {
     socket.broadcast.emit('A user is connected !!!!');
 
     socket.on('echoTest', (message) => {
-	App.io.emit('echo', {type: 'new-message', text: message});
+	App.io.emit('echo', {type: 'new-message', text: message + ' bien recu'});
+	socket.broadcast.emit('update', 'AHAHAAHHHHHAHAAH');
     });
 
     

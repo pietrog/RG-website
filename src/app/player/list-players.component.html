@@ -34,10 +34,13 @@
 </div>
 
 <div>
-  <button (click)="sendMessage()">Echo</button>
-  <div *ngIf="message">
-    {{message.text}}
-  </div>
+  <table>
+    <tr *ngFor="let message of messages">
+      <td>{{message}}</td>
+    </tr>
+
+    <button (click)="sendMessage()" >Echo</button>
+  </table>
 </div>
 
 <player-detail [player]="selectedPlayer"></player-detail>
