@@ -18,11 +18,28 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Launch web site from scratch
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+The simpliest way to launch it is under Linux.
+You should have these packages installed:
+ - mongodb (v3.0.6)
+ - nodejs (v7.6.0)
+ - a recent browser (chrome, chromium or firefox)
 
-## Further help
+# Launch the mongo db daemon
+Create a folder that will receive the database files. We will name it target_db_dir.
+Then launch the daemon in command line: `mongod --dbpath target_db_dir`
+
+# Build the angular project (typescript files)
+Checkout the directory of the project, and go at the root of it.
+Run `ng build` if you just want to build and deploy.
+Run `ng build --watch` if you want to debug (will compile as soon as you change a file).
+
+# Launch the node web server
+From the root directory:
+Run `node server/bin/root` to launch the web site in production.
+Run `nodemon server/bin/root` if you want to work (will compile the changed files at runtime like ng)
+
+## Further help (Angular 2)
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

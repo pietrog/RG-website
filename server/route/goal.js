@@ -39,7 +39,7 @@ router.post('/create', function(req, res, next) {
 	code: req.body.code,
 	number_of_points: req.body.number_of_points
     });
-
+    console.log(util.inspect(req.body));
     goal.save(function(err, goal, nb_affected){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
