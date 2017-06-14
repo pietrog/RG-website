@@ -18,7 +18,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Launch web site from scratch
+# Launch web site from scratch
 
 The simpliest way to launch it is under Linux.
 You should have these packages installed:
@@ -26,16 +26,16 @@ You should have these packages installed:
  - nodejs (v7.6.0)
  - a recent browser (chrome, chromium or firefox)
 
-# Launch the mongo db daemon
+## Launch the mongo db daemon
 Create a folder that will receive the database files. We will name it target_db_dir.
 Then launch the daemon in command line: `mongod --dbpath target_db_dir`
 
-# Build the angular project (typescript files)
+## Build the angular project (typescript files)
 Checkout the directory of the project, and go at the root of it.
 Run `ng build` if you just want to build and deploy.
 Run `ng build --watch` if you want to debug (will compile as soon as you change a file).
 
-# Launch the node web server
+## Launch the node web server
 From the root directory:
 Run `node server/bin/root` to launch the web site in production.
 Run `nodemon server/bin/root` if you want to work (will compile the changed files at runtime like ng)
