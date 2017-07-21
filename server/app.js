@@ -3,8 +3,7 @@ const express     = require('express'),
       express_app = express();
 const http        = require('http'),
       http_server = http.Server(express_app);
-const io          = require('socket.io'),
-      io_socket   = io(http_server);
+const RTServer    = require('./RTServer.js')
 
 //tools
 const env         = process.env.NODE_ENV || 'development',
@@ -21,11 +20,12 @@ const r_party   = require('./route/party'),
       r_goal      = require('./route/goal'),
       r_device    = require('./route/device');
 
+const util = require('util');
 
 global.App = {
     app : express_app,
     server: http_server,
-    io: io_socket,
+    io_server: new RTServer(http_server),
     port : tools.normalizePort(process.env.PORT || '3000'),
     //version : packageJson.version,
     root : path.join(__dirname, '..'),
@@ -51,7 +51,11 @@ console.log("PATH : " + App.front_end);
 App.app.set('superSecret', config.secret);
 
 //database connection
-mongoose.connect(config.database);
+mongoose.connect(config.database, { useMongoClient: true }, function(err){
+    if (err)
+	console.log("Error while connecting to MongoDB server: " + util.inspect(err));
+})
+
 
 App.app.use(bodyParser.json());
 App.app.use(express.static(App.front_end));
@@ -68,22 +72,6 @@ App.app.get('*', (req, res) => {
   res.sendFile(path.join(App.front_end, 'index.html'));
 });
 
-App.io.on('connection', function(socket) {
-    console.log("A user is connected ");
-
-    socket.on('disconnect', function() {
-	console.log("A user has been discconnected ");
-    });
-    
-    socket.broadcast.emit('A user is connected !!!!');
-
-    socket.on('echoTest', (message) => {
-	App.io.emit('echo', {type: 'new-message', text: message + ' bien recu'});
-	socket.broadcast.emit('update', 'AHAHAAHHHHHAHAAH');
-    });
-
-    
-});
 
 
 module.exports = App;

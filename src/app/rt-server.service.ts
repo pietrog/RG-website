@@ -15,17 +15,20 @@ export class RTServer {
     constructor()
     {
 	this.socket = io();
-	this.socket.on('echo', (data) => {
-	    this.messages.push(data);
+	this.socket.on('goal_scanned_answer', (data) => {
+	    if (data.content === 'success')
+	    {
+		this.messages.push("jai marque "+ data.data.player_score);
+	    }
 	});
-	this.socket.on('update', (data) => {
-	    this.messages.push(data);
+	this.socket.on('goal_scanned_broadcast', (data) => {
+	    this.messages.push(data.data.team_id + " -- " + data.data.team_score);
 	});
-
     }
+
     
-    sendEcho(message) {
-	this.socket.emit('echoTest', message);
+    scan_goal(_player_id, _scanned_code) {
+	this.socket.emit('goal_scanned', { player_id: _player_id, scanned_code: _scanned_code});
     }
 
     getMessages() {

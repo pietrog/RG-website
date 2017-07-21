@@ -3,9 +3,10 @@ var express = require('express'),
     httphandler = require("../http_handlers"),
     Player = require("../model/user");
 const util = require('util');
-
+const RTServer    = require('../RTServer.js');
 
 router.get('/all', function(req, res){
+
     Player.find({}, null, function(err, players){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());

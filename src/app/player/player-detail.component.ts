@@ -7,6 +7,8 @@ import { Player } from './player';
 import { Team } from '../team/team';
 import { TeamService } from '../team/team.service';
 
+import { RTServer } from '../rt-server.service';
+
 @Component({
     selector: 'player-detail',
     templateUrl: './player-detail.component.html',
@@ -27,6 +29,7 @@ export class PlayerDetail implements OnChanges{
 	private playerService: PlayerService,
 	private router: Router,
 	private route: ActivatedRoute,
+	private rt: RTServer,
 	private location: Location) {}
 
     addPlayerToParty(): void {
@@ -38,19 +41,7 @@ export class PlayerDetail implements OnChanges{
     }
 
     validateGoal(): void {
-	this.playerService.validateGoal(this.player, this.scanned_code)
-	    .subscribe(
-		result => this.message = result,
-		error => this.error = error
-	    );
-    }
-
-    healPlayer(): void {
-	this.playerService.healPlayer(this.player)
-	    .subscribe(
-		result => this.message = result,
-		error => this.error = error
-	    );
+	this.rt.scan_goal(this.player._id, this.scanned_code);
     }
     
     ngOnChanges(): void {

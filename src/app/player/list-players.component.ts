@@ -67,7 +67,7 @@ export class ListPlayersComponent implements OnInit {
     }
 
     sendMessage() {
-	this.rtServer.sendEcho('test ioooooo');
+	//this.rtServer.sendEcho('test ioooooo');
     }
     
     ngOnInit(): void {
