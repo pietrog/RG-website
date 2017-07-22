@@ -4,8 +4,10 @@ var express = require('express'),
     Player = require("../model/user"),
     httphandler = require('../http_handlers.js');
 const util = require('util');
+const       mongoose    = require('mongoose');
 
 router.get('/all', function(req,res,next) {
+
     Team.find({}, null, function(err, teams){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());

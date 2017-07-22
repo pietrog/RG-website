@@ -2,23 +2,17 @@ const Team = require('../model/team');
 const Goal = require('../model/goal');
 const Player = require('../model/user');
 
-var express = require('express'),
-    router = express.Router(),
-    httphandler = require("../http_handlers");
-
 const util = require('util');
 const SocketUtils = require('../SocketUtils');
 
+const       mongoose    = require('mongoose');
 
 global.Scoring =
 {
 
     onGoalScanned: function(socket, player_id, scanned_code)
     {
-
-	console.log("player found before" + util.inspect(player_id));
- 
-	Player.findById(player_id, function(err, player){
+	Player.findById(player_id, (err, player) => {
 	    console.log("player found");
 	    if (err)
 	    {

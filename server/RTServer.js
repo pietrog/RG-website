@@ -5,13 +5,13 @@ const util = require('util');
 const Scoring = require('./core/Scoring');
 const SocketUtils = require('./SocketUtils');
 
+
 class RTServer
 {
 
     constructor(http_server){
 	this.server = new server_io(http_server);
 	this.server.on('connection', this.onNewClientConnection);
-	this.server.on('disconnect', this.onClientDisconnect);
     }
 
     onNewClientConnection(socket)

@@ -5,6 +5,8 @@ const http        = require('http'),
       http_server = http.Server(express_app);
 const RTServer    = require('./RTServer.js')
 
+const server_io = require('socket.io');
+
 //tools
 const env         = process.env.NODE_ENV || 'development',
       bodyParser  = require('body-parser'),
@@ -20,12 +22,22 @@ const r_party   = require('./route/party'),
       r_goal      = require('./route/goal'),
       r_device    = require('./route/device');
 
+const SocketUtils = require('./SocketUtils');
+
+const Player  = require('./model/user');
+const Goal    = require('./model/goal');
+const Team    = require('./model/team');
+
 const util = require('util');
 
 global.App = {
     app : express_app,
     server: http_server,
-    io_server: new RTServer(http_server),
+    mongoose_connection: mongoose.connect(config.database, { useMongoClient: true }, function(err){
+	if (err)
+	    console.log("Error while connecting to MongoDB server: " + util.inspect(err));
+    }),
+    //io_server: new RTServer(http_server),
     port : tools.normalizePort(process.env.PORT || '3000'),
     //version : packageJson.version,
     root : path.join(__dirname, '..'),
@@ -51,10 +63,6 @@ console.log("PATH : " + App.front_end);
 App.app.set('superSecret', config.secret);
 
 //database connection
-mongoose.connect(config.database, { useMongoClient: true }, function(err){
-    if (err)
-	console.log("Error while connecting to MongoDB server: " + util.inspect(err));
-})
 
 
 App.app.use(bodyParser.json());
@@ -72,6 +80,91 @@ App.app.get('*', (req, res) => {
   res.sendFile(path.join(App.front_end, 'index.html'));
 });
 
+
+var io = new server_io(http_server);
+io.on('connection', (socket) => {
+    socket.on('disconnect', (reason) => {
+	console.log("Client disconected: "+ reason);
+    });
+
+    socket.on('goal_scanned', (data) => {
+	//const result = Scoring.onGoalScanned(socket, data.player_id, data.scanned_code);
+
+	const player_id = data.player_id;
+	const scanned_code = data.scanned_code;
+	
+	Player.findById(player_id, (err, player) => {
+
+	    if (err)
+	    {
+		SocketUtils.AnswerGoalScannedFailed(socket, "Error while loading the player");
+		return SocketUtils.ReturnError();
+	    }
+	    else
+	    {
+		Goal.findOne({ code: scanned_code }, null, function(err, goal){
+
+		    if (err)
+		    {
+			SocketUtils.AnswerGoalScannedFailed(socket, "Error while taking the target");
+			return SocketUtils.ReturnError();
+		    }
+		    else
+		    {
+			if (!goal)			 
+			{
+			    SocketUtils.AnswerGoalScannedFailed(socket, "Target does not exist");
+			    return SocketUtils.ReturnError();
+			}
+
+			const score = goal.number_of_points;
+			console.log('goal found '+ util.inspect(player));
+
+			if (!player.team)
+			{
+			    SocketUtils.AnswerGoalScannedFailed(socket, player.email + " not in a team");
+			    return SocketUtils.ReturnError();
+			}
+			
+			player.incrementScore(score, function(err) {
+			    Team.findById(player.team, null, function(err, team){
+				team.incrementScore(score, function(err){
+				    SocketUtils.ReplyGoalScannedSuccessed(socket, score, team.score, team._id);
+				    //return SocketUtils.ReturnSuccess({team_id: team._id, team_score: team.score});
+				});
+			    });
+			    
+			});
+		    }
+		});
+	    }
+	});
+
+	/*if (result.result !== 'failed')
+	{
+	    SocketUtils.BroadcastGoalScannedSuccessed(socket, result.team_id, result.team_score);
+	}
+	else
+	{
+	    SocketUtils.AnswerGoalScannedFailed(socket, "wtf");
+	}*/
+    });
+
+    
+    socket.on('goal_scanned', function(data){
+	
+	//const result = Scoring.onGoalScanned(socket, data.player_id, data.scanned_code);
+	/*if (result.result !== 'failed')
+	{
+	    SocketUtils.BroadcastGoalScannedSuccessed(socket, result.team_id, result.team_score);
+	}
+	else
+	{
+	    SocketUtils.AnswerGoalScannedFailed(socket, "wtf");
+	}*/
+    });
+
+});
 
 
 module.exports = App;

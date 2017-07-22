@@ -4,6 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 
 
+import { PlayerService } from './player/player.service';
+import { Player } from './player/player';
+
+
 @Injectable()
 export class RTServer {
 
@@ -11,8 +15,15 @@ export class RTServer {
     private socket;
 
     messages = [];
+    players = Observable.create((observer) => {
+	this.player_observer = observer;
+    });
+    player_observer;
+    
 
-    constructor()
+    constructor(
+	private playerService: PlayerService
+    )
     {
 	this.socket = io();
 	this.socket.on('goal_scanned_answer', (data) => {
@@ -22,7 +33,8 @@ export class RTServer {
 	    }
 	});
 	this.socket.on('goal_scanned_broadcast', (data) => {
-	    this.messages.push(data.data.team_id + " -- " + data.data.team_score);
+	    this.messages.push(data.team_id + " -- " + data.team_score);
+	    this.getPlayers();
 	});
     }
 
@@ -48,6 +60,19 @@ export class RTServer {
 	
 
 	//return obs;
+    }
+
+
+    getPlayers() : void{
+	this.playerService.getListOfPlayers()
+	    .subscribe((data) => {
+	    this.player_observer.next(data);
+	    return;
+	});
+    }
+
+    getPlayersObservable(): Observable<Player[]> {
+	return this.players;
     }
 
 }

@@ -26,7 +26,7 @@ var Player = new Schema({
 	type: Schema.Types.ObjectId
     }
     
-});
+}, {bufferCommands: false});
 
 function EMailValidation(val){
     return val != null;

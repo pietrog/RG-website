@@ -71,7 +71,12 @@ export class ListPlayersComponent implements OnInit {
     }
     
     ngOnInit(): void {
-	this.getPlayers();
+	this.rtServer.getPlayers();
+	this.rtServer.getPlayersObservable().subscribe(
+	    (players) => {
+		this.players = players
+	    }
+	);
 	this.player = new Player("", 0);
 	this.messages = this.rtServer.getMessages();
 	/*this.connection = this.rtServer.getEcho().subscribe(message => {

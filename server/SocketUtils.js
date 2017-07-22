@@ -1,7 +1,9 @@
 
 global.SocketUtils = {
 
-    AnswerGoalScannedSuccessed: answerGoalScannedSuccessed,
+    ReplyGoalScannedSuccessed: _replyGoalScannedSuccessed,
+
+
     BroadcastGoalScannedSuccessed: broadcastGoalScannedSuccessed,
     AnswerGoalScannedFailed: answerGoalScannedFailed,
     
@@ -13,14 +15,17 @@ global.SocketUtils = {
 
 function broadcastGoalScannedSuccessed(socket, _team_id, _team_score)
 {
+    console.log('Broadcast goal scanned succefully');
     const data = { team_id: _team_id, team_score: _team_score};
-    socket.broadcast.emit('goal_scanned_broadcast', SocketUtils.AnswerGoalScannedSuccessed(data));
+
 }
 
-function answerGoalScannedSuccessed(socket, _player_score, _team_score)
+function _replyGoalScannedSuccessed(socket, _player_score, _team_score, _team_id)
 {
     const data = { player_score: _player_score, team_score: _team_score};
-    socket.emit('goal_scanned_answer', SocketUtils.AnswerGoalScannedSuccessed(data));
+    socket.emit('goal_scanned_answer', data);
+    const data_b = { team_id: _team_id, team_score: _team_score};
+    socket.broadcast.emit('goal_scanned_broadcast', data_b);
 }
 
 function answerGoalScannedFailed(socket, _reason)
