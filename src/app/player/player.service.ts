@@ -12,6 +12,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PlayerService {
 
+
     private listPartiesUrl = "/api/player";
     private headers = new Headers(
 	{
@@ -20,16 +21,19 @@ export class PlayerService {
 	}
     );
 
-    constructor(private http: Http) {}
+    constructor(private http: Http)
+    {
+	this.getListOfPlayers();
+    }
 
     private extractData(res: Response) {
-
 	let body = res.json();
 	return body.data || {};
     }
 
     getListOfPlayers(): Observable<Player[]> {
 	const url = `/api/player/all`;
+
 	return this.http.get(url)
 	    .map(this.extractData)
 	    .catch(this.handleError);
@@ -84,7 +88,7 @@ export class PlayerService {
     }
     
     private handleError(error: any): Promise<any> {
-	//console.error('an error occured', error);
+	console.error('an error occured', error);
 	return Promise.reject(error.message || error);
     }
 

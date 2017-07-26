@@ -31,15 +31,13 @@ export class ListPlayersComponent implements OnInit {
     private socket;
     connection;
     messages = [];
-    
-    getPlayers(): void {
-	this.playerService.getListOfPlayers()
-	
-	    .subscribe(
-		players => this.players = players
-	    );
-    }
 
+    getPlayers(): void {
+	this.playerService.getListOfPlayers().subscribe((data) =>{
+	    this.players = data;
+	});
+    }
+    
     delete(player: Player){
 	this.playerService
 	    .delete(player._id)
@@ -71,17 +69,13 @@ export class ListPlayersComponent implements OnInit {
     }
     
     ngOnInit(): void {
-	this.rtServer.getPlayers();
-	this.rtServer.getPlayersObservable().subscribe(
-	    (players) => {
-		this.players = players
-	    }
-	);
+	this.rtServer.getPlayersObservable()
+	    .subscribe(
+		(players) => {
+		    this.players = players;
+		});
 	this.player = new Player("", 0);
 	this.messages = this.rtServer.getMessages();
-	/*this.connection = this.rtServer.getEcho().subscribe(message => {
-	    this.message = message;
-	});*/
     }
     
 }

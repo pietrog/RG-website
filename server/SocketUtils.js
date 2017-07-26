@@ -24,7 +24,7 @@ function _replyGoalScannedSuccessed(socket, _player_score, _team_score, _team_id
 {
     const data = { player_score: _player_score, team_score: _team_score};
     socket.emit('goal_scanned_answer', data);
-    const data_b = { team_id: _team_id, team_score: _team_score};
+    const data_b = { content: 'success', team_id: _team_id, team_score: _team_score};
     socket.broadcast.emit('goal_scanned_broadcast', data_b);
 }
 

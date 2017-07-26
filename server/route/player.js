@@ -6,7 +6,7 @@ const util = require('util');
 const RTServer    = require('../RTServer.js');
 
 router.get('/all', function(req, res){
-
+    console.log("appele");
     Player.find({}, null, function(err, players){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
@@ -24,7 +24,7 @@ router.post('/idFromName', function(req, res){
 	else
 	{
 	    if (!player){
-		httphandler.answerJSonFailure(res);
+		httphandler.answerJSonFailure(res, { reason: 'not exist' });
 	    }
 	    else{
 		httphandler.answerJSonSuccess(res, player._id);
