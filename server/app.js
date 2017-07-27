@@ -83,6 +83,8 @@ App.app.get('*', (req, res) => {
 
 var io = new server_io(http_server);
 io.on('connection', (socket) => {
+    console.log("New client connected !!");
+    
     socket.on('disconnect', (reason) => {
 	console.log("Client disconected: "+ reason);
     });

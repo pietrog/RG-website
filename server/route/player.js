@@ -17,21 +17,6 @@ router.get('/all', function(req, res){
     });
 });
 
-router.post('/idFromName', function(req, res){
-    Player.findOne({ email: req.body.data}, null, function(err, player){
-	if (err)
-	    httphandler.answerJSonFailure(res, err.toString());
-	else
-	{
-	    if (!player){
-		httphandler.answerJSonFailure(res, { reason: 'not exist' });
-	    }
-	    else{
-		httphandler.answerJSonSuccess(res, player._id);
-	    }
-	}
-    });
-});
 
 
 router.post('/allWithIds', function(req, res){    
