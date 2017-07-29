@@ -76,6 +76,8 @@ router.post('/validateGoal', function(req, res){
     const id_player = req.body.player_id;
     const scanned_code = req.body.scanned_code;
 
+    console.log("code: " + scanned_code);
+    console.log("player: " + id_player);
     Player.findById(id_player, null, function(err, player){
 	if (err)
 	    return httphandler.answerJSonFailure(res, err.toString());
@@ -99,11 +101,11 @@ router.post('/validateGoal', function(req, res){
 
 		    const score = goal.number_of_points;
 		    
-		    player.incrementScore(score, function(err) {
+		    player.incrementScore(0, function(err) {
 			if (player.team)
 			{
 			    Team.findById(player.team, null, function(err, team) {
-				team.incrementScore(score, function(err) {				   
+				team.incrementScore(0, function(err) {				   
 				    return httphandler.answerJSonSuccess(res, score);
 				});
 			    });
