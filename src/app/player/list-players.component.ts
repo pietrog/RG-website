@@ -75,7 +75,7 @@ export class ListPlayersComponent implements OnInit {
 		    this.players = players;
 		});
 	this.player = new Player("", 0);
-	this.messages = this.rtServer.getMessages();
+	
     }
     
 }

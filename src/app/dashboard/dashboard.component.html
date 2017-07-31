@@ -1,3 +1,20 @@
-<h3>{{title}}</h3>
+<h2>{{title}}</h2>
 
-En construction...
+<div>
+  <h3>Evènements en temps réel</h3>
+
+  <table class="rt-messages">
+    <tr>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+
+    <tr *ngFor="let message of messages">
+      <td>{{message.date}}</td>
+      <td>{{message.type_event}}</td>
+      <td>{{message.description}}</td>
+    </tr>
+  </table>
+  
+</div>

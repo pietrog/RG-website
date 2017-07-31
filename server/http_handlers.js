@@ -15,7 +15,7 @@ global.HttpHandler = {
  * A success parameter set to true and data in data field
  */
 function AnswerJSONSuccess(response, data){
-    response.json({ "data": data } );    
+    response.json({ "status": "success", "data": data } );    
 }
 
 /**
@@ -23,7 +23,7 @@ function AnswerJSONSuccess(response, data){
  * A success parameter set to false and data 
  */
 function AnswerJSONError(response, data){
-    response.status(HttpHandler.errorHTTPCode).json(data);    
+    response.status(HttpHandler.errorHTTPCode).json({ "status": "error", "data": data});    
 }
 
 /**
@@ -32,14 +32,14 @@ function AnswerJSONError(response, data){
  * Use this one when client sent wrong informations
  */
 function AnswerJSONFailure(res, data){
-    res.json(data);
+    res.json({ "status": "failure", "data": data});
 }
 
 /**
  * Send a response with given http code
  */
 function AnswerJSonwithHTTPCode(res, httpcode, data){
-    res.status(httpcode).json(data);
+    res.status(httpcode).json({ status: "unknown", "data": data});
 }
 
 module.exports = HttpHandler;

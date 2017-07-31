@@ -2,64 +2,48 @@
 global.SocketUtils = {
 
     ReplyGoalScannedSuccessed: _replyGoalScannedSuccessed,
-
-
-    BroadcastGoalScannedSuccessed: broadcastGoalScannedSuccessed,
-    AnswerGoalScannedFailed: answerGoalScannedFailed,
+    ReplyGoalScannedFailed: _replyGoalScannedFailed
     
-    answerSocketSuccess: AnswerJSONSuccess,
-    answerSocketFailed: AnswerJSONError,
-    ReturnError: return_error,
-    ReturnSuccess: return_success
 }
 
-function broadcastGoalScannedSuccessed(socket, _team_id, _team_score)
+function _replyGoalScannedSuccessed(_socket,
+				    _id_player,
+				    _player_name,
+				    _id_team_of_player,
+				    _team_name,
+				    _new_player_score,
+				    _new_team_score,
+				    _score_target,
+				    _name_target)
 {
-    console.log('Broadcast goal scanned succefully');
-    const data = { team_id: _team_id, team_score: _team_score};
+    const data_to_reply = {
+	status: "success",
+	player_score: _new_player_score,
+	team_score: _new_team_score,
+	score_target: _score_target
+    };
 
+    const data_to_broadcast = {
+	status: "success",
+	team_id: _id_team_of_player,
+	team_score: _new_team_score,
+	score_target: _score_target,
+	name_target: _name_target,
+	player_name: _player_name,
+	team_name: _team_name,
+	time_event: "xxx heures"
+    };
+    
+    _socket.emit('goal_scanned_answer', data_to_reply);
+    _socket.broadcast.emit('goal_scanned_broadcast', data_to_broadcast);
 }
 
-function _replyGoalScannedSuccessed(socket, _player_score, _team_score, _team_id)
+function _replyGoalScannedFailed(_socket, _reason)
 {
-    const data = { player_score: _player_score, team_score: _team_score};
-    socket.emit('goal_scanned_answer', data);
-    const data_b = { content: 'success', team_id: _team_id, team_score: _team_score};
-    socket.broadcast.emit('goal_scanned_broadcast', data_b);
+    const data_to_reply = {
+	status: "failed",
+	reason: _reason };
+    _socket.emit('goal_scanned_answer', data_to_reply);
 }
-
-function answerGoalScannedFailed(socket, _reason)
-{
-    socket.emit('goal_scanned_answer', SocketUtils.answerSocketFailed(_reason));
-}
-
-
-/**
- * Send back json to the client with 200 status code
- * A success parameter set to true and data in data field
- */
-function AnswerJSONError(_reason){
-    return { content: "failed", reason: _reason};
-}
-
-/**
- * Send back json to the client with an error code (error from the server)
- * A success parameter set to false and data 
- */
-function AnswerJSONSuccess(_data){
-    return { content: "success", data: _data};
-}
-
-
-function return_error()
-{
-    return { result: 'failed' };
-}
-
-function return_success(_data)
-{
-    return { result: 'success', data: _data };
-}
-
 
 module.exports = SocketUtils;

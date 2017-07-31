@@ -37,9 +37,7 @@ global.App = {
 	if (err)
 	    console.log("Error while connecting to MongoDB server: " + util.inspect(err));
     }),
-    //io_server: new RTServer(http_server),
     port : tools.normalizePort(process.env.PORT || '3000'),
-    //version : packageJson.version,
     root : path.join(__dirname, '..'),
     front_end: path.join(__dirname, '../dist'),
     appPath : function(path){
@@ -58,11 +56,9 @@ global.App = {
     }
 }
 
-
+//database connection
 console.log("PATH : " + App.front_end);
 App.app.set('superSecret', config.secret);
-
-//database connection
 
 
 App.app.use(bodyParser.json());
@@ -99,40 +95,42 @@ io.on('connection', (socket) => {
 
 	    if (err)
 	    {
-		SocketUtils.AnswerGoalScannedFailed(socket, "Error while loading the player");
-		return SocketUtils.ReturnError();
+		SocketUtils.ReplyGoalScannedFailed(socket, err.toString());
+		return ;
 	    }
 	    else
 	    {
 		Goal.findOne({ code: scanned_code }, null, function(err, goal){
-
 		    if (err)
 		    {
-			SocketUtils.AnswerGoalScannedFailed(socket, "Error while taking the target");
-			return SocketUtils.ReturnError();
+			SocketUtils.ReplyGoalScannedFailed(socket, err.toString());
+			return ;
 		    }
 		    else
 		    {
 			if (!goal)			 
 			{
-			    SocketUtils.AnswerGoalScannedFailed(socket, "Target does not exist");
-			    return SocketUtils.ReturnError();
+			    SocketUtils.ReplyGoalScannedFailed(socket, "Cet objectif n'existe pas");
+			    return ;
 			}
-
 			const score = goal.number_of_points;
-			console.log('goal found '+ util.inspect(player));
+			const name_target = goal.name;
 
 			if (!player.team)
 			{
-			    SocketUtils.AnswerGoalScannedFailed(socket, player.email + " not in a team");
-			    return SocketUtils.ReturnError();
+			    SocketUtils.AnswerGoalScannedFailed(socket, player.email + ", tu n'es dans aucune équipe !");
+			    return ;
 			}
 			
 			player.incrementScore(score, function(err) {
 			    Team.findById(player.team, null, function(err, team){
 				team.incrementScore(score, function(err){
-				    SocketUtils.ReplyGoalScannedSuccessed(socket, score, team.score, team._id);
-				    //return SocketUtils.ReturnSuccess({team_id: team._id, team_score: team.score});
+				    SocketUtils.ReplyGoalScannedSuccessed(socket,
+									  player_id, player.email,
+									  team._id, team.name,
+									  player.score, team.score, score,
+									  name_target);
+				    return;
 				});
 			    });
 			    
@@ -142,28 +140,6 @@ io.on('connection', (socket) => {
 	    }
 	});
 
-	/*if (result.result !== 'failed')
-	{
-	    SocketUtils.BroadcastGoalScannedSuccessed(socket, result.team_id, result.team_score);
-	}
-	else
-	{
-	    SocketUtils.AnswerGoalScannedFailed(socket, "wtf");
-	}*/
-    });
-
-    
-    socket.on('goal_scanned', function(data){
-	
-	//const result = Scoring.onGoalScanned(socket, data.player_id, data.scanned_code);
-	/*if (result.result !== 'failed')
-	{
-	    SocketUtils.BroadcastGoalScannedSuccessed(socket, result.team_id, result.team_score);
-	}
-	else
-	{
-	    SocketUtils.AnswerGoalScannedFailed(socket, "wtf");
-	}*/
     });
 
 });
