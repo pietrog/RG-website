@@ -28,6 +28,7 @@
     <tr>
       <th>Nom</th>
       <th>Nombre de points</th>
+      <th>Validated</th>
       <th>Delete</th>
     </tr>
     <tr *ngFor="let goal of goals" class="goals"
@@ -36,6 +37,7 @@
 	>
       <td>{{goal.name}}</td>
       <td>{{goal.number_of_points}}</td>
+      <td>{{goal.validated}} <button (click)="activate(goal); $event.stopPropagation()">Activate</button></td>
       <td>
 	<button class="delete"
 		(click)="delete(goal); $event.stopPropagation()">

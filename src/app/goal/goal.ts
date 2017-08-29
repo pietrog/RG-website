@@ -3,6 +3,7 @@ export class Goal {
     name: string;
     number_of_points: number;
     code: string;
+    validated: boolean;
 
     constructor(name: string, number_of_points: number) {
 	this.name = name;

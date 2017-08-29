@@ -148,6 +148,12 @@ io.on('connection', (socket) => {
 			    SocketUtils.ReplyGoalScannedFailed(socket, "Cet objectif n'existe pas");
 			    return ;
 			}
+			if (goal.validated)
+			{
+			    SocketUtils.ReplyGoalScannedFailed(socket, "Cet objectif est deja validé");
+			    return ;
+			}
+			
 			const score = goal.number_of_points;
 			const name_target = goal.name;
 
@@ -160,12 +166,14 @@ io.on('connection', (socket) => {
 			player.incrementScore(score, function(err) {
 			    Team.findById(player.team, null, function(err, team){
 				team.incrementScore(score, function(err){
-				    SocketUtils.ReplyGoalScannedSuccessed(socket,
-									  player_id, player.email,
-									  team._id, team.name,
-									  player.score, team.score, score,
-									  name_target);
-				    return;
+				    goal.validateGoal(() => {
+					SocketUtils.ReplyGoalScannedSuccessed(socket,
+									      player_id, player.email,
+									      team._id, team.name,
+									      player.score, team.score, score,
+									      name_target);
+					return;
+				    });
 				});
 			    });
 			    

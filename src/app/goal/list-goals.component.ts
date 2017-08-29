@@ -43,6 +43,16 @@ export class ListGoalsComponent implements OnInit {
 	    );
     }
 
+    activate(goal: Goal){
+	this.goalService
+	    .activateGoal(goal._id)
+	    .subscribe(
+		() => {
+		    this.getGoals();
+		}
+	    );
+    }
+
     onSelect(goal: Goal): void {
 	this.selectedGoal = goal;
     }

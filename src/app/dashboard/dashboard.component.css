@@ -84,19 +84,15 @@ h3 {
 }
 
 table {
-    width: 90%;
+    background-color: #1E1819;
     border-top: 1px none #e5eff8;
     border-right: 1px none #e5eff8;
-    margin: 1em auto;
-    border-collaspe: collapse;
 }
 
 td {
     color: #678197;
     border-bottom: 1px none #e5eff8;
     border-left: 1px none #e5eff8;
-    padding: .3em 1em;
-    text-align: center;
 }
 
 

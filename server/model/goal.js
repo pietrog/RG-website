@@ -17,9 +17,28 @@ var GoalSchema = new Schema({
 	type: Number,
 	require: true
     },
+    validated: {
+	type: Boolean,
+	require: true,
+	default: false
+    },
     list_party: [ Schema.Types.ObjectId ]
 
 });
+
+
+GoalSchema.methods.validateGoal = function(callback)
+{
+    this.validated = true;
+    this.save(callback);
+}
+
+
+GoalSchema.methods.resetGoal = function(callback)
+{
+    this.validated = false;
+    this.save(callback);
+}
 
 
 module.exports = mongoose.model('Goal', GoalSchema);

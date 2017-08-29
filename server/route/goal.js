@@ -33,6 +33,21 @@ router.get('/byId/:id', function(req,res,next) {
     });
 });
 
+router.get('/resetGoal/:id', function(req,res,next) {
+    Goal.findById(req.params.id, null, function(err, goal){
+	if (err)
+	    httphandler.answerJSonFailure(res, err.toString());
+	else
+	{
+	    goal.resetGoal(() => {
+		httphandler.answerJSonSuccess(res, goal);
+	    });
+	}
+
+    });
+});
+
+
 router.post('/create', function(req, res, next) {
     var goal = new Goal({
 	name: req.body.name,
