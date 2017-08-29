@@ -53,15 +53,24 @@ Party.methods.add_goal = function(goal_id, callback){
 };
 
 Party.methods.start_game = function(callback){
-    console.log("SATRARTTT");
     this.started = true;
     this.save(callback);
 };
 
 Party.methods.stop_game = function(callback){
-    console.log("SATRARTTT");
     this.started = false;
     this.save(callback);
+};
+
+Party.methods.list_teams = function(cb) {
+    Team.find({ party_id: this._id }, null, (err, teams) => {
+	if (err)
+	    return cb(err);
+	else
+	{
+	    return cb(null, teams);
+	}
+    });
 };
 
 module.exports = mongoose.model('Party', Party);

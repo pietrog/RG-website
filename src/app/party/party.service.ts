@@ -35,6 +35,14 @@ export class PartyService {
 	    .catch(this.handleError);
     }
 
+    getListOfStartedParties(): Observable<Party[]> {
+	const url = `/api/party/allStarted`;
+	return this.http.get(url)
+	    .map(this.extractParties)
+	    .catch(this.handleError);
+    }
+
+
     getParty(id: number): Promise<Party> {
 	const url = `${this.listPartiesUrl}/${id}`;
 	return this.http.get(url)

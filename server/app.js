@@ -27,6 +27,7 @@ const SocketUtils = require('./SocketUtils');
 const Player  = require('./model/user');
 const Goal    = require('./model/goal');
 const Team    = require('./model/team');
+const Party    = require('./model/party');
 
 const util = require('util');
 
@@ -85,6 +86,40 @@ io.on('connection', (socket) => {
 	console.log("Client disconected: "+ reason);
     });
 
+    socket.on('start_stop_party', (data) => {
+	const party_id = data.party_id;
+
+	Party.findById(party_id, (err, party) => {
+	    if (err)
+	    {
+		return;
+	    }
+	    else
+	    {
+		if (party)
+		{
+		    if (party.started){
+			party.stop_game(() => {
+			    console.log("stoppppped");
+			    return;
+			});
+		    }
+		    else
+		    {
+			party.start_game(() => {
+			    console.log("starrrrrted");
+			    return;
+			});
+		    }
+		    
+		    return;
+		}
+		console.log("no party for this id : " + party_id);
+		return;
+	    }
+	});
+    });
+    
     socket.on('goal_scanned', (data) => {
 	//const result = Scoring.onGoalScanned(socket, data.player_id, data.scanned_code);
 

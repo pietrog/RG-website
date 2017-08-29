@@ -10,6 +10,7 @@ import { Team } from '../team/team'
 import { Goal } from '../goal/goal';
 import { GoalService } from '../goal/goal.service';
 
+import { RTServer } from '../rt-server.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -25,7 +26,8 @@ export class PartyComponent implements OnChanges {
 	private partyService: PartyService,
 	private teamService: TeamService,
 	private route: ActivatedRoute,
-	private goalService: GoalService
+	private goalService: GoalService,
+	private rtServer: RTServer
     ) {}
     
 
@@ -50,11 +52,7 @@ export class PartyComponent implements OnChanges {
     }
 
     startStopParty(): void {
-	this.partyService.startOrStopParty(this.party)
-	    .subscribe(party => {
-		this.party = party;
-	    });
-	
+	this.rtServer.start_stop_party(this.party._id);
     }
     
     ngOnChanges(): void{

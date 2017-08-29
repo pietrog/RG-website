@@ -13,17 +13,18 @@ import { RTMessage } from '../rt-message';
 })
 
 export class DashboardComponent {
-
-    title= 'Dashboard';
-
+    
+    title = 'Dashboard';
+    
     messages = [];
+    list_of_parties = [];
     
     constructor(
 	private router: Router,
 	private rtServer: RTServer,
 	private location: Location
     ){}
-
+    
     ngOnInit(): void {
 	this.rtServer.getRTMessagesObservable()
 	    .subscribe(
@@ -31,7 +32,12 @@ export class DashboardComponent {
 		    this.messages.push(message);
 		});
 	
+	this.rtServer.getListOfPartiesObservable()
+	    .subscribe(
+		(parties) => {
+		    this.list_of_parties = parties;
+		});
     }
-
+    
     
 }

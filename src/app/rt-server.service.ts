@@ -5,7 +5,9 @@ import * as io from 'socket.io-client';
 
 
 import { PlayerService } from './player/player.service';
+import { PartyService } from './party/party.service';
 import { Player } from './player/player';
+import { Party } from './party/party';
 import { RTMessage } from './rt-message';
 
 @Injectable()
@@ -23,14 +25,31 @@ export class RTServer {
     private m_rt_historic_observable;
     private m_rt_historic_observer;
 
+    //observable for the parties (dashboard)
+    private m_list_of_parties_observable;
+    private m_list_of_parties_observer;
 
     constructor(
-	private playerService: PlayerService
+	private playerService: PlayerService,
+	private partyService: PartyService
     )
     {
 	this._socket = io();
+
+	this.m_list_of_parties_observable = Observable.create(
+	    (observer) => {
+		this.m_list_of_parties_observer = observer;
+		console.log ("jsuils lala partieeees ");
+		this.partyService.getListOfStartedParties()
+		    .subscribe((parties) => {
+			observer.next(parties);
+		    });
+	    }
+	);
+
 	this.m_list_of_players = Observable.create(
 	    (observer) => {
+		console.log ("jsuils lala players ");
 		this.m_list_of_players_observer = observer;
 		this.playerService.getListOfPlayers().subscribe((data) => {
 		    observer.next(data);
@@ -42,12 +61,13 @@ export class RTServer {
 		this.m_rt_historic_observer = observer;
 	    }
 	);
+
 	
 	this._socket.on('goal_scanned_answer', (data) => {
 	    if (data.status === 'success')
 	    {
 		this.playerService.getListOfPlayers().subscribe((data) => {
-		    this.m_list_of_players_observer.next(data);
+		    this.m_list_of_players_observer.next(data);		    
 		});
 	    }
 	});
@@ -59,6 +79,9 @@ export class RTServer {
 		let desc = data.player_name + " (équipe " + data.team_name + ") a validé l'objectif " + data.name_target + " à " + data.time_event;
 		let rtmess = new RTMessage("DDD", "scanned_goal", desc);
 		this.m_rt_historic_observer.next(rtmess);
+		this.partyService.getListOfStartedParties().subscribe((parties) => {
+		    this.m_list_of_parties_observer.next(parties);
+		});
 	    }
 	    else
 	    {
@@ -80,9 +103,18 @@ export class RTServer {
 	return this.m_rt_historic_observable;
     }
 
+    getListOfPartiesObservable(): Observable<Party[]> {
+	return this.m_list_of_parties_observable;
+    }
+    
+    
     //for testing purpose
     scan_goal(_player_id, _scanned_code) {
 	this._socket.emit('goal_scanned', { player_id: _player_id, scanned_code: _scanned_code});
+    }
+
+    start_stop_party(_party_id) {
+	this._socket.emit('start_stop_party', { party_id: _party_id });
     }
 
 }

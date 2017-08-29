@@ -59,3 +59,44 @@ h4 {
     min-width: 60px;
   }
 }
+
+.party {
+    background-color: black;
+    border-radius: 10px;
+    padding: 4px;
+    margin: 4px;
+}
+
+.team {
+    background-color: #1E1819;
+    margin: 1px;
+    border-radius: 10px;
+}
+
+h4 {
+    text-align: center;
+    background-color: #00004d;
+}
+
+h3 {
+    text-align: center;
+    color: #969091;
+}
+
+table {
+    width: 90%;
+    border-top: 1px none #e5eff8;
+    border-right: 1px none #e5eff8;
+    margin: 1em auto;
+    border-collaspe: collapse;
+}
+
+td {
+    color: #678197;
+    border-bottom: 1px none #e5eff8;
+    border-left: 1px none #e5eff8;
+    padding: .3em 1em;
+    text-align: center;
+}
+
+

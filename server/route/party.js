@@ -1,20 +1,12 @@
 var express = require('express'),
     router = express.Router(),
     httphandler = require("../http_handlers"),
+    Team = require('../model/team'),
     Party = require("../model/party");
 const util = require('util');
 
 
 router.get('/all', function(req, res){
-    const parties_ = {
-	"data": [{
-	    "name": "p1",
-	    "_id": 12
-	}, {
-	    "name": "p2",
-	    "_id": 13
-	}]
-    };
     Party.find({}, null, function(err, parties){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
@@ -24,6 +16,57 @@ router.get('/all', function(req, res){
 	}
     });
 });
+
+router.get('/allStarted', function(req, res){
+    Party.aggregate([
+	{
+	    $match: {
+		started: true
+	    }
+	},
+	{
+	    $lookup: {
+		from: "teams",
+		localField: "_id",
+		foreignField: "party_id",
+		as: "team_list"
+	    }
+	},
+	{
+	    $unwind: {
+		path: '$team_list',
+		preserveNullAndEmptyArrays: true
+	    }
+	},
+	{
+	    $lookup: {
+		from: "players",
+		localField: "team_list._id",
+		foreignField: "team",
+		as: "team_list.players"
+	    }
+	},
+	{
+	    $group: {
+		_id: "$_id",
+		name: { $first: "$name" },
+		teams: { $push: "$team_list" }
+	    }
+	}
+    ], function(err, parties){
+	if (err)
+	{
+	    httphandler.answerJSonFailure(res, err.toString());
+	}
+	else
+	{
+	    console.log(util.inspect(parties));
+	    //console.log("team : " + util.inspect(parties[1].teams[0]));
+	    return httphandler.answerJSonSuccess(res, parties);
+	}
+    });
+});
+
 
 router.post('/create', function(req, res, next){
     let party = new Party({
@@ -40,11 +83,6 @@ router.post('/create', function(req, res, next){
 	}
     });
 });
-
-router.post('/start', function(err, res, next){
-    console.log("Start party !!");
-});
-
 
 router.patch('/add-goal', function(req, res, next) {
     const party_id = req.body.party_id;
