@@ -23,7 +23,11 @@ router.post('/nameExists', function(req, res){
 
 router.post('/idFromName', function(req, res){
 
+    if (!req.body.user_name)
+	return httphandler.answerJSonFailure(res, "Impossible d'identifier un utilisateur inexistant !!");
+    
     let user_name = req.body.user_name;
+    
     Player.findOne({ email: user_name}, null, function(err, player){
 	if (err)
 	    return httphandler.answerJSonFailure(res, err.toString());
@@ -34,6 +38,7 @@ router.post('/idFromName', function(req, res){
 	    }
 	    else{
 		var data = { user_id: player._id, user_name: player.email, user_score: player.score };
+
 		Team.findById(player.team, null, function(err, team) {
 		    if (err){
 			return httphandler.answerJSonFailure(res, err.toString());
@@ -54,14 +59,16 @@ router.post('/idFromName', function(req, res){
 				    return httphandler.answerJSonFailure(res, err.toString());
 				}
 				else{
-				    if (other_teams){
+				    if (other_team){
 					//data.others = [];
+
 					data.other_team_name = other_team.name;
 					data.other_team_score = other_team.score;
 					return httphandler.answerJSonSuccess(res, data);
 				    }
 				    else
 				    {
+
 					return httphandler.answerJSonSuccess(res, data);
 				    }
 				}

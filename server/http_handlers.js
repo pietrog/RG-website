@@ -1,3 +1,4 @@
+const util = require('util');
 
 global.HttpHandler = {
     errorHTTPCode: 500,
@@ -15,7 +16,9 @@ global.HttpHandler = {
  * A success parameter set to true and data in data field
  */
 function AnswerJSONSuccess(response, data){
-    response.json({ "status": "success", "data": data } );    
+    let json_data = { "status": "success", "data": data };
+    console.log("json_data success:  " + util.inspect(json_data));
+    response.json(json_data);    
 }
 
 /**
@@ -32,7 +35,9 @@ function AnswerJSONError(response, data){
  * Use this one when client sent wrong informations
  */
 function AnswerJSONFailure(res, data){
-    res.json({ "status": "failure", "data": data});
+    let json_data = { "status": "failure", "data": data};
+    console.log("json_data failure:  " + util.inspect(json_data));
+    res.json(json_data);
 }
 
 /**

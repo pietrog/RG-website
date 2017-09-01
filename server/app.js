@@ -159,7 +159,7 @@ io.on('connection', (socket) => {
 
 			if (!player.team)
 			{
-			    SocketUtils.AnswerGoalScannedFailed(socket, player.email + ", tu n'es dans aucune équipe !");
+			    SocketUtils.ReplyGoalScannedFailed(socket, player.email + ", tu n'es dans aucune équipe !");
 			    return ;
 			}
 			
