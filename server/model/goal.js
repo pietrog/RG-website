@@ -17,10 +17,10 @@ var GoalSchema = new Schema({
 	type: Number,
 	require: true
     },
-    validated: {
-	type: Boolean,
+    compteur: {
+	type: Number,
 	require: true,
-	default: false
+	default: -1
     },
     list_party: [ Schema.Types.ObjectId ]
 
@@ -29,14 +29,8 @@ var GoalSchema = new Schema({
 
 GoalSchema.methods.validateGoal = function(callback)
 {
-    this.validated = true;
-    this.save(callback);
-}
-
-
-GoalSchema.methods.resetGoal = function(callback)
-{
-    this.validated = false;
+    if (this.compteur > 0)
+    this.compteur -= 1;
     this.save(callback);
 }
 

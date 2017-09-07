@@ -24,6 +24,7 @@ export class ListGoalsComponent implements OnInit {
     goals = [];
     selectedGoal: Goal;
     goal: Goal;
+    compteurs = [];
     
     getGoals(): void {
 	this.goalService.getListOfGoals()
@@ -43,9 +44,10 @@ export class ListGoalsComponent implements OnInit {
 	    );
     }
 
-    activate(goal: Goal){
+    setGoalCompteur(goal: Goal){
+	
 	this.goalService
-	    .activateGoal(goal._id)
+	    .setGoalCompteur(goal._id, this.compteurs[goal._id])
 	    .subscribe(
 		() => {
 		    this.getGoals();
@@ -71,7 +73,7 @@ export class ListGoalsComponent implements OnInit {
     
     ngOnInit(): void {
 	this.getGoals();
-	this.goal = new Goal("", 0);
+	this.goal = new Goal("", 0, 5);
     }
 
     

@@ -41,9 +41,9 @@ export class GoalService {
 	    .catch(this.handleError);
     }
 
-    activateGoal(id: number): Observable<Goal> {
-	const url = `${this.listTeamsUrl}/resetGoal/${id}`;	
-	return this.http.get(url)
+    setGoalCompteur(id: number, cpt: number): Observable<Goal> {
+	const url = `${this.listTeamsUrl}/setGoalCompteur`;	
+	return this.http.post(url, { compteur: cpt, goal_id: id}, { headers: this.headers})
 	    .map(this.extractData)
 	    .catch(this.handleError);
     }

@@ -3,11 +3,12 @@ export class Goal {
     name: string;
     number_of_points: number;
     code: string;
-    validated: boolean;
+    compteur: number;
 
-    constructor(name: string, number_of_points: number) {
+    constructor(name: string, number_of_points: number, compteur: number) {
 	this.name = name;
 	this.number_of_points = number_of_points;
+	this.compteur = compteur;
     }
     
 }

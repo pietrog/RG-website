@@ -33,15 +33,15 @@ router.get('/byId/:id', function(req,res,next) {
     });
 });
 
-router.get('/resetGoal/:id', function(req,res,next) {
-    Goal.findById(req.params.id, null, function(err, goal){
+router.post('/setGoalCompteur', function(req,res,next) {
+    let cpt = req.body.compteur;
+
+    Goal.findByIdAndUpdate(req.body.goal_id, { compteur: cpt }, function(err, goal){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
 	else
 	{
-	    goal.resetGoal(() => {
-		httphandler.answerJSonSuccess(res, goal);
-	    });
+	    httphandler.answerJSonSuccess(res, "");
 	}
 
     });
@@ -52,9 +52,9 @@ router.post('/create', function(req, res, next) {
     var goal = new Goal({
 	name: req.body.name,
 	code: req.body.code,
-	number_of_points: req.body.number_of_points
+	number_of_points: req.body.number_of_points,
+	compteur: req.body.compteur
     });
-    console.log(util.inspect(req.body));
     goal.save(function(err, goal, nb_affected){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());

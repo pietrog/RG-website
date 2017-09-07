@@ -148,7 +148,7 @@ io.on('connection', (socket) => {
 			    SocketUtils.ReplyGoalScannedFailed(socket, "Cet objectif n'existe pas");
 			    return ;
 			}
-			if (goal.validated)
+			if (goal.compteur == 0)
 			{
 			    SocketUtils.ReplyGoalScannedFailed(socket, "Cet objectif est deja validé");
 			    return ;
