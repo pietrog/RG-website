@@ -6,10 +6,6 @@
       <td><label>Score: </label></td>
       <td>{{player.score}}</td>
     </tr>
-    <tr>
-      <td><label>Code: </label><input [(ngModel)]="scanned_code" placeholder="number" ></td>
-      <td><button (click)="validateGoal()">Marquer</button></td>
-    </tr>
     <tr *ngIf="currentTeam">
       <td>Equipe:</td>
       <td>{{currentTeam.name}}</td>      	

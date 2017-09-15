@@ -2,22 +2,37 @@
 
 /* Master Styles */
 h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+    color: #bf0006;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 350%;
+    text-align: center;
 }
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+h2 {
+    color: #bf0006;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
 }
+
+h3 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    text-align: center;
+}
+
+
 body {
-  margin: 2em;
+    margin: 2em;
+    background-color: #cccccc;
+    background-image: url("assets/rg_2.jpg");
+    background-size: 100%;
 }
 body, input[text], button {
-  color: #888;
+  color: white;
   font-family: Cambria, Georgia;
 }
+
 /* . . . */
 /* everywhere else */
 * {
@@ -29,32 +44,42 @@ nav a {
   text-decoration: none;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
+  background-color: #999;
   border-radius: 4px;
 }
 nav a:visited, a:link {
-  color: #607D8B;
+  color: #181717;
 }
 nav a:hover {
   color: #039be5;
   background-color: #CFD8DC;
 }
 nav a.active {
-  color: #039be5;
+    //color: #039be5;
+    color: #bf0006;
 }
 
 table {
     width: 90%;
-    border-top: 1px solid #e5eff8;
-    border-right: 1px solid #e5eff8;
+    border-top: 1px none #e5eff8;
+    border-right: 1px none #e5eff8;
     margin: 1em auto;
     border-collaspe: collapse;
 }
 
 td {
     color: #678197;
-    border-bottom: 1px solid #e5eff8;
-    border-left: 1px solid #e5eff8;
-    padding: .3em 1em;
+    
+    border-left: 5px none #e5eff8;
     text-align: center;
+    cursor: pointer;
+}
+
+.link {
+    color: #bf0006;
+    background-color: #CFD8DC;    
+}
+
+button {
+    color: black;
 }
