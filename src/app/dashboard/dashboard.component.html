@@ -1,43 +1,62 @@
-<h2>{{title}}</h2>
 
-<div>
-  <h3>Parties en cours</h3>
-  <div class="party" *ngFor="let party of list_of_parties">
-    <h4>{{party.name}}</h4>
+<div class="container">
+
+  <div class="page-header">
+    <h2>{{title}}</h2>
+  </div>
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Parties en cours</h3>
+    </div>
     
-    <div class="team"  *ngFor="let team of party.teams ">
-      <h3>{{team.name}} -- {{team.score}}</h3>
-      <table>
+    <div class="panel-body">
+
+      
+      <div class="panel panel-danger" *ngFor="let party of list_of_parties">
+	<div class="panel-heading">
+	  {{party.name}}
+	</div>
+
+	<!-- List of parties-->
+	<div class="panel-body"  *ngFor="let team of party.teams ">
+	  <h3>{{team.name}} <span class="badge">{{team.score}}</span></h3>
+	  <table class="table">
+	    <tr>
+	      <th>Player</th>
+	      <th>Score</th>
+	    </tr>
+	    <tr *ngFor="let player of team.players">
+	      <td>{{player.email}}</td>
+	      <td>{{player.score}}</td>
+	    </tr>
+	  </table>
+	</div>
+	<!-- End list of parties-->
+	
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3>Evènements en temps réel</h3>
+    </div>
+
+    <div class="panel-body">
+      <table class="table">
 	<tr>
-	  <th>Player</th>
-	  <th>Score</th>
+	  <th>Date</th>
+	  <th>Type</th>
+	  <th>Description</th>
 	</tr>
-	<tr *ngFor="let player of team.players">
-	  <td>{{player.email}}</td>
-	  <td>{{player.score}}</td>
+	
+	<tr *ngFor="let message of messages">
+	  <td>{{message.date}}</td>
+	  <td>{{message.type_event}}</td>
+	  <td>{{message.description}}</td>
 	</tr>
       </table>
     </div>
-    
-  </div>
-</div>
-
-<div>
-  <h3>Evènements en temps réel</h3>
-
-  <div>
-    <table class="rt-messages">
-      <tr>
-	<th>Date</th>
-	<th>Type</th>
-	<th>Description</th>
-      </tr>
-      
-      <tr *ngFor="let message of messages">
-	<td>{{message.date}}</td>
-	<td>{{message.type_event}}</td>
-	<td>{{message.description}}</td>
-      </tr>
-    </table>
   </div>
 </div>

@@ -135,6 +135,12 @@ io.on('connection', (socket) => {
 	    }
 	    else
 	    {
+		if (!player)
+		{
+		    SocketUtils.ReplyGoalScannedFailed(socket, "Player not found");
+		    return ;
+		}
+		
 		Goal.findOne({ code: scanned_code }, null, function(err, goal){
 		    if (err)
 		    {
@@ -165,6 +171,11 @@ io.on('connection', (socket) => {
 			
 			player.incrementScore(score, function(err) {
 			    Team.findById(player.team, null, function(err, team){
+				if (!team)
+				{
+				    SocketUtils.ReplyGoalScannedFailed(socket, "Cette équipe n'existe plus.");
+				    return;
+				}
 				team.incrementScore(score, function(err){
 				    goal.validateGoal(() => {
 					SocketUtils.ReplyGoalScannedSuccessed(socket,

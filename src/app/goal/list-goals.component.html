@@ -1,58 +1,77 @@
+<div class="container">
+  <div class="page-header">
+    <h2>Liste des objectifs</h2>    
+  </div>
 
-<h2>Ajout d'un objectif</h2>
-<table>
-  <tr>
-    <td><label>Nom de l'objedctif</label></td>
-    <td><input [(ngModel)]="goal.name" placeholder="Nom de l'objectif" ></td>
-  </tr>
-  <tr>
-    <td><label>Score l'objectif</label></td>
-    <td><input [(ngModel)]="goal.number_of_points" placeholder="Nombre de points" ></td>
-  </tr>
-  <tr>
-    <td><label>Code validation</label></td>
-    <td><input [(ngModel)]="goal.code" placeholder="Code de validation" ></td>
-  </tr>
-  <tr>
-    <td><label>Compteur(arrivé à 0, l'objectif n'est plus valable)</label></td>
-    <td><input [(ngModel)]="goal.compteur" placeholder="Compteur de validation de l'objectif" ></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><button (click)="save()" ngDefaultControl>Ajouter</button></td>
-  </tr>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Ajout d'objectif</h3>
+    </div>
+    
+    <div class="panel-body">
 
-</table>
+      <table class="table">
+	<tr>
+	  <td><label>Nom de l'objedctif</label></td>
+	  <td><input [(ngModel)]="goal.name" placeholder="Nom de l'objectif" ></td>
+	</tr>
+	<tr>
+	  <td><label>Score l'objectif</label></td>
+	  <td><input [(ngModel)]="goal.number_of_points" placeholder="Nombre de points" ></td>
+	</tr>
+	<tr>
+	  <td><label>Code validation</label></td>
+	  <td><input [(ngModel)]="goal.code" placeholder="Code de validation" ></td>
+	</tr>
+	<tr>
+	  <td><label>Compteur(arrivé à 0, l'objectif n'est plus valable)</label></td>
+	  <td><input [(ngModel)]="goal.compteur" placeholder="Compteur de validation de l'objectif" ></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><button (click)="save()" ngDefaultControl>Ajouter</button></td>
+	</tr>
+	
+      </table>
+    </div>
+  </div>
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Objectifs</h3>
+    </div>
+    
+    <div class="panel-body">
 
-
-<h2>Liste des objectifs</h2>
-
-<div>
-  <table class="goals">
-    <tr>
-      <th>Nom</th>
-      <th>Nombre de points</th>
-      <th>Compteur</th>
-      <th>Delete</th>
-    </tr>
-    <tr *ngFor="let goal of goals" class="goals"
-	[class.selected]="goal === selectedGoal"
-	(click)="onSelect(goal)"
-	>
-      <td>{{goal.name}}</td>
-      <td>{{goal.number_of_points}}</td>
-      <td>{{goal.compteur}} <input id="`goal._id`" [(ngModel)]="compteurs[goal._id]" size="3"/> <button (click)="setGoalCompteur(goal); $event.stopPropagation()"> Set</button></td>
-      <td>
-	<button class="delete"
-		(click)="delete(goal); $event.stopPropagation()">
-	  x
-	</button>
-      </td>
-    </tr>
-  </table>
+      <table class="table">
+	<tr>
+	  <th>Nom</th>
+	  <th>Nombre de points</th>
+	  <th>Compteur</th>
+	  <th>Delete</th>
+	</tr>
+	<tr *ngFor="let goal of goals" class="goals"
+	    [class.selected]="goal === selectedGoal"
+	    (click)="onSelect(goal)"
+	    >
+	  <td>{{goal.name}}</td>
+	  <td>{{goal.number_of_points}}</td>
+	  <td>{{goal.compteur}} <input id="`goal._id`" [(ngModel)]="compteurs[goal._id]" size="3"/> <button (click)="setGoalCompteur(goal); $event.stopPropagation()"> Set</button></td>
+	  <td>
+	    <button class="delete"
+		    (click)="delete(goal); $event.stopPropagation()">
+	      x
+	    </button>
+	  </td>
+	</tr>
+      </table>
+      
+    </div>
+  </div>
+  
+  
+  
+  <button (click)="goBack()">Retour</button>
   
 </div>
-
-
-
-<button (click)="goBack()">Retour</button>

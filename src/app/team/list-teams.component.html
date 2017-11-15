@@ -1,38 +1,44 @@
+<div class="container">
+  <div class="page-header">
+    <h2>Liste des équipes</h2>
 
-<h2>Ajout d'une équipe</h2>
-<div>
-  <label>Nom de l'équipe:</label><input [(ngModel)]="team.name" placeholder="name" >
-  <button (click)="save()" ngDefaultControl>Ajouter</button>
-
-</div>
-
-
-<h2>Liste des équipes</h2>
-
-<div>
-  <table class="teams">
-    <tr>
-      <th>Nom de l'équipe</th>
-      <th>Score</th>
-      <th>Delete</th>
-    </tr>
-    <tr *ngFor="let team of teams" class="teams"
-	[class.selected]="team === selectedTeam"
-	(click)="onSelect(team)"
-	>
-      <td>{{team.name}}</td>
-      <td>{{team.score}}</td>
-      <td>
-	<button class="delete"
-		(click)="delete(team); $event.stopPropagation()">
-	  x
-	</button>
-      </td>
-    </tr>
-  </table>
+  </div>
   
+  <div>
+    <label>Nom de l'équipe:</label><input [(ngModel)]="team.name" placeholder="name" >
+    <button (click)="save()" ngDefaultControl>Ajouter</button>
+
+  </div>
+
+
+
+
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <table class="table">
+	<tr>
+	  <th>Nom de l'équipe</th>
+	  <th>Score</th>
+	  <th>Delete</th>
+	</tr>
+	<tr *ngFor="let team of teams" class="teams"
+	    [class.selected]="team === selectedTeam"
+	    (click)="onSelect(team)"
+	    >
+	  <td>{{team.name}}</td>
+	  <td>{{team.score}}</td>
+	  <td>
+	    <button class="delete"
+		    (click)="delete(team); $event.stopPropagation()">
+	      x
+	    </button>
+	  </td>
+	</tr>
+      </table>
+    </div>
+  </div>
+
+  <team-detail [team]="selectedTeam"></team-detail>
+
+  <button (click)="goBack()">Retour</button>
 </div>
-
-<team-detail [team]="selectedTeam"></team-detail>
-
-<button (click)="goBack()">Retour</button>

@@ -1,37 +1,46 @@
-<h2>Liste des parties</h2>
+<div class="container">
+  <div class="page-header">
+    <h2>Liste des parties</h2>
+  </div>
 
-<nav>
-  <a routerLink="/party/create">Creer une partie</a>
-</nav>
+  <nav>
+    <a routerLink="/party/create">Creer une partie</a>
+  </nav>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
-<div>
-  <table class="parties">
-    <tr>
-      <th>Name</th>
-      <th>Started</th>
-      <th>Creation date</th>
-      <th>Start date</th>
-      <th>Delete</th>
-    </tr>
-    <tr *ngFor="let party of parties" class="party"
-	[class.selected]="party === selectedParty"
-	(click)="onSelect(party)"
-	>
-      <td>{{party.name}}</td>
-      <td>{{party.started}}</td>
-      <td>{{party.creation_date}}</td>
-      <td>{{party.start_date}}</td>
-      <td>
-	<button class="delete"
-		(click)="delete(party); $event.stopPropagation()">
-	  x
-	</button>
-      </td>
-    </tr>
-  </table>
-  
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Parties</h3>
+    </div>
+
+    <div class="panel-body">
+    <table class="table">
+      <tr>
+	<th>Name</th>
+	<th>Started</th>
+	<th>Creation date</th>
+	<th>Start date</th>
+	<th>Delete</th>
+      </tr>
+      <tr *ngFor="let party of parties" class="party"
+	  [class.selected]="party === selectedParty"
+	  (click)="onSelect(party)"
+	  >
+	<td>{{party.name}}</td>
+	<td>{{party.started}}</td>
+	<td>{{party.creation_date}}</td>
+	<td>{{party.start_date}}</td>
+	<td>
+	  <button class="delete"
+		  (click)="delete(party); $event.stopPropagation()">
+	    x
+	  </button>
+	</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <party-detail [party]="selectedParty"></party-detail>
 </div>
-
-<party-detail [party]="selectedParty"></party-detail>

@@ -1,13 +1,18 @@
-<h1>
-  RG SCORING
-</h1>
+<div class="page-header">
+  <h1>
+    RG SCORING 
+  </h1>
+</div>
 
-<nav>
-  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-  <a routerLink="/party/list" routerLinkActive="active">Liste des parties</a>
-  <a routerLink="/team/list" routerLinkActive="active">Liste des équipes</a>
-  <a routerLink="/player/list" routerLinkActive="active">Liste des joueurs</a>
-  <a routerLink="/goal/list" routerLinkActive="active">Liste des objectifs</a>
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+  <a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a class="navbar-brand" routerLink="/party/list" routerLinkActive="active">Liste des parties</a>
+  <a class="navbar-brand" routerLink="/team/list" routerLinkActive="active">Liste des équipes</a>
+  <a class="navbar-brand" routerLink="/player/list" routerLinkActive="active">Liste des joueurs</a>
+  <a class="navbar-brand" routerLink="/goal/list" routerLinkActive="active">Liste des objectifs</a>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>

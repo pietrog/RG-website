@@ -1,48 +1,59 @@
+<div class="container">
+    <div class="page-header">
+    <h2>Liste des joueurs</h2>
+  </div>
 
-<h2>Ajout d'un joueur</h2>
-<div>
-  <label>Nom du joueur:</label><input [(ngModel)]="player.email" placeholder="email" >
-  <button (click)="save()" ngDefaultControl>Ajouter</button>
+  <h2>Ajout d'un joueur</h2>
+  <div>
+    <label>Nom du joueur:</label><input [(ngModel)]="player.email" placeholder="email" >
+    <button (click)="save()" ngDefaultControl>Ajouter</button>
 
-</div>
+  </div>
 
 
-<h2>Liste des joueurs</h2>
+  <h2></h2>
 
-<div>
-  <table class="players">
-    <tr>
-      <th>Email</th>
-      <th>Score</th>
-      <th>Delete</th>
-    </tr>
-    <tr *ngFor="let player of players" class="players"
-	[class.selected]="player === selectedPlayer"
-	(click)="onSelect(player)"
-	>
-      <td>{{player.email}}</td>
-      <td>{{player.score}}</td>
-      <td>
-	<button class="delete"
-		(click)="delete(player); $event.stopPropagation()">
-	  x
-	</button>
-      </td>
-    </tr>
-  </table>
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      
+      
+      <table class="table">
+	<tr>
+	  <th>Email</th>
+	  <th>Score</th>
+	  <th>Delete</th>
+	</tr>
+	<tr *ngFor="let player of players" class="players"
+	    [class.selected]="player === selectedPlayer"
+	    (click)="onSelect(player)"
+	    >
+	  <td>{{player.email}}</td>
+	  <td>{{player.score}}</td>
+	  <td>
+	    <button class="delete"
+		    (click)="delete(player); $event.stopPropagation()">
+	      x
+	    </button>
+	  </td>
+	</tr>
+      </table>
+      
+    </div>
+    
+
+    <div>
+      <table class="table">
+	<tr *ngFor="let message of messages">
+	  <td>{{message}}</td>
+	</tr>
+	
+	
+      </table>
+    </div>
+  </div>
+
+  <player-detail [player]="selectedPlayer"></player-detail>
+
+  <button (click)="goBack()">Retour</button>
   
 </div>
-
-<div>
-  <table>
-    <tr *ngFor="let message of messages">
-      <td>{{message}}</td>
-    </tr>
-
-
-  </table>
-</div>
-
-<player-detail [player]="selectedPlayer"></player-detail>
-
-<button (click)="goBack()">Retour</button>
