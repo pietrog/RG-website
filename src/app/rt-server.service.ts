@@ -39,7 +39,6 @@ export class RTServer {
 	this.m_list_of_parties_observable = Observable.create(
 	    (observer) => {
 		this.m_list_of_parties_observer = observer;
-		console.log ("jsuils lala partieeees ");
 		this.partyService.getListOfStartedParties()
 		    .subscribe((parties) => {
 			observer.next(parties);
@@ -49,7 +48,6 @@ export class RTServer {
 
 	this.m_list_of_players = Observable.create(
 	    (observer) => {
-		console.log ("jsuils lala players ");
 		this.m_list_of_players_observer = observer;
 		this.playerService.getListOfPlayers().subscribe((data) => {
 		    observer.next(data);

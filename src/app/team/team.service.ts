@@ -64,6 +64,16 @@ export class TeamService {
 	    .map(this.extractData)
 	    .catch(this.handleError);
     }
+
+    removePlayerFromTeam(teamId: number, playerId: number): Observable<Team> {
+	const url = `${this.listTeamsUrl}/remove-player`;
+	let body = { "id_team": teamId, "id_player": playerId };
+
+	return this.http.patch(url, body, {headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+
     
     saveTeam(team: Team): Promise<Team> {
 	const url = '/api/teams/create';

@@ -82,7 +82,6 @@ router.delete('/:id', function (req, res){
 });
 
 router.patch('/add-player', function(req, res, next) {
-    //console.log("body: " + util.inspect(req.body));
     const id_team = req.body.id_team;
     const id_player = req.body.id_player;
     Team.findById(id_team, function(err, team, nb_affected){
@@ -99,6 +98,38 @@ router.patch('/add-player', function(req, res, next) {
 		Player.addToTeam(id_player, id_team, function(err, doc){
 		    httphandler.answerJSonSuccess(res, doc);
 		});
+	    });	    	
+	}
+    });
+});
+
+router.patch('/remove-player', function(req, res, next) {
+    console.log("on y est !");
+    const id_team = req.body.id_team;
+    const id_player = req.body.id_player;
+
+    Team.findById(id_team, function(err, team, nb_affected){
+	if (err)
+	    httphandler.answerJSonFailure(res, err.toString());
+	else{
+	    
+	    let list_players;
+	    if (team.user_list)
+		list_players = team.user_list;
+
+	    let idx = list_players.indexOf(id_player);
+	    if (idx > -1)
+		list_players.splice(idx, 1);
+
+	    team.update({ user_list: list_players }, function(err, raw){
+		Player.findById(id_player, function(err, p){
+		    if (!p)
+			httphandler.answerJSonSuccess(res, {});
+		    
+		    p.excludeFromTeam(() => {
+			httphandler.answerJSonSuccess(res, p);
+		    })
+		})
 	    });	    	
 	}
     });

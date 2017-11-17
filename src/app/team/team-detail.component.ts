@@ -39,6 +39,19 @@ export class TeamDetail implements OnInit, OnChanges{
 	    });
 	
     }
+
+    excludePlayer(player_id: number)
+    {
+	this.teamService.removePlayerFromTeam(this.team._id, player_id)
+	    .subscribe( t => {
+		this.teamService.getTeam(this.team._id)
+		    .subscribe(t => {
+			this.team = t;
+			this.playerService.getListOfPlayersWithIds(this.team.user_list)
+			    .subscribe(list => this.player_list = list);
+		    });
+	    });
+    }
     
     ngOnInit(): void {
 	this.partyService.getListOfParties()

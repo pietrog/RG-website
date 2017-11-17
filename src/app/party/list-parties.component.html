@@ -3,44 +3,56 @@
     <h2>Liste des parties</h2>
   </div>
 
-  <nav>
-    <a routerLink="/party/create">Creer une partie</a>
-  </nav>
-
-  <router-outlet></router-outlet>
-
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Création d'une partie</h3>
+    </div>
+    
+    <div class="panel-body">
+      
+      <form class="form-inline">
+	<div class="form-group">
+	  <label for="party_name">Nom de la partie:</label>
+	  <input [(ngModel)]="party.name" class="form-control" placeholder="Nom de la partie" name="name">
+	  <button class="btn btn-default" id="party_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
+	</div>
+      </form>
+      
+    </div>
+  </div>
+  
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3>Parties</h3>
     </div>
-
+    
     <div class="panel-body">
-    <table class="table">
-      <tr>
-	<th>Name</th>
-	<th>Started</th>
-	<th>Creation date</th>
-	<th>Start date</th>
-	<th>Delete</th>
-      </tr>
-      <tr *ngFor="let party of parties" class="party"
-	  [class.selected]="party === selectedParty"
-	  (click)="onSelect(party)"
-	  >
-	<td>{{party.name}}</td>
-	<td>{{party.started}}</td>
-	<td>{{party.creation_date}}</td>
-	<td>{{party.start_date}}</td>
-	<td>
-	  <button class="delete"
-		  (click)="delete(party); $event.stopPropagation()">
-	    x
-	  </button>
-	</td>
-      </tr>
-    </table>
+      <table class="table table-striped">
+	<tr>
+	  <th>Name</th>
+	  <th>Started</th>
+	  <th>Creation date</th>
+	  <th>Start date</th>
+	  <th>Delete</th>
+	</tr>
+	<tr *ngFor="let party of parties" class="party"
+	    [class.selected]="party === selectedParty"
+	    (click)="onSelect(party)"
+	    >
+	  <td>{{party.name}}</td>
+	  <td>{{party.started}}</td>
+	  <td>{{party.creation_date}}</td>
+	  <td>{{party.start_date}}</td>
+	  <td>
+	    <button type="button" class="btn btn-danger"
+		    (click)="delete(party); $event.stopPropagation()">
+	      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	    </button>
+	  </td>
+	</tr>
+      </table>
     </div>
   </div>
-
+  
   <party-detail [party]="selectedParty"></party-detail>
 </div>

@@ -3,21 +3,35 @@
     <h2>Liste des joueurs</h2>
   </div>
 
-  <h2>Ajout d'un joueur</h2>
-  <div>
-    <label>Nom du joueur:</label><input [(ngModel)]="player.email" placeholder="email" >
-    <button (click)="save()" ngDefaultControl>Ajouter</button>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+	<h3>Ajout d'un joueur</h3>
+      </div>
+      
+      <div class="panel-body">
 
-  </div>
+	<form class="form-inline">
+	  <div class="form-group">
+	    <label for="player_name">Nom du joueur:</label>
+	    <input [(ngModel)]="player.email" class="form-control" placeholder="Nom du joueur" name="name" >
+	    <button class="btn btn-default" id="player_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
+	  </div>
+	</form>
 
+	
+      </div>
+    </div>
 
-  <h2></h2>
 
   <div class="panel panel-primary">
-    <div class="panel-body">
-      
-      
-      <table class="table">
+
+    <div class="panel-heading">
+      <h3>Joueurs</h3>
+    </div>
+
+    
+    <div class="panel-body">      
+      <table class="table table-striped">
 	<tr>
 	  <th>Email</th>
 	  <th>Score</th>
@@ -30,9 +44,9 @@
 	  <td>{{player.email}}</td>
 	  <td>{{player.score}}</td>
 	  <td>
-	    <button class="delete"
+	    <button type="button" class="btn btn-danger"
 		    (click)="delete(player); $event.stopPropagation()">
-	      x
+	      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 	    </button>
 	  </td>
 	</tr>
@@ -54,6 +68,4 @@
 
   <player-detail [player]="selectedPlayer"></player-detail>
 
-  <button (click)="goBack()">Retour</button>
-  
 </div>

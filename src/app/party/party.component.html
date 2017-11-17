@@ -1,66 +1,72 @@
-<div *ngIf="party">
-  <h2>Detail de la partie {{party.name}}</h2>
-
-  <h3>Commandes</h3>
-  <table>
-    <tr>
-      <td>Start/Stop</td>
-      <td>
-	<div *ngIf="party.started">
-	  <button (click)="startStopParty()">Stop</button>
-	</div>
-	<div *ngIf="!party.started">
-	  <button (click)="startStopParty()">Start</button>
-	</div>
-      </td>
-    </tr>
-    <tr>
-      <td>Retirer des points</td>
-      <td><input/><button>Soustraire</button></td>
-    </tr>
-  </table>
+<div class="panel panel-warning" *ngIf="party">
+  <div class="panel-heading">
+    <h3>Detail de la partie {{party.name}}</h3>
+  </div>
   
-  <h3>Les equipes</h3>
-  <table class="partie-list-team">
-    <tr>
-      <th>Nom</th>
-      <th>Score</th>
-      <th>Exclure</th>
-    </tr>
-    <tr *ngFor="let team of teams" 
-	[class.selected]="team === selectedTeam"
-	(click)="onSelect(team)"
-	>
-      <td>{{team.name}}</td>
-      <td>{{team.score}}</td>
-      <td>
-	<button class="delete"
-		(click)="exclude(team); $event.stopPropagation()">
-	  Exclure
-	</button>
-      </td>
-    </tr>
-  </table>
+  <div class="panel-body">
 
-  <h3>Les objectifs</h3>
+    <h3>Commandes</h3>
+    <table class="table">
+      <tr>
+	<td>Start/Stop</td>
+	<td>
+	  <div *ngIf="party.started">
+	    <button (click)="startStopParty()">Stop</button>
+	  </div>
+	  <div *ngIf="!party.started">
+	    <button (click)="startStopParty()">Start</button>
+	  </div>
+	</td>
+      </tr>
+      <tr>
+	<td>Retirer des points</td>
+	<td><input/><button>Soustraire</button></td>
+      </tr>
+    </table>
+    
+    <h3>Les equipes</h3>
+    <table class="table">
+      <tr>
+	<th>Nom</th>
+	<th>Score</th>
+	<th>Exclure</th>
+      </tr>
+      <tr *ngFor="let team of teams" 
+	  [class.selected]="team === selectedTeam"
+	  (click)="onSelect(team)"
+	  >
+	<td>{{team.name}}</td>
+	<td>{{team.score}}</td>
+	<td>
+	  <button class="delete"
+		  (click)="exclude(team); $event.stopPropagation()">
+	    Exclure
+	  </button>
+	</td>
+      </tr>
+    </table>
 
-  <select [(ngModel)]="selectedGoal">
-    <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
-  </select>
+    <h3>Les objectifs</h3>
 
-  <button (click)="addGoal()">Ajout de l'objectif</button>
+    <select [(ngModel)]="selectedGoal" class="form-control">
+      <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
+    </select>
 
-  <table class="goal-list-party">
-    <tr>
-      <th>Nom</th>
-      <th>Score</th>
-      <th>Sortir</th>
-    </tr>
-    <tr *ngFor="let goal of goalsInParty">
-      <td>{{goal.name}}</td>
-      <td>{{goal.number_of_points}}</td>
-      <td>Non valide</td>
-    </tr>
-  </table>
-  
+    <button (click)="addGoal()" class="btn btn-primary">Ajout de l'objectif</button>
+
+    <table class="table">
+      <tr>
+	<th>Nom</th>
+	<th>Score</th>
+
+      </tr>
+      <tr *ngFor="let goal of goalsInParty">
+	<td>{{goal.name}}</td>
+	<td>{{goal.number_of_points}}</td>
+
+      </tr>
+    </table>
+    
+  </div>
 </div>
+

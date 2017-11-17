@@ -100,21 +100,18 @@ io.on('connection', (socket) => {
 		{
 		    if (party.started){
 			party.stop_game(() => {
-			    console.log("stoppppped");
 			    return;
 			});
 		    }
 		    else
 		    {
 			party.start_game(() => {
-			    console.log("starrrrrted");
 			    return;
 			});
 		    }
 		    
 		    return;
 		}
-		console.log("no party for this id : " + party_id);
 		return;
 	    }
 	});

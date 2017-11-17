@@ -86,7 +86,6 @@ router.post('/signup', function(req, res) {
 			if (user || passwordHash.verify(req.body.password, user.password))
 			{
 				var receivedUser = user.get({ plain: true }); //
-				console.log(user.email);
 				var token = jwt.sign('asdasd', user.email); // with server generated rsa
 				//middleware that load user then re produce this logic allways good cause user cant change anything in our case
 				user.token = token;

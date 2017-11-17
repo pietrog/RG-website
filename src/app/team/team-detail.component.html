@@ -1,33 +1,40 @@
-<div *ngIf="team">
-  <h2>Equipe {{team.name}}</h2>
-  <div>
-    <label>Score: </label>
-    {{team.score}}
+<div class="panel panel-warning" *ngIf="team">
+  <div class="panel-heading">
+    <h3>Equipe {{team.name}}</h3>
   </div>
-  <div>
-    <label>Partie:</label>
-    <select [(ngModel)]="selectedParty">
-      <option *ngFor="let party of parties" [ngValue]="party" class="sel-parties">
-	{{party.name}}
-      </option>
-    </select>
-    <button class="add" (click)="onSave()">
-      Save
-    </button>
-
-  </div>
-  <div>
-    <label>Liste des joueurs </label>
-    <table>
-      <tr>
-	<th>Joueur</th>
-	<th>Score</th>
-	<th>Exclure</th>
-      </tr>
-      <tr *ngFor="let player of player_list">
-	<td>{{player.email}}</td>
-	<td>{{player.score}}</td>
-      </tr>
-    </table>
+  
+  <div class="panel-body">
+    
+    <div>
+      <label>Score: </label>
+      {{team.score}}
+    </div>
+    <div>
+      <label>Partie:</label>
+      <select [(ngModel)]="selectedParty" class="form-control">
+	<option *ngFor="let party of parties" [ngValue]="party" class="sel-parties">
+	  {{party.name}}
+	</option>
+      </select>
+      <button class="btn btn-primary" (click)="onSave()">
+	Associer à la partie
+      </button>
+      
+    </div>
+    <div>
+      <label>Liste des joueurs </label>
+      <table class="table">
+	<tr>
+	  <th>Joueur</th>
+	  <th>Score</th>
+	  <th>Exclure</th>
+	</tr>
+	<tr *ngFor="let player of player_list">
+	  <td>{{player.email}}</td>
+	  <td>{{player.score}}</td>
+	  <td><button class="btn btn-danger" (click)="excludePlayer(player._id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+	</tr>
+      </table>
+    </div>
   </div>
 </div>

@@ -35,7 +35,7 @@ export class PlayerDetail implements OnChanges{
     addPlayerToParty(): void {
 	this.teamService.addPlayerToTeam(this.currentTeam._id, this.player._id)
 	    .subscribe(team => {
-		this.router.navigate(['/dashboard']);
+		this.router.navigate(['/team/list']);
 	    });
 	
     }

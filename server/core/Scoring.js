@@ -13,7 +13,6 @@ global.Scoring =
     onGoalScanned: function(socket, player_id, scanned_code)
     {
 	Player.findById(player_id, (err, player) => {
-	    console.log("player found");
 	    if (err)
 	    {
 		SocketUtils.AnswerGoalScannedFailed(socket, "Error while loading the player");

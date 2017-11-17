@@ -12,24 +12,24 @@
 
       <table class="table">
 	<tr>
-	  <td><label>Nom de l'objedctif</label></td>
-	  <td><input [(ngModel)]="goal.name" placeholder="Nom de l'objectif" ></td>
+	  <td><label>Nom</label></td>
+	  <td><input [(ngModel)]="goal.name" placeholder="Nom de l'objectif" class="form-control"></td>
 	</tr>
 	<tr>
-	  <td><label>Score l'objectif</label></td>
-	  <td><input [(ngModel)]="goal.number_of_points" placeholder="Nombre de points" ></td>
+	  <td><label>Score</label></td>
+	  <td><input [(ngModel)]="goal.number_of_points" type="number" placeholder="Nombre de points" class="form-control" ></td>
 	</tr>
 	<tr>
 	  <td><label>Code validation</label></td>
-	  <td><input [(ngModel)]="goal.code" placeholder="Code de validation" ></td>
+	  <td><input [(ngModel)]="goal.code" placeholder="Code de validation" class="form-control" ></td>
 	</tr>
 	<tr>
-	  <td><label>Compteur(arrivé à 0, l'objectif n'est plus valable)</label></td>
-	  <td><input [(ngModel)]="goal.compteur" placeholder="Compteur de validation de l'objectif" ></td>
+	  <td><label>Nombre de validations(arrivé à 0, ne rapporte plus de points (-1 validation infinie))</label></td>
+	  <td><input [(ngModel)]="goal.compteur" type="number" placeholder="Compteur de validation de l'objectif" class="form-control"></td>
 	</tr>
 	<tr>
 	  <td></td>
-	  <td><button (click)="save()" ngDefaultControl>Ajouter</button></td>
+	  <td><button (click)="save()" class="btn btn-default" ngDefaultControl>Ajouter</button></td>
 	</tr>
 	
       </table>
@@ -44,7 +44,7 @@
     
     <div class="panel-body">
 
-      <table class="table">
+      <table class="table table-striped">
 	<tr>
 	  <th>Nom</th>
 	  <th>Nombre de points</th>
@@ -59,9 +59,9 @@
 	  <td>{{goal.number_of_points}}</td>
 	  <td>{{goal.compteur}} <input id="`goal._id`" [(ngModel)]="compteurs[goal._id]" size="3"/> <button (click)="setGoalCompteur(goal); $event.stopPropagation()"> Set</button></td>
 	  <td>
-	    <button class="delete"
+	    <button type="button" class="btn btn-danger"
 		    (click)="delete(goal); $event.stopPropagation()">
-	      x
+	      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 	    </button>
 	  </td>
 	</tr>
@@ -69,9 +69,5 @@
       
     </div>
   </div>
-  
-  
-  
-  <button (click)="goBack()">Retour</button>
-  
+    
 </div>

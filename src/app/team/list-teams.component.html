@@ -3,19 +3,36 @@
     <h2>Liste des équipes</h2>
 
   </div>
-  
-  <div>
-    <label>Nom de l'équipe:</label><input [(ngModel)]="team.name" placeholder="name" >
-    <button (click)="save()" ngDefaultControl>Ajouter</button>
 
+  <div class="panel panel-primary">
+    
+    <div class="panel-heading">
+      <h3>Ajout d'une équipe</h3>
+    </div>
+    
+    
+    <div class="panel-body">
+      <form class="form-inline">
+	<div class="form-group">
+	  <label for="team_name">Nom de l'équipe:</label>
+	  <input [(ngModel)]="team.name" class="form-control" placeholder="Nom de l'équipe" name="name" id="name" >
+	  <button class="btn btn-default"  (click)="save()" ngDefaultControl>Creer</button>
+	</div>
+      </form>
+    </div>
+    
   </div>
 
 
 
 
   <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Equipes</h3>
+    </div>
+
     <div class="panel-body">
-      <table class="table">
+      <table class="table table-striped">
 	<tr>
 	  <th>Nom de l'équipe</th>
 	  <th>Score</th>
@@ -28,9 +45,9 @@
 	  <td>{{team.name}}</td>
 	  <td>{{team.score}}</td>
 	  <td>
-	    <button class="delete"
+	    <button type="button" class="btn btn-danger"
 		    (click)="delete(team); $event.stopPropagation()">
-	      x
+	      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 	    </button>
 	  </td>
 	</tr>
@@ -40,5 +57,5 @@
 
   <team-detail [team]="selectedTeam"></team-detail>
 
-  <button (click)="goBack()">Retour</button>
+
 </div>

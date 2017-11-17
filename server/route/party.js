@@ -60,8 +60,6 @@ router.get('/allStarted', function(req, res){
 	}
 	else
 	{
-	    console.log(util.inspect(parties));
-	    //console.log("team : " + util.inspect(parties[1].teams[0]));
 	    return httphandler.answerJSonSuccess(res, parties);
 	}
     });
@@ -78,7 +76,6 @@ router.post('/create', function(req, res, next){
 	    httphandler.answerJSonFailure(res, err.toString());
 	}
 	else{
-	    console.log("voici: "+ nb_affected);
 	    httphandler.answerJSonSuccess(res, party);
 	}
     });

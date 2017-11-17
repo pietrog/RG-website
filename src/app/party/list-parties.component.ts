@@ -16,6 +16,7 @@ export class ListPartiesComponent implements OnInit{
 
     constructor(private router: Router, private partyService: PartyService) {}
 
+    party: Party;
     parties = [];
     selectedParty: Party;
     
@@ -26,6 +27,13 @@ export class ListPartiesComponent implements OnInit{
 	    );
     }
 
+    save(): void {
+	this.partyService.saveParty(this.party)
+	    .then(party => {
+		this.getParties();
+	    });
+    }
+    
     delete(party: Party){
 	this.partyService
 	    .delete(party._id)
@@ -43,7 +51,10 @@ export class ListPartiesComponent implements OnInit{
     
     ngOnInit(): void {
 	this.getParties();
+	this.party = new Party("", false, [], []);
     }
     
+    
+
 }
     

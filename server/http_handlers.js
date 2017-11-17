@@ -17,7 +17,6 @@ global.HttpHandler = {
  */
 function AnswerJSONSuccess(response, data){
     let json_data = { "status": "success", "data": data };
-    console.log("json_data success:  " + util.inspect(json_data));
     response.json(json_data);    
 }
 
@@ -36,7 +35,6 @@ function AnswerJSONError(response, data){
  */
 function AnswerJSONFailure(res, data){
     let json_data = { "status": "failure", "data": data};
-    console.log("json_data failure:  " + util.inspect(json_data));
     res.json(json_data);
 }
 
