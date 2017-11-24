@@ -64,6 +64,8 @@ App.app.set('superSecret', config.secret);
 
 App.app.use(bodyParser.json());
 App.app.use(express.static(App.front_end));
+//App.app.use("/scripts", express.static(__dirname + "/node_modules/bootstrap/dist/js/"));
+App.app.use("/scripts", express.static(__dirname + "/../node_modules/bootstrap/dist/"));
 
 App.app.use('/api/device', r_device);
 App.app.use('/api/party', r_party);
