@@ -74,8 +74,13 @@ export class RTServer {
 	    if (data.status === 'success')
 	    {
 		//populate historic
-		let desc = data.player_name + " (équipe " + data.team_name + ") a validé l'objectif " + data.name_target + " à " + data.time_event;
-		let rtmess = new RTMessage("DDD", "scanned_goal", desc);
+		var d = new Date();
+		var date = d.getDay()+"/"+d.getMonth()+"/"+d.getFullYear();
+		var hour = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +"sec";
+
+		let desc = data.player_name + " (équipe " + data.team_name + ") a validé l'objectif " + data.name_target + " à " + hour;
+		console.log("goal scanned !! : " + hour);
+		let rtmess = new RTMessage(date, "Objectif atteint", desc);
 		this.m_rt_historic_observer.next(rtmess);
 		this.partyService.getListOfStartedParties().subscribe((parties) => {
 		    this.m_list_of_parties_observer.next(parties);

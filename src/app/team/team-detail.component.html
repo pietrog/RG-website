@@ -1,4 +1,4 @@
-<div class="panel panel-warning" *ngIf="team">
+<div class="panel panel-success" *ngIf="team">
   <div class="panel-heading">
     <h3>Equipe {{team.name}}</h3>
   </div>
@@ -9,14 +9,14 @@
       <label>Score: </label>
       {{team.score}}
     </div>
-    <div>
-      <label>Partie:</label>
-      <select [(ngModel)]="selectedParty" class="form-control">
+    <div class="form-group">
+      <label for="sel-party">Partie:</label>
+      <select [(ngModel)]="selectedParty" class="form-control" name="sel-party">
 	<option *ngFor="let party of parties" [ngValue]="party" class="sel-parties">
 	  {{party.name}}
 	</option>
       </select>
-      <button class="btn btn-primary" (click)="onSave()">
+      <button class="btn btn-default" (click)="onSave()">
 	Associer à la partie
       </button>
       

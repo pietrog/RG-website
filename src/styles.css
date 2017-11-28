@@ -4,11 +4,14 @@ h1 {
     color: #bf0006;
     font-style: bold;
     font-size: 450%;
-
 }
 
-h2, h3 {
-    color: #bf0006;
+h2 {
+    color: #C2CCC8;
+}
+
+h3 {
+    color: black;
 }
 
 .back {

@@ -1,4 +1,4 @@
-<div class="panel panel-warning" *ngIf="party">
+<div class="panel panel-success" *ngIf="party">
   <div class="panel-heading">
     <h3>Detail de la partie {{party.name}}</h3>
   </div>
@@ -17,10 +17,6 @@
 	    <button (click)="startStopParty()">Start</button>
 	  </div>
 	</td>
-      </tr>
-      <tr>
-	<td>Retirer des points</td>
-	<td><input/><button>Soustraire</button></td>
       </tr>
     </table>
     
@@ -46,26 +42,6 @@
       </tr>
     </table>
 
-    <h3>Les objectifs</h3>
-
-    <select [(ngModel)]="selectedGoal" class="form-control">
-      <option *ngFor="let goal of goals" [ngValue]="goal">{{goal.name}}</option>
-    </select>
-
-    <button (click)="addGoal()" class="btn btn-primary">Ajout de l'objectif</button>
-
-    <table class="table">
-      <tr>
-	<th>Nom</th>
-	<th>Score</th>
-
-      </tr>
-      <tr *ngFor="let goal of goalsInParty">
-	<td>{{goal.name}}</td>
-	<td>{{goal.number_of_points}}</td>
-
-      </tr>
-    </table>
     
   </div>
 </div>
