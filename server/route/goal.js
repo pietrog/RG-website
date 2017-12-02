@@ -49,17 +49,40 @@ router.post('/setGoalCompteur', function(req,res,next) {
 
 
 router.post('/create', function(req, res, next) {
+    let name = req.body.name;
+    let code = req.body.code;
+    let nb_pts = req.body.number_of_points;
+    let counter = req.body.compteur;
+
+    if (!name || !code || !nb_pts || !counter)
+    {
+	return httphandler.answerJSonFailure(res, "Expects a name, a code, a number of points and a counter for goal creation");
+    }
+    
     var goal = new Goal({
-	name: req.body.name,
-	code: req.body.code,
-	number_of_points: req.body.number_of_points,
-	compteur: req.body.compteur
+	name: name,
+	code: code,
+	number_of_points: nb_pts,
+	compteur: counter
     });
-    goal.save(function(err, goal, nb_affected){
+    Goal.findOne({ 'code': code }, null, (err, f_goal) => {
 	if (err)
-	    httphandler.answerJSonFailure(res, err.toString());
-	else
-	    httphandler.answerJSonSuccess(res, goal);
+	{
+	    return httphandler.answerJSonFailure(res, "Error while getting goal");
+	}
+	if (!f_goal)
+	{
+	    goal.save(function(err, goal, nb_affected){
+		if (err)
+		    httphandler.answerJSonFailure(res, err.toString());
+		else
+		    httphandler.answerJSonSuccess(res, goal);
+	    });
+	}
+	else{
+	    return httphandler.answerJSonFailure(res, "This code already exists: " + f_goal.name);
+	}
+
     });
 });
 
