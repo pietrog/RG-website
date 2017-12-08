@@ -52,34 +52,42 @@ router.post('/create', function(req, res, next) {
     let name = req.body.name;
     let code = req.body.code;
     let nb_pts = req.body.number_of_points;
-    let counter = req.body.compteur;
+    let counter = req.body.compteur || -1;
 
+    //console.log("On est la:  name: " + name + " code: " + code.text + " pts: "+ nb_pts + " counter: " + counter );
     if (!name || !code || !nb_pts || !counter)
     {
+	//console.log("On est la:  name: " + name + " code: " + code + " pts: "+ nb_pts + " counter: " + counter );
 	return httphandler.answerJSonFailure(res, "Expects a name, a code, a number of points and a counter for goal creation");
     }
     
     var goal = new Goal({
 	name: name,
-	code: code,
+	code: code.text,
 	number_of_points: nb_pts,
 	compteur: counter
     });
-    Goal.findOne({ 'code': code }, null, (err, f_goal) => {
+    Goal.findOne({ 'code': goal.code }, null, (err, f_goal) => {
 	if (err)
 	{
+	    //console.log("error in findOne" + err.toString());
 	    return httphandler.answerJSonFailure(res, "Error while getting goal");
 	}
 	if (!f_goal)
 	{
+	    //console.log("Ajout de l'objectif !");
 	    goal.save(function(err, goal, nb_affected){
 		if (err)
-		    httphandler.answerJSonFailure(res, err.toString());
+		{
+		    //console.log("error while saving goal");
+		    return httphandler.answerJSonFailure(res, err.toString());
+		}
 		else
-		    httphandler.answerJSonSuccess(res, goal);
+		    return httphandler.answerJSonSuccess(res, goal);
 	    });
 	}
 	else{
+	    //console.log("goal found !!!");
 	    return httphandler.answerJSonFailure(res, "This code already exists: " + f_goal.name);
 	}
 

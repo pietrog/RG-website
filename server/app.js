@@ -124,10 +124,10 @@ io.on('connection', (socket) => {
 
 	const player_id = data.player_id;
 	const scanned_code = data.scanned_code;
-	
+	console.log("code: " + scanned_code + " player: " + player_id);
 	Player.findById(player_id, (err, player) => {
 
-	    if (err)
+	    if (err)		
 	    {
 		SocketUtils.ReplyGoalScannedFailed(socket, err.toString());
 		return ;
@@ -169,6 +169,7 @@ io.on('connection', (socket) => {
 			}
 			
 			player.incrementScore(score, function(err) {
+
 			    Team.findById(player.team, null, function(err, team){
 				if (!team)
 				{
