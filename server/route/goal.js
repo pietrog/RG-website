@@ -50,12 +50,12 @@ router.post('/setGoalCompteur', function(req,res,next) {
 
 router.post('/create', function(req, res, next) {
     let name = req.body.name;
-    let code = req.body.code;
+    let bcode = req.body.code || req.body.code.text;
     let nb_pts = req.body.number_of_points;
     let counter = req.body.compteur || -1;
 
-    //console.log("On est la:  name: " + name + " code: " + code.text + " pts: "+ nb_pts + " counter: " + counter );
-    if (!name || !code || !nb_pts || !counter)
+    //console.log("On est la:  name: " + name + " code: " + _code.text + " pts: "+ nb_pts + " counter: " + counter );
+    if (!name || !bcode || !nb_pts || !counter)
     {
 	//console.log("On est la:  name: " + name + " code: " + code + " pts: "+ nb_pts + " counter: " + counter );
 	return httphandler.answerJSonFailure(res, "Expects a name, a code, a number of points and a counter for goal creation");
@@ -63,7 +63,7 @@ router.post('/create', function(req, res, next) {
     
     var goal = new Goal({
 	name: name,
-	code: code.text,
+	code: bcode,
 	number_of_points: nb_pts,
 	compteur: counter
     });
@@ -75,19 +75,19 @@ router.post('/create', function(req, res, next) {
 	}
 	if (!f_goal)
 	{
-	    //console.log("Ajout de l'objectif !");
-	    goal.save(function(err, goal, nb_affected){
+	    //console.log("Ajout de l'objectif ! " + goal.name);
+	    goal.save(function(err, n_goal, nb_affected){
 		if (err)
 		{
-		    //console.log("error while saving goal");
+		    console.log("error while saving goal : " + bcode );
 		    return httphandler.answerJSonFailure(res, err.toString());
 		}
 		else
-		    return httphandler.answerJSonSuccess(res, goal);
+		    return httphandler.answerJSonSuccess(res, n_goal);
 	    });
 	}
 	else{
-	    //console.log("goal found !!!");
+	    console.log("goal found !!!");
 	    return httphandler.answerJSonFailure(res, "This code already exists: " + f_goal.name);
 	}
 
