@@ -95,6 +95,14 @@ export class RTServer {
 		
 	    }
 	});
+
+	this._socket.on('party_status_broadcast', (data) => {
+	    console.log("received");
+	    if (data)
+	    {		
+		console.log(data.status + ' party : ' + data.p._id);
+	    }
+	});
 	
     }
 

@@ -1,19 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-
-h1 {
-    color: #bf0006;
-    font-style: bold;
-    font-size: 450%;
-}
-
-h2 {
-    color: #C2CCC8;
-}
-
-h3 {
-    color: black;
-}
-
-.back {
-    background-image: url("/assets/rg_2.jpg");
-}

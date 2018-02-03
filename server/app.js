@@ -34,7 +34,7 @@ const util = require('util');
 global.App = {
     app : express_app,
     server: http_server,
-    mongoose_connection: mongoose.connect(config.database, { useMongoClient: true }, function(err){
+    mongoose_connection: mongoose.connect(config.database, { }, function(err){
 	if (err)
 	    console.log("Error while connecting to MongoDB server: " + util.inspect(err));
     }),
@@ -100,14 +100,26 @@ io.on('connection', (socket) => {
 	    {
 		if (party)
 		{
+
 		    if (party.started){
 			party.stop_game(() => {
+			    console.log("stopped");
+			    socket.emit('party_status_broadcast', {
+				status: 'stop',
+				p: party
+			    });
 			    return;
 			});
 		    }
 		    else
 		    {
 			party.start_game(() => {
+			    console.log("started");
+			    socket.broadcast.emit('party_status_broadcast', {
+				status: 'start',
+				p: party
+			    });
+			    
 			    return;
 			});
 		    }
