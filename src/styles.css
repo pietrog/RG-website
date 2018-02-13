@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #767495;
+}
+
+table {
+  color: white;
+  border-collapse: separate;
+  width: 100%;
+  border: 3px solid rgba(91, 91, 91, 0.3);
+  border-spacing: 0px 8px;
+}
+
+td {
+  text-align: center;
+  padding: 3px;  
+
+  //border: 2px solid black;
+}
+
+th {
+  background-color: rgba(52, 73, 54, 0.2);
+  margin: 20px;
+}
+tr {
+  background-color: rgba(255, 255, 255, 0.16);
+  margin: 10px;
+  border: 6px solid rgba(255, 255, 255, 0.6);
+}
+
+

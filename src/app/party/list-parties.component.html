@@ -1,58 +1,44 @@
-<div class="container">
-  <div class="page-header">
-    <h2 class="text-center">Liste des parties</h2>
-  </div>
+<div >
+    <h2>Liste des parties</h2>
 
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3>Création d'une partie</h3>
-    </div>
+    <h3>Création d'une partie</h3>
+
     
-    <div class="panel-body">
-      
-      <form class="form-inline">
-	<div class="form-group">
-	  <label for="party_name">Nom de la partie:</label>
-	  <input [(ngModel)]="party.name" class="form-control" placeholder="Nom de la partie" name="name">
-	  <button class="btn btn-default" id="party_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
-	</div>
-      </form>
-      
-    </div>
-  </div>
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3>Parties</h3>
-    </div>
     
-    <div class="panel-body">
-      <table class="table table-striped">
-	<tr>
-	  <th>Name</th>
-	  <th>Started</th>
-	  <th>Creation date</th>
-	  <th>Start date</th>
-	  <th>Delete</th>
-	</tr>
-	<tr *ngFor="let party of parties" class="party"
-	    [class.selected]="party === selectedParty"
-	    (click)="onSelect(party)"
-	    >
-	  <td>{{party.name}}</td>
-	  <td>{{party.started}}</td>
-	  <td>{{party.creation_date}}</td>
-	  <td>{{party.start_date}}</td>
-	  <td>
-	    <button type="button" class="btn btn-danger"
-		    (click)="delete(party); $event.stopPropagation()">
-	      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-	    </button>
-	  </td>
-	</tr>
-      </table>
-    </div>
-  </div>
+    <form>
+      <label for="party_name">Nom de la partie:</label>
+      <input [(ngModel)]="party.name" placeholder="Nom de la partie" name="name">
+      <button id="party_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
+    </form>
+      
+
+    <h3>Parties</h3>
+    
+
+    <table >
+      <tr>
+	<th>Name</th>
+	<th>Started</th>
+	<th>Creation date</th>
+	<th>Start date</th>
+	<th>Delete</th>
+      </tr>
+      <tr *ngFor="let party of parties" 
+	  [class.selected]="party === selectedParty"
+	  (click)="onSelect(party)"
+	  >
+	<td>{{party.name}}</td>
+	<td>{{party.started}}</td>
+	<td>{{party.creation_date}}</td>
+	<td>{{party.start_date}}</td>
+	<td>
+	  <button type="button" class="btn btn-danger"
+		  (click)="delete(party); $event.stopPropagation()">
+	    <span  aria-hidden="true"></span>
+	  </button>
+	</td>
+      </tr>
+    </table>
   
   <party-detail [party]="selectedParty"></party-detail>
 </div>
