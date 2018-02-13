@@ -1,0 +1,53 @@
+@font-face {
+    font-family: font_high;
+    src: url('assets/fonts/high.ttf');
+}
+
+@font-face {
+    font-family: font_high_thin;
+    src: url('assets/fonts/high_thin.ttf');
+}
+
+@font-face {
+    font-family: font_high_thin_italic;
+    src: url('assets/fonts/high_thin_italic.ttf');
+}
+
+@font-face {
+    font-family: font_high_italic;
+    src: url('assets/fonts/high_italic.ttf');
+}
+
+@font-face {
+    font-family: font_high_bold;
+    src: url('assets/fonts/high_bold.ttf');
+}
+
+@font-face {
+    font-family: font_high_bold_italic;
+    src: url('assets/fonts/high_bold_italic.ttf');
+}
+
+@font-face {
+    font-family: font_light;
+    src: url('assets/fonts/light.ttf');
+}
+
+@font-face {
+    font-family: font_light_italic;
+    src: url('assets/fonts/light_italic.ttf');
+}
+
+@font-face {
+    font-family: font_lowplus;
+    src: url('assets/fonts/lowplus.ttf');
+}
+
+@font-face {
+    font-family: font_lowplus_italic;
+    src: url('assets/fonts/lowplus_italic.ttf');
+}
+
+
+
+

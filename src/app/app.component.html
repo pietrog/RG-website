@@ -1,25 +1,16 @@
-<div class="page-header">
 
-  <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-      <img alt="RGGame" src="../assets/logo.png" class="brand"/>
-    </div>
-    <div class="col-md-4">
-    </div>
-  </div>
+<div>
+  <img alt="RGGame" src="../assets/logo.png"/>
 </div>
+    
 
-
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a class="navbar-brand" routerLink="/party/list" routerLinkActive="active">Liste des parties</a>
-    <a class="navbar-brand" routerLink="/team/list" routerLinkActive="active">Liste des équipes</a>
-    <a class="navbar-brand" routerLink="/player/list" routerLinkActive="active">Liste des joueurs</a>
-    <a class="navbar-brand" routerLink="/goal/list" routerLinkActive="active">Liste des objectifs</a>
-  </div>
+<nav>
+  <img id="bandeau_menu" class="superpose" src="assets/origin/bande_menu_grise_format_paysage.png"  />
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a routerLink="/party/list" routerLinkActive="active">Liste des parties</a>
+  <a routerLink="/team/list" routerLinkActive="active">Liste des équipes</a>
+  <a routerLink="/player/list" routerLinkActive="active">Liste des joueurs</a>
+  <a routerLink="/goal/list" routerLinkActive="active">Liste des objectifs</a>
 </nav>
 
 <router-outlet></router-outlet>
