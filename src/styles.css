@@ -13,6 +13,11 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    font-family: font_light;
+    color: rgba(255, 255, 255, 0.8);
+
+
 }
 
 table {
@@ -42,7 +47,9 @@ tr {
 
 nav
 {
-    position: relative;
+
+    background-color: rgba(210, 210, 210, 0.4);
+
 }
 
 a {
@@ -50,28 +57,35 @@ a {
     font-family: font_light;
     text-transform: uppercase;
     font-size: 20px;
-    position: relative;
-    top: 0;
-    left: 0;
-    text-decoration: none; //enleve le soulignement
-    padding: 0px 10px; // espace entre les menus
+    text-decoration: none; /* enleve le soulignement */
+    padding: 0px 10px; /* espace entre les menus */
 }
 
 nav a:hover
 {
-    background-image: url("assets/origin/bouton_gris_menu_aveclien.png");
-
+    background-image: url("assets/origin/bouton_gris_menu.png");
 }
 
 nav a.selected, nav a:hover
 {
-    color: green;
+    color: #D84100;
 }
 
-.superpose
+
+.rg_logo
 {
-    width: 90%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    padding: 15px;
+
+}
+
+.active-link
+{
+    color: white;
+    font-weight: bold;
+    background-image: url("assets/origin/bouton_gris_menu_aveclien.png");
+    overflow: visible;
 }
