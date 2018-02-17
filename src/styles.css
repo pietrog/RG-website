@@ -48,7 +48,8 @@ tr {
 nav
 {
 
-    background-color: rgba(210, 210, 210, 0.4);
+    background: linear-gradient(to right, rgba(210, 210, 210, 0.6), rgba(210, 210, 210, 0));
+
 
 }
 
@@ -79,7 +80,8 @@ nav a.selected, nav a:hover
     margin-right: auto;
     width: 20%;
     padding: 15px;
-
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*transform: rotate(20deg);*/
 }
 
 .active-link
