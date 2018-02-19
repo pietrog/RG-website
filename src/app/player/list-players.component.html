@@ -1,71 +1,42 @@
-<div class="container">
-    <div class="page-header">
-    <h2 class="text-center">Liste des joueurs</h2>
-  </div>
 
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-	<h3>Ajout d'un joueur</h3>
-      </div>
-      
-      <div class="panel-body">
-
-	<form class="form-inline">
-	  <div class="form-group">
-	    <label for="player_name">Nom du joueur:</label>
-	    <input [(ngModel)]="player.email" class="form-control" placeholder="Nom du joueur" name="name" >
-	    <button class="btn btn-default" id="player_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
-	  </div>
-	</form>
-
-	
-      </div>
-    </div>
-
-
-  <div class="panel panel-primary">
-
-    <div class="panel-heading">
-      <h3>Joueurs</h3>
-    </div>
-
-    
-    <div class="panel-body">      
-      <table class="table table-striped">
-	<tr>
-	  <th>Email</th>
-	  <th>Score</th>
-	  <th>Delete</th>
-	</tr>
-	<tr *ngFor="let player of players" class="players"
-	    [class.selected]="player === selectedPlayer"
-	    (click)="onSelect(player)"
-	    >
-	  <td>{{player.email}}</td>
-	  <td>{{player.score}}</td>
-	  <td>
-	    <button type="button" class="btn btn-danger"
-		    (click)="delete(player); $event.stopPropagation()">
-	      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-	    </button>
-	  </td>
-	</tr>
-      </table>
-      
-    </div>
-    
-
-    <div>
-      <table class="table">
-	<tr *ngFor="let message of messages">
-	  <td>{{message}}</td>
-	</tr>
-	
-	
-      </table>
-    </div>
-  </div>
-
-  <player-detail [player]="selectedPlayer"></player-detail>
-
+<div>
+  <h3>Ajout d'un joueur</h3>
 </div>
+      
+<form>
+  <label for="player_name">Nom du joueur:</label>
+  <input [(ngModel)]="player.email" placeholder="Nom du joueur" name="name" >
+  <button id="player_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
+</form>
+
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Score</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let player of players"
+      [class.selected]="player === selectedPlayer"
+      (click)="onSelect(player)"
+      >
+    <td>{{player.email}}</td>
+    <td class="score">{{player.score}}</td>
+    <td>
+      <button type="button" class="btn btn-danger"
+	      (click)="delete(player); $event.stopPropagation()">
+	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+    </td>
+  </tr>
+</table>
+
+<table class="table">
+  <tr *ngFor="let message of messages">
+    <td>{{message}}</td>
+  </tr>
+  
+  
+</table>
+
+<player-detail [player]="selectedPlayer"></player-detail>

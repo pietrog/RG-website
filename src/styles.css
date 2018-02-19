@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("fonts.css");
+@import url("classes.css");
 
-body {
+body {    
     background-image: url("assets/origin/fond_dashboard.jpg");
 
     /* Set a specific height */
@@ -16,15 +17,13 @@ body {
 
     font-family: font_light;
     color: rgba(255, 255, 255, 0.8);
-
-
 }
 
 table {
   color: white;
   border-collapse: separate;
   width: 100%;
-  border: 3px solid rgba(91, 91, 91, 0.3);
+  /*border: 3px solid rgba(91, 91, 91, 0.3);*/
   border-spacing: 0px 8px;
 }
 
@@ -36,13 +35,13 @@ td {
 }
 
 th {
-  background-color: rgba(52, 73, 54, 0.2);
-  margin: 20px;
+    background-color: rgba(52, 73, 54, 0.2);
+    margin: 20px;
 }
 tr {
-  background-color: rgba(255, 255, 255, 0.16);
-  margin: 10px;
-  border: 6px solid rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.16);
+    margin: 10px;
+ 
 }
 
 nav
@@ -73,21 +72,14 @@ nav a.selected, nav a:hover
 }
 
 
-.rg_logo
+
+nav a:hover
 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-    padding: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /*transform: rotate(20deg);*/
+    background-image: url("assets/origin/bouton_gris_menu.png");
 }
 
-.active-link
+nav a.selected, nav a:hover
 {
-    color: white;
-    font-weight: bold;
-    background-image: url("assets/origin/bouton_gris_menu_aveclien.png");
-    overflow: visible;
+    color: #D84100;
 }
+

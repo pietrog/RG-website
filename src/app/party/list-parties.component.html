@@ -1,19 +1,14 @@
-<div >
-    <h2>Liste des parties</h2>
+<div class="main-container">
 
-    <h3>Création d'une partie</h3>
-
-    
-    
+  <div class="over-content">
     <form>
       <label for="party_name">Nom de la partie:</label>
       <input [(ngModel)]="party.name" placeholder="Nom de la partie" name="name">
       <button id="party_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
     </form>
-      
-
-    <h3>Parties</h3>
-    
+  </div>
+  
+  <div class="main-content">
 
     <table >
       <tr>
@@ -32,13 +27,16 @@
 	<td>{{party.creation_date}}</td>
 	<td>{{party.start_date}}</td>
 	<td>
-	  <button type="button" class="btn btn-danger"
+	  <button type="button" 
 		  (click)="delete(party); $event.stopPropagation()">
-	    <span  aria-hidden="true"></span>
+	    
 	  </button>
 	</td>
       </tr>
     </table>
+    
+    <party-detail [party]="selectedParty"></party-detail>
+
+  </div>
   
-  <party-detail [party]="selectedParty"></party-detail>
 </div>

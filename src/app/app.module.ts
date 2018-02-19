@@ -14,6 +14,8 @@ import { ListPlayersComponent } from './player/list-players.component';
 import { ListTeamsComponent } from './team/list-teams.component';
 import { TeamDetail } from './team/team-detail.component';
 
+import { ControlPanelComponent } from './control/control-panel.component';
+
 import { ListGoalsComponent } from './goal/list-goals.component';
 import { GoalService} from './goal/goal.service';
 
@@ -33,7 +35,8 @@ import { RTServer } from './rt-server.service';
 	ListGoalsComponent,
 	PartyComponent,
 	TeamDetail,
-	PlayerDetail
+	PlayerDetail,
+	ControlPanelComponent
     ],
     imports: [
 	BrowserModule,
