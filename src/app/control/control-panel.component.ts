@@ -12,6 +12,17 @@ export class ControlPanelComponent implements OnInit{
 
     constructor(private router: Router) {}
 
+    saveAll() : void
+    {
+	console.log("Save All !");
+    }
+
+    clearAll() : void
+    {
+	console.log("Clear All !");
+    }
+    
+    
     ngOnInit(): void {
     }
     

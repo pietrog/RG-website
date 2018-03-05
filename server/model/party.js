@@ -41,7 +41,7 @@ Party.methods.add_team = function(team_id, callback){
 };
 
 Party.methods.add_goal = function(goal_id, callback){
-    if (!this.team_list)
+    if (!this.goal_list)
     {
 	this.goal_list = [goal_id];
     }
