@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 
+import { RTServer } from '../rt-server.service';
+
 @Component({
     selector: 'control-panel',
     templateUrl: './control-panel.component.html'
@@ -10,18 +12,21 @@ import { OnInit } from '@angular/core';
 
 export class ControlPanelComponent implements OnInit{
 
-    constructor(private router: Router) {}
+    constructor(private router: Router,
+		private rtServer: RTServer) {}
 
     saveAll() : void
     {
 	console.log("Save All !");
     }
 
-    clearAll() : void
-    {
-	console.log("Clear All !");
+    clear_database() : void {
+	this.rtServer.clear_database();
     }
-    
+
+    load_template(tname: string) : void {
+	this.rtServer.load_template(tname);
+    }
     
     ngOnInit(): void {
     }

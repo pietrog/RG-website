@@ -208,7 +208,50 @@ io.on('connection', (socket) => {
 
     });
 
+    socket.on('clear_database', () => {
+	console.log("clear database");
+	Player.remove({}, () => {
+	    Goal.remove({}, () => {
+		Player.remove({}, () => {
+		    Team.remove({}, () => {
+			Party.remove(() => {
+			    socket.emit('database_cleared');
+			    socket.broadcast.emit('database_cleared');
+			});
+		    });
+		});
+	    });
+	})
+    });
+
+    socket.on('load_template', (data) => {
+	console.log('load template: ' + data);
+	if (data.name === "t4")
+	{
+	    Party.create({name: "T4", started: true}, (err, party) => {
+		Player.create({email: 'Infirmier', password: 'infirmier'},
+			      {email: 'Général', password: 'general'},
+			      {email: 'Soldat1'},
+			      {email: 'Soldat2'},
+			      {email: 'Medoc', password: 'medoc'},
+			      {email: 'Boss', password: 'boss'},
+			      {email: 'redneck1'},
+			      {email: 'redneck2'}, (err, p1, p2, p3, p4, p5, p6, p7, p8) => {
+				  Team.create({name: "Lions", user_list: [p1._id, p2._id], party_id: party._id}, 
+					      {name: "Leopards", user_list: [p1._id, p2._id], party_id: party._id}, (err, t1, t2) => {
+					      });
+			      })
+	    });
+
+		
+	}
+	else
+	{
+	    console.log("unknown template");
+	}
+    });
 });
 
 
 module.exports = App;
+

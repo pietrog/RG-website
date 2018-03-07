@@ -8,6 +8,10 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 
+import { RTServer } from '../rt-server.service';
+import { RTMessage } from '../rt-message';
+
+
 @Injectable()
 export class ControlService {
 
@@ -19,21 +23,14 @@ export class ControlService {
 	}
     );
 
-    constructor(private http: Http) {}
+    constructor(
+	private rtServer: RTServer,
+	private location: Location)
+    {}
 
-    private extractData(res: Response) {
-	let body = res.json();
-	return body.data || {};
-    }
 
-    getListOfParties(): Observable<Party[]> {
-	const url = `/api/control/clearDB`;
-	return this.http.get(url)
-	    .map(this.extractData)
-	    .catch(this.handleError);
-    }
-    private handleError(error: any): Promise<any> {
-	return Promise.reject(error.message || error);
+    clear_database: void {
+	rtServer.clear_database();
     }
 
     

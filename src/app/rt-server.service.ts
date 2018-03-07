@@ -103,7 +103,7 @@ export class RTServer {
 		console.log(data.status + ' party : ' + data.p._id);
 	    }
 	});
-	
+
     }
 
     getPlayersObservable(): Observable<Player[]> {
@@ -127,5 +127,14 @@ export class RTServer {
     start_stop_party(_party_id) {
 	this._socket.emit('start_stop_party', { party_id: _party_id });
     }
+
+    clear_database() {
+	this._socket.emit('clear_database', {});
+    }
+
+    load_template(template_name) {
+	this._socket.emit('load_template', { name: template_name });
+    }
+
 
 }
