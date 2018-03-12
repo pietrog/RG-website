@@ -32,7 +32,8 @@ router.post('/allWithIds', function(req, res){
 
 router.post('/create', function(req, res, next){
     let player = new Player({
-	email: req.body.email
+	name: req.body.email,
+	role: req.body.role
     });
     player.save(function(err, player, nb_affected){
 	if (err){

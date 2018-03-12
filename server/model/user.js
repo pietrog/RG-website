@@ -5,10 +5,14 @@ const Team = require('./team');
 const Goal = require('./goal');
 
 var Player = new Schema({
-    email: {
+    name: {
 	type: String,
 	require: true,
-	validate: EMailValidation
+	validate: NameValidation
+    },
+    role: {
+	type: String,
+	require: true
     },
     password: {
 	type: String,
@@ -28,7 +32,7 @@ var Player = new Schema({
     
 }, {bufferCommands: false});
 
-function EMailValidation(val){
+function NameValidation(val){
     return val != null;
 }
 

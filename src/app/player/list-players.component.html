@@ -5,14 +5,16 @@
       
 <form>
   <label for="player_name">Nom du joueur:</label>
-  <input [(ngModel)]="player.email" placeholder="Nom du joueur" name="name" >
+  <input [(ngModel)]="player.name" placeholder="Nom du joueur" name="name" >
+  <input [(ngModel)]="player.role" placeholder="Role du joueur" name="role" >
   <button id="player_name" (click)="save()" placeholder="Nom de partie" ngDefaultControl>Creer</button>
 </form>
 
 
 <table>
   <tr>
-    <th>Email</th>
+    <th>Name</th>
+    <th>Role</th>
     <th>Score</th>
     <th>Delete</th>
   </tr>
@@ -20,7 +22,8 @@
       [class.selected]="player === selectedPlayer"
       (click)="onSelect(player)"
       >
-    <td>{{player.email}}</td>
+    <td>{{player.name}}</td>
+    <td>{{player.role}}</td>
     <td class="score">{{player.score}}</td>
     <td>
       <button type="button" class="btn btn-danger"

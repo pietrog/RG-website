@@ -10,11 +10,11 @@
     <h3>{{team.name}} <span>{{team.score}}</span></h3>
     <table>
       <tr>
-	<th>Player</th>
+	<th>Role(Nom)</th>
 	<th>Score</th>
       </tr>
       <tr *ngFor="let player of team.players">
-	<td>{{player.email}}</td>
+	<td>{{player.role}}({{player.name}})</td>
 	<td class="score">{{player.score}}</td>
       </tr>
     </table>

@@ -30,7 +30,8 @@
 	  <th>Exclure</th>
 	</tr>
 	<tr *ngFor="let player of player_list">
-	  <td>{{player.email}}</td>
+	  <td>{{player.name}}</td>
+	  <td>{{player.role}}</td>
 	  <td>{{player.score}}</td>
 	  <td><button class="btn btn-danger" (click)="excludePlayer(player._id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
 	</tr>
