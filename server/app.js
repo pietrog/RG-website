@@ -23,11 +23,13 @@ const r_party   = require('./route/party'),
       r_device    = require('./route/device');
 
 const SocketUtils = require('./SocketUtils');
+const RGTemplates = require('./RGTemplates');
 
 const Player  = require('./model/user');
 const Goal    = require('./model/goal');
 const Team    = require('./model/team');
 const Party    = require('./model/party');
+const RGProps    = require('./model/properties');
 
 const util = require('util');
 
@@ -76,14 +78,14 @@ App.app.use('/api/goals', r_goal);
 // Catch all other routes and return the index file
 App.app.get('*', (req, res) => {
     console.log("Not caught by routes ! " + req.url);
-  res.sendFile(path.join(App.front_end, 'index.html'));
+    res.sendFile(path.join(App.front_end, 'index.html'));
 });
 
 
 var io = new server_io(http_server);
 io.on('connection', (socket) => {
     console.log("New client connected !!");
-    
+
     socket.on('disconnect', (reason) => {
 	console.log("Client disconected: "+ reason);
     });
@@ -224,128 +226,26 @@ io.on('connection', (socket) => {
 	})
     });
 
+    socket.on('get_active_template', () => {
+	RGProps.get_active_template((active_template) => {
+	    socket.emit('get_active_template', active_template);
+	});
+    })
+    
     socket.on('load_template', (data) => {
 	console.log('load template: ' + data);
 	if (data.name === "black_shadow")
 	{
-	    Party.create({name: "War Town", started: true}, (err, party) => {
-		Player.create({name: 'Billy', role: 'Leader', password: 'leader'},
-			      {name: 'John', role: 'Radio', password: 'radio'},
-			      {name: 'Rachid', role: 'Hacker', password: 'hacker'},
-			      {name: 'Rocco', role: 'Charoniard', password: 'charoniard'},
-			      //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-			      {name: 'Tresor', role: 'Leader', password: 'leader'},
-			      {name: 'Sissoko', role: 'Radio', password: 'radio'},
-			      {name: 'Dembele', role: 'Hacker', password: 'hacker'},
-			      {name: 'Abdoulaye', role: 'Charoniard', password: 'charoniard'},
-			      //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
-			      (err, p1, p2, p3, p4, /*p5,*/ p6, p7, p8, p9/*, p10*/) => {
-				  Team.create({name: "Sicario",
-					       user_list: [p1._id, p2._id, p3._id, p4._id/*, p5._id*/], party_id: party._id}, 
-					      {name: "Task Force",
-					       user_list: [p6._id, p7._id, p8._id, p9._id/*, p10._id*/], party_id: party._id},
-					      (err, t1, t2) => {
-						  Player.addToTeam(p1._id, t1._id, ()=>{
-						      Player.addToTeam(p2._id, t1._id, ()=>{
-							  Player.addToTeam(p3._id, t1._id, ()=>{
-							      Player.addToTeam(p4._id, t1._id, ()=>{
-								  Player.addToTeam(p6._id, t2._id, ()=>{
-								      Player.addToTeam(p7._id, t2._id, ()=>{
-									  Player.addToTeam(p8._id, t2._id, ()=>{
-									      Player.addToTeam(p9._id, t2._id, ()=>{
-									      });
-									  });
-								      });
-								  })
-							      })
-							  })
-						      })
-						  })
-					      });					      
-			      })
-	    });
-		
+	    RGTemplates.loadBlackShadow(socket);
+	    
 	}
 	else if (data.name === "jungle")
 	{
-	    Party.create({name: "Frontline", started: true}, (err, party) => {
-		Player.create({name: 'Billy', role: 'Leader', password: 'leader'},
-			      {name: 'John', role: 'Radio', password: 'radio'},
-			      {name: 'Rachid', role: 'Hacker', password: 'hacker'},
-			      {name: 'Rocco', role: 'Charoniard', password: 'charoniard'},
-			      //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-			      {name: 'Tresor', role: 'Leader', password: 'leader'},
-			      {name: 'Sissoko', role: 'Radio', password: 'radio'},
-			      {name: 'Dembele', role: 'Hacker', password: 'hacker'},
-			      {name: 'Abdoulaye', role: 'Charoniard', password: 'charoniard'},
-			      //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
-			      (err, p1, p2, p3, p4, /*p5,*/ p6, p7, p8, p9/*, p10*/) => {
-				  Team.create({name: "RG Seals",
-					       user_list: [p1._id, p2._id, p3._id, p4._id/*, p5._id*/], party_id: party._id}, 
-					      {name: "RG Mercenaires",
-					       user_list: [p6._id, p7._id, p8._id, p9._id/*, p10._id*/], party_id: party._id},
-					      (err, t1, t2) => {
-						  Player.addToTeam(p1._id, t1._id, ()=>{
-						      Player.addToTeam(p2._id, t1._id, ()=>{
-							  Player.addToTeam(p3._id, t1._id, ()=>{
-							      Player.addToTeam(p4._id, t1._id, ()=>{
-								  Player.addToTeam(p6._id, t2._id, ()=>{
-								      Player.addToTeam(p7._id, t2._id, ()=>{
-									  Player.addToTeam(p8._id, t2._id, ()=>{
-									      Player.addToTeam(p9._id, t2._id, ()=>{
-									      });
-									  });
-								      });
-								  })
-							      })
-							  })
-						      })
-						  })
-					      });
-					      
-			      })
-	    });
+	    RGTemplates.loadJungle(socket);
 	}
 	else if (data.name === "fire")
 	{
-	    Party.create({name: "TSS", started: true}, (err, party) => {
-		Player.create({name: 'Billy', role: 'Leader', password: 'leader'},
-			      {name: 'John', role: 'Radio', password: 'radio'},
-			      {name: 'Rachid', role: 'Hacker', password: 'hacker'},
-			      {name: 'Rocco', role: 'Charoniard', password: 'charoniard'},
-			      //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-			      {name: 'Tresor', role: 'Leader', password: 'leader'},
-			      {name: 'Sissoko', role: 'Radio', password: 'radio'},
-			      {name: 'Dembele', role: 'Hacker', password: 'hacker'},
-			      {name: 'Abdoulaye', role: 'Charoniard', password: 'charoniard'},
-			      //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
-			      (err, p1, p2, p3, p4, /*p5, */p6, p7, p8, p9/*, p10*/) => {
-				  Team.create({name: "Task Force",
-					       user_list: [p1._id, p2._id, p3._id, p4._id/*, p5._id*/], party_id: party._id}, 
-					      {name: "MI6",
-					       user_list: [p6._id, p7._id, p8._id, p9._id/*, p10._id*/], party_id: party._id},
-					      (err, t1, t2) => {
-						  console.log("player: " + p1._id + " team : " + t1.name + " error: " + err);
-						  Player.addToTeam(p1._id, t1._id, ()=>{
-						      Player.addToTeam(p2._id, t1._id, ()=>{
-							  Player.addToTeam(p3._id, t1._id, ()=>{
-							      Player.addToTeam(p4._id, t1._id, ()=>{
-								  Player.addToTeam(p6._id, t2._id, ()=>{
-								      Player.addToTeam(p7._id, t2._id, ()=>{
-									  Player.addToTeam(p8._id, t2._id, ()=>{
-									      Player.addToTeam(p9._id, t2._id, ()=>{
-									      });
-									  });
-								      });
-								  })
-							      })
-							  })
-						      })
-						  })
-					      });
-					      
-			      })
-	    });
+	    RGTemplates.loadFire(socket);
 	}
 	else
 	{

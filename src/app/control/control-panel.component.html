@@ -1,13 +1,7 @@
-<div class="main-container">
+<div class="main-container control_panel">
 
-  VOICI LE CONTROL PANEL !!
+  <button (click)="load_template('black_shadow')" [ngClass]="getClass('black_shadow')">Black Shadow</button>
+  <button (click)="load_template('jungle')" [ngClass]="getClass('jungle')">Jungle</button>
+  <button (click)="load_template('fire')" [ngClass]="getClass('fire')">Fire</button>
 
-  <button (click)="saveAll()" >Save</button>
-  <button (click)="clear_database()" >ClearS</button>
-  <button (click)="load_template('black_shadow')" >Black Shadow</button>
-  <button (click)="load_template('jungle')" >Jungle</button>
-  <button (click)="load_template('fire')" >Fire</button>
-
-  <input type="url" placeholder="path">
-  
 </div>

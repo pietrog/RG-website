@@ -29,6 +29,9 @@ export class RTServer {
     private m_list_of_parties_observable;
     private m_list_of_parties_observer;
 
+    private m_active_template_observable;
+    private m_active_template_observer;
+
     constructor(
 	private playerService: PlayerService,
 	private partyService: PartyService
@@ -60,6 +63,12 @@ export class RTServer {
 	    }
 	);
 
+	this.m_active_template_observable = Observable.create(
+	    (observer) => {
+		this.m_active_template_observer = observer;
+	    }
+	);
+	
 	
 	this._socket.on('goal_scanned_answer', (data) => {
 	    if (data.status === 'success')
@@ -104,6 +113,13 @@ export class RTServer {
 	    }
 	});
 
+	this._socket.on('get_active_template', (data) =>{
+	    this.m_active_template_observer.next(data);
+	});
+
+
+
+
     }
 
     getPlayersObservable(): Observable<Player[]> {
@@ -117,7 +133,12 @@ export class RTServer {
     getListOfPartiesObservable(): Observable<Party[]> {
 	return this.m_list_of_parties_observable;
     }
-    
+
+
+    get_current_template(): Observable<string>
+    {
+	return this.m_active_template_observable;
+    }
     
     //for testing purpose
     scan_goal(_player_id, _scanned_code) {
@@ -136,5 +157,8 @@ export class RTServer {
 	this._socket.emit('load_template', { name: template_name });
     }
 
+    get_active_template() {
+	this._socket.emit('get_active_template');
+    }
 
 }

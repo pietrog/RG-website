@@ -12,6 +12,8 @@ import { RTServer } from '../rt-server.service';
 
 export class ControlPanelComponent implements OnInit{
 
+    m_active_template;
+    
     constructor(private router: Router,
 		private rtServer: RTServer) {}
 
@@ -27,11 +29,26 @@ export class ControlPanelComponent implements OnInit{
     load_template(tname: string) : void {
 	this.rtServer.load_template(tname);
     }
-    
-    ngOnInit(): void {
+
+    getClass(name: string): string
+    {
+	console.log("template : " + this.m_active_template);
+	if (name == this.m_active_template)
+	    return "active-template";
+	else
+	    return "";
     }
     
-    
+    ngOnInit(): void {
+
+	this.rtServer.get_current_template()
+	    .subscribe(
+		(message) => {		    
+		    this.m_active_template = message;
+		});
+
+	this.rtServer.get_active_template();
+    }
 
 }
     

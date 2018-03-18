@@ -83,3 +83,34 @@ nav a.selected, nav a:hover
     color: #D84100;
 }
 
+
+input
+{
+    width: 200px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(0, 191, 255, 0.8);
+    text-align: center;
+    color: white;
+}
+
+button
+{
+    color: black;
+    background-color: rgba(0, 191, 255, 0.8);
+    border: none;
+    font-size: 16px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    width: 200px;
+    max-width: 200px;
+}
+
+button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color: white;
+    cursor: pointer;
+
+}

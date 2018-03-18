@@ -1,13 +1,11 @@
-
-	  
 <div *ngFor="let party of list_of_parties">
-  <div>
+  <h1 class="main_title">
     {{party.name}}
-  </div>
+  </h1>
   
   <!-- List of parties-->
-  <div  *ngFor="let team of party.teams ">
-    <h3>{{team.name}} <span>{{team.score}}</span></h3>
+  <div  *ngFor="let team of party.teams " class="team">
+    <h3 class="main_title">{{team.name}} <span>{{team.score}}</span></h3>
     <table>
       <tr>
 	<th>Role(Nom)</th>
@@ -36,4 +34,3 @@
     <td>{{message.description}}</td>
   </tr>
 </table>
-

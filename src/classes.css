@@ -56,3 +56,27 @@
     border: 3px solid rgba(200, 200, 201, 0.1);
     background-color: rgba(100, 100, 101, 0.15);
 }
+
+.main_title
+{
+    text-align: center;
+}
+
+.team
+{
+    //border: 3px solid rgba(200, 200, 201, 0.05);
+    margin: 7px;
+    padding: 7px;
+}
+
+.control_panel
+{
+    display: block;
+}
+
+.active-template
+{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color: white;
+    background-color: rgba(0, 191, 255, 0.5);
+}
