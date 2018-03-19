@@ -75,7 +75,6 @@ router.get('/team', function(req,res,next) {
 });
 
 router.post('/signup', function(req, res) {
-
 	db.User
 		.findOne({
 			where: {
