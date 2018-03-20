@@ -44,6 +44,8 @@ RGProps.statics.set_active_template = function(template_name, cb){
 
 RGProps.statics.get_active_template = function(cb){
     this.findOne({name: 'active_template'}, (err, prop) => {
+	if (!prop)
+	    return cb("");
 	return cb(prop.value);
     });
 }
