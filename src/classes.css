@@ -59,8 +59,21 @@
 
 .main_title
 {
+
     text-align: center;
 }
+
+.red_title
+{
+     display: inline;
+    color: red;
+}
+.blue_title
+{
+     display: inline;
+    color: lightblue;
+}
+
 
 .team
 {

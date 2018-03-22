@@ -55,11 +55,12 @@ router.get('/allStarted', function(req, res){
 	}
     ], function(err, parties){
 	if (err)
-	{
+	{	    
 	    httphandler.answerJSonFailure(res, err.toString());
 	}
 	else
 	{
+	    console.log("look: " + util.inspect(JSON.stringify(parties)));
 	    return httphandler.answerJSonSuccess(res, parties);
 	}
     });

@@ -37,7 +37,7 @@ router.post('/idFromName', function(req, res){
 		return httphandler.answerJSonFailure(res, user_name + " n'existe pas");
 	    }
 	    else{
-		var data = { user_id: player._id, user_name: player.name, user_score: player.score };
+		var data = { user_id: player._id, user_name: player.name, user_role: player.role, user_score: player.score };
 
 		Team.findById(player.team, null, function(err, team) {
 		    if (err){
