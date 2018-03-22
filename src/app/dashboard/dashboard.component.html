@@ -2,11 +2,12 @@
   <h1 class="main_title">
     {{party.name}}
   </h1>
-  
+
+  <div [innerHTML]=" party | json"></div>
   <!-- List of parties-->
   <div  *ngFor="let team of party.teams " class="team">
-    <h3 class="main_title">{{team.name}} <span>{{team.score}}</span></h3>
-    <table>
+    <h3 class="main_title">{{team.name}} - {{team.score}} <span>{{team.score}}</span></h3>
+    <table class="dash_tables">
       <tr>
 	<th>Role(Nom)</th>
 	<th>Score</th>
