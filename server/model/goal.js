@@ -6,9 +6,6 @@ var GoalSchema = new Schema({
 	type: String,
 	required: true
     },
-    value: {
-	type: Number
-    },
     code: {
 	type: String,
 	required: true

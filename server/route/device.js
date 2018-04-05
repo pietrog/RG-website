@@ -3,6 +3,7 @@ var express = require('express'),
     httphandler = require("../http_handlers"),
     Player = require("../model/user");
 const Team = require('../model/team');
+const Party = require('../model/party');
 const Goal = require('../model/goal');
 const util = require('util');
 
@@ -37,7 +38,12 @@ router.post('/idFromName', function(req, res){
 		return httphandler.answerJSonFailure(res, user_name + " n'existe pas");
 	    }
 	    else{
-		var data = { user_id: player._id, user_name: player.name, user_role: player.role, user_score: player.score };
+		var data = {
+		    user_id: player._id,
+		    user_name: player.name,
+		    user_role: player.role,
+		    user_score: player.score
+		};
 
 		Team.findById(player.team, null, function(err, team) {
 		    if (err){
@@ -59,26 +65,30 @@ router.post('/idFromName', function(req, res){
 				    return httphandler.answerJSonFailure(res, err.toString());
 				}
 				else{
-				    if (other_team){
-					//data.others = [];
-
-					data.other_team_name = other_team.name;
-					data.other_team_score = other_team.score;
-					return httphandler.answerJSonSuccess(res, data);
-				    }
-				    else
-				    {
-
-					return httphandler.answerJSonSuccess(res, data);
-				    }
+				    Party.findById(team.party_id, null, (err, party) => {
+					if (err)
+					{
+					    return httphandler.answerJSonFailure(res, err.toString());
+					}
+					else
+					{
+					    if (other_team){
+						data.other_team_name = other_team.name;
+						data.other_team_score = other_team.score;
+					    }
+					    data.party_name = party.name;
+					    return httphandler.answerJSonSuccess(res, data);
+					};
+				    })
+				    
 				}
-			    });
+			    })
 		    }
-		});
+		})
 	    }
 	}
-    });
-});
+    })
+})
 
 
 module.exports = router;

@@ -4,11 +4,11 @@
   </h1>
   <h3 class="main_title"> > Nombre de joueurs: <div class="red_title">{{party.teams[0].players.length + party.teams[1].players.length}}</div></h3>
   <h3 class="main_title"> > Nombre d'equipes: <div class="red_title">2</div></h3>
-  <h3 class="main_title"> > Objectifs acquis: <div class="red_title">5</div>/<div class="blue_title">10</div></h3>
+  <h3 class="main_title"> > Objectifs acquis: <div class="red_title">{{m_validated_goals}}</div>/<div class="blue_title">{{m_not_validated_goals}}</div></h3>
   
   <!-- List of parties-->
   <div  *ngFor="let team of party.teams " class="team">
-    <h3 class="main_title">{{team.name}} - {{team.score}} <span>{{team.score}}</span></h3>
+    <h3 class="main_title">{{team.name}} - <span>{{team.score}}</span></h3>
     <table class="dash_tables">
       <tr>
 	<th>Role(Nom)</th>

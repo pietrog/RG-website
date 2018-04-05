@@ -18,6 +18,9 @@ export class DashboardComponent {
     
     messages = [];
     list_of_parties = [];
+    m_validated_goals = 5;
+    m_not_validated_goals = 10;
+    
     
     constructor(
 	private router: Router,

@@ -138,6 +138,7 @@ io.on('connection', (socket) => {
 
 	const player_id = data.player_id;
 	const scanned_code = data.scanned_code;
+	//console.log("{name: 'Black ', code: '" + scanned_code + "', number_of_points: 500, compteur: 1},");
 	console.log("code: " + scanned_code + " player: " + player_id);
 	Player.findById(player_id, (err, player) => {
 
