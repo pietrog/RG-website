@@ -21,15 +21,15 @@ function _loadBlackShadow(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "War Town", started: true}, (err, party) => {
-			    Player.create({name: 'Billy', role: 'Leader', password: 'leader'},
-					  {name: 'John', role: 'Radio', password: 'radio'},
-					  {name: 'Rachid', role: 'Hacker', password: 'hacker'},
-					  {name: 'Rocco', role: 'Charoniard', password: 'charoniard'},
+			    Player.create({name: 'Red Leader', role: 'Leader', password: 'leader'},
+					  {name: 'Red Radio', role: 'Radio', password: 'radio'},
+					  {name: 'Red Hacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'Red Charoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-					  {name: 'Tresor', role: 'Leader', password: 'leader'},
-					  {name: 'Sissoko', role: 'Radio', password: 'radio'},
-					  {name: 'Dembele', role: 'Hacker', password: 'hacker'},
-					  {name: 'Abdoulaye', role: 'Charoniard', password: 'charoniard'},
+					  {name: 'Black Leader', role: 'Leader', password: 'leader'},
+					  {name: 'Black Radio', role: 'Radio', password: 'radio'},
+					  {name: 'Black Hacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'Black Charoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
 					  (err, p1, p2, p3, p4, /*p5,*/ p6, p7, p8, p9/*, p10*/) => {
 					      Team.create({name: "Sicario",
@@ -143,15 +143,15 @@ function _loadJungle(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "Frontline", started: true}, (err, party) => {
-			    Player.create({name: 'Billy', role: 'Leader', password: 'leader'},
-					  {name: 'John', role: 'Radio', password: 'radio'},
-					  {name: 'Rachid', role: 'Hacker', password: 'hacker'},
-					  {name: 'Rocco', role: 'Charoniard', password: 'charoniard'},
+			    Player.create({name: 'Red Leader', role: 'Leader', password: 'leader'},
+					  {name: 'Red Radio', role: 'Radio', password: 'radio'},
+					  {name: 'Red Hacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'Red Charoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-					  {name: 'Tresor', role: 'Leader', password: 'leader'},
-					  {name: 'Sissoko', role: 'Radio', password: 'radio'},
-					  {name: 'Dembele', role: 'Hacker', password: 'hacker'},
-					  {name: 'Abdoulaye', role: 'Charoniard', password: 'charoniard'},
+					  {name: 'Black Leader', role: 'Leader', password: 'leader'},
+					  {name: 'Black Radio', role: 'Radio', password: 'radio'},
+					  {name: 'Black Hacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'Black Charoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
 					  (err, p1, p2, p3, p4, /*p5,*/ p6, p7, p8, p9/*, p10*/) => {
 					      Team.create({name: "RG Seals",
@@ -263,15 +263,15 @@ function _loadFire(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "TSS", started: true}, (err, party) => {
-			    Player.create({name: 'Billy', role: 'Leader', password: 'leader'},
-					  {name: 'John', role: 'Radio', password: 'radio'},
-					  {name: 'Rachid', role: 'Hacker', password: 'hacker'},
-					  {name: 'Rocco', role: 'Charoniard', password: 'charoniard'},
+			    Player.create({name: 'Red Leader', role: 'Leader', password: 'leader'},
+					  {name: 'Red Radio', role: 'Radio', password: 'radio'},
+					  {name: 'Red Hacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'Red Charoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-					  {name: 'Tresor', role: 'Leader', password: 'leader'},
-					  {name: 'Sissoko', role: 'Radio', password: 'radio'},
-					  {name: 'Dembele', role: 'Hacker', password: 'hacker'},
-					  {name: 'Abdoulaye', role: 'Charoniard', password: 'charoniard'},
+					  {name: 'Black Leader', role: 'Leader', password: 'leader'},
+					  {name: 'Black Radio', role: 'Radio', password: 'radio'},
+					  {name: 'Black Hacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'Black Charoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
 					  (err, p1, p2, p3, p4, /*p5, */p6, p7, p8, p9/*, p10*/) => {
 					      Team.create({name: "Task Force",
