@@ -184,7 +184,7 @@ io.on('connection', (socket) => {
 			}
 			
 			player.incrementScore(score, function(err) {
-
+			    
 			    Team.findById(player.team, null, function(err, team){
 				if (!team)
 				{
@@ -198,6 +198,12 @@ io.on('connection', (socket) => {
 									      team._id, team.name,
 									      player.score, team.score, score,
 									      name_target);
+					//emit message to update validated goals counter
+					Goal.count({compteur: 0}, (err, count_) => {					    	
+					    socket.emit('validated_goals_count', { count: count_ });
+					    socket.broadcast.emit('validated_goals_count', { count: count_ });
+					});
+					
 					return;
 				    });
 				});

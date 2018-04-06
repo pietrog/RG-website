@@ -32,6 +32,9 @@ export class RTServer {
     private m_active_template_observable;
     private m_active_template_observer;
 
+    private m_count_of_validated_goals_observable;
+    private m_count_of_validated_goals_observer;
+
     constructor(
 	private playerService: PlayerService,
 	private partyService: PartyService
@@ -68,6 +71,17 @@ export class RTServer {
 		this.m_active_template_observer = observer;
 	    }
 	);
+
+	this.m_count_of_validated_goals_observable = Observable.create(
+	    (observer) => {
+		this.m_count_of_validated_goals_observer = observer;
+	    }
+	);
+	
+
+	this._socket.on('validated_goals_count', (data) => {
+	    this.m_count_of_validated_goals_observer.next(data.count);
+	});
 	
 	
 	this._socket.on('goal_scanned_answer', (data) => {
@@ -134,6 +148,9 @@ export class RTServer {
 	return this.m_list_of_parties_observable;
     }
 
+    getCountOfValidatedGoals(): Observable<number> {
+	return this.m_count_of_validated_goals_observable;
+    }
 
     get_current_template(): Observable<string>
     {

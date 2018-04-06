@@ -8,7 +8,8 @@ var TeamSchema = new Schema({
     },
     score: {
 	type: Number,
-	require: true
+	require: true,
+	default: 0
     },
     user_list: [ Schema.Types.ObjectId ],
     party_id: {
@@ -19,7 +20,7 @@ var TeamSchema = new Schema({
 TeamSchema.methods.incrementScore = function(score, callback)
 {
     if(!this.score)
-	this.score =0;
+	this.score = 0;
     this.score += score;
     this.save(callback);
 }

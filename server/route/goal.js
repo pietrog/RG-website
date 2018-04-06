@@ -21,6 +21,19 @@ router.get('/all', function(req,res,next) {
     });
 });
 
+router.get('/allValidated', function(req,res,next) {
+    Goal.find({compteur: 0}, null, function(err, goals){
+	if (err)
+	    httphandler.answerJSonFailure(res, err.toString());
+	else
+	{
+	    httphandler.answerJSonSuccess(res, goals);
+	}
+
+    });
+});
+
+
 router.get('/byId/:id', function(req,res,next) {
     Goal.findById(req.params.id, null, function(err, goal){
 	if (err)
@@ -37,6 +50,20 @@ router.post('/setGoalCompteur', function(req,res,next) {
     let cpt = req.body.compteur;
 
     Goal.findByIdAndUpdate(req.body.goal_id, { compteur: cpt }, function(err, goal){
+	if (err)
+	    httphandler.answerJSonFailure(res, err.toString());
+	else
+	{
+	    httphandler.answerJSonSuccess(res, "");
+	}
+
+    });
+});
+
+router.post('/setGoalScore', function(req,res,next) {
+    let score_ = req.body.score;
+
+    Goal.findByIdAndUpdate(req.body.goal_id, {number_of_points: score_ }, function(err, goal){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
 	else

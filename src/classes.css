@@ -102,7 +102,34 @@
 
 .dash_tables th
 {
-
     width: 60%;
 }
 
+
+.goals-table
+{
+    margin: auto;
+    max-width: 1000px;
+}
+
+.delete-button {
+    width: 2em;
+}
+
+.count-button
+{
+    width: 2em;
+}
+
+.count-input
+{
+    width: 3em;
+
+    
+    
+}
+
+.count-div
+{
+    //border: solid coral;        
+}

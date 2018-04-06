@@ -34,6 +34,14 @@ export class GoalService {
 	    .catch(this.handleError);
     }
 
+    getListOfValidatedGoals(): Observable<Goal[]> {
+	const url = `/api/goals/allValidated`;
+	return this.http.get(url)
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+
+    
     getGoal(id: number): Observable<Goal> {
 	const url = `${this.listTeamsUrl}/byId/${id}`;	
 	return this.http.get(url)
@@ -44,6 +52,13 @@ export class GoalService {
     setGoalCompteur(id: number, cpt: number): Observable<Goal> {
 	const url = `${this.listTeamsUrl}/setGoalCompteur`;	
 	return this.http.post(url, { compteur: cpt, goal_id: id}, { headers: this.headers})
+	    .map(this.extractData)
+	    .catch(this.handleError);
+    }
+
+    setGoalScore(id: number, score_: number): Observable<Goal> {
+	const url = `${this.listTeamsUrl}/setGoalScore`;	
+	return this.http.post(url, { score: score_, goal_id: id}, { headers: this.headers})
 	    .map(this.extractData)
 	    .catch(this.handleError);
     }
