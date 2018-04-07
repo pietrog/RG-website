@@ -60,7 +60,7 @@ router.get('/allStarted', function(req, res){
 	}
 	else
 	{
-	    console.log("look: " + util.inspect(JSON.stringify(parties)));
+	    //console.log("look: " + util.inspect(JSON.stringify(parties)));
 	    return httphandler.answerJSonSuccess(res, parties);
 	}
     });
