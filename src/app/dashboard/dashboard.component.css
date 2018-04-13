@@ -1,0 +1,56 @@
+
+.teams {
+    //border: 4px solid yellow;
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.messages {
+    //border: 4px solid blue;
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
+.team
+{
+    //border: 3px solid rgba(200, 200, 201, 0.05);
+    margin: 7px;
+    padding: 7px;
+}
+
+
+.main_title
+{
+    text-align: center;
+}
+
+
+.score
+{
+    color: rgba(102, 255, 51, 0.7);
+}
+
+.red_title
+{
+     display: inline;
+    color: red;
+}
+.blue_title
+{
+     display: inline;
+    color: lightblue;
+}
+
+
+.dash_tables
+{
+    padding: 10px;
+    margin: 3px;
+}
+
+.dash_tables th
+{
+    width: 60%;
+}

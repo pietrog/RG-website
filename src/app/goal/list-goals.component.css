@@ -1,0 +1,19 @@
+.goals-table
+{
+    margin: auto;
+    max-width: 1000px;
+}
+
+.delete-button {
+    width: 2em;
+}
+
+.count-button
+{
+    width: 2em;
+}
+
+.count-input
+{
+    width: 3em;        
+}

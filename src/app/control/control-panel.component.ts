@@ -7,7 +7,8 @@ import { RTServer } from '../rt-server.service';
 
 @Component({
     selector: 'control-panel',
-    templateUrl: './control-panel.component.html'
+    templateUrl: './control-panel.component.html',
+    styleUrls: ['control-panel.component.css']
 })
 
 export class ControlPanelComponent implements OnInit{
