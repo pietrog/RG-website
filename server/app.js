@@ -254,6 +254,10 @@ io.on('connection', (socket) => {
 	{
 	    RGTemplates.loadFire(socket);
 	}
+	else if (data.name === "4x4")
+	{
+	    RGTemplates.load4x4(socket);
+	}
 	else
 	{
 	    console.log("unknown template");
