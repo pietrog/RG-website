@@ -56,11 +56,11 @@ router.post('/idFromName', function(req, res){
 			data.team_name = team.name;
 			data.team_score = team.score;
 			
-			Team.findOne(
+			Team.find(
 			    {
 				party_id: team.party_id,
 				_id: { $ne: team._id }
-			    } , null, function(err, other_team) {
+			    } , null, function(err, other_teams) {
 				if (err){
 				    return httphandler.answerJSonFailure(res, err.toString());
 				}
@@ -72,10 +72,14 @@ router.post('/idFromName', function(req, res){
 					}
 					else
 					{
-					    if (other_team){
-						data.other_team_name = other_team.name;
-						data.other_team_score = other_team.score;
+					    
+					    if (other_teams && other_teams.length > 0){
+						data.other_teams = [];
+						for(i = 0; i < other_teams.length; ++i){
+						    data.other_teams.push({name: other_teams[i].name, score: other_teams[i].score});						    
+						}						
 					    }
+					    console.log("teeeams : " +util.inspect(data.other_teams));
 					    data.party_name = party.name;
 					    return httphandler.answerJSonSuccess(res, data);
 					};

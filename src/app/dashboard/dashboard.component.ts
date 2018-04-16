@@ -21,6 +21,7 @@ export class DashboardComponent {
     list_of_parties = [];
     m_validated_goals = 0;
     m_total_goals = 0;    
+    m_total_players = 0;
     
     constructor(
 	private router: Router,
@@ -52,6 +53,10 @@ export class DashboardComponent {
 	    .subscribe(
 		(parties) => {
 		    this.list_of_parties = parties;
+		    this.m_total_players = 0;
+		    for(let t of parties[0].teams){
+			this.m_total_players += t.players.length;
+		    }
 		});
 
 	this.rtServer.getCountOfValidatedGoals()

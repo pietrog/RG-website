@@ -16,8 +16,8 @@
 .team
 {
     //border: 3px solid rgba(200, 200, 201, 0.05);
-    margin: 7px;
-    padding: 7px;
+    margin: 2px;
+    padding: 2px;
 }
 
 
@@ -46,8 +46,8 @@
 
 .dash_tables
 {
-    padding: 10px;
-    margin: 3px;
+    padding: 2px;
+    margin: 2px;
 }
 
 .dash_tables th

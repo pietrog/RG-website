@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container dash-cont">
   
   <div class="teams" *ngFor="let party of list_of_parties">
     <h1 class="main_title">
       {{party.name}}
     </h1>
-    <h3 class="main_title"> > Nombre de joueurs: <div class="red_title">{{party.teams[0].players.length + party.teams[1].players.length}}</div></h3>
-    <h3 class="main_title"> > Nombre d'equipes: <div class="red_title">2</div></h3>
+    <h3 class="main_title"> > Nombre de joueurs: <div class="red_title">{{m_total_players}}</div></h3>
+    <h3 class="main_title"> > Nombre d'equipes: <div class="red_title">{{party.teams.length}}</div></h3>
     <h3 class="main_title"> > Objectifs acquis: <div class="red_title">{{m_validated_goals}}</div>/<div class="blue_title">{{m_total_goals}}</div></h3>
     
     <!-- List of parties-->
