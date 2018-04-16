@@ -54,7 +54,7 @@ export class DashboardComponent {
 		(parties) => {
 		    this.list_of_parties = parties;
 		    this.m_total_players = 0;
-		    for(let t of parties[0].teams){
+		    for(let t of this.list_of_parties[0].teams){
 			this.m_total_players += t.players.length;
 		    }
 		});
