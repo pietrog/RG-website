@@ -22,18 +22,18 @@ function _loadBlackShadow(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "War Town", started: true}, (err, party) => {
-			    Player.create({name: 'rleader', role: 'Leader', password: 'leader'},
-					  {name: 'rradio', role: 'Radio', password: 'radio'},
-					  {name: 'rhacker', role: 'Hacker', password: 'hacker'},
-					  {name: 'rcharoniard', role: 'Charoniard', password: 'charoniard'},
+			    Player.create({name: 'cleader', role: 'Leader', password: 'leader'},
+					  {name: 'cradio', role: 'Radio', password: 'radio'},
+					  {name: 'chacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'ccharoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-					  {name: 'bleader', role: 'Leader', password: 'leader'},
-					  {name: 'bradio', role: 'Radio', password: 'radio'},
-					  {name: 'bhacker', role: 'Hacker', password: 'hacker'},
-					  {name: 'bcharoniard', role: 'Charoniard', password: 'charoniard'},
+					  {name: 'tsleader', role: 'Leader', password: 'leader'},
+					  {name: 'tsradio', role: 'Radio', password: 'radio'},
+					  {name: 'tshacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'tscharoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
 					  (err, p1, p2, p3, p4, /*p5,*/ p6, p7, p8, p9/*, p10*/) => {
-					      Team.create({name: "Sicario",
+					      Team.create({name: "Contractor",
 							   user_list: [p1._id, p2._id, p3._id, p4._id/*, p5._id*/], party_id: party._id}, 
 							  {name: "Task Force",
 							   user_list: [p6._id, p7._id, p8._id, p9._id/*, p10._id*/], party_id: party._id},
@@ -108,7 +108,19 @@ function _loadBlackShadow(socket) {
 												  {name: 'Red mitrailleur', code: 'MITRAILLEUR ROUGE', number_of_points: 500, compteur: 1},
 												  {name: 'Red demineur', code: 'DEMINEUR ROUGE', number_of_points: 500, compteur: 1},
 												  {name: 'Red radio', code: 'RADIO ROUGE', number_of_points: 500, compteur: 1},
-												  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1}
+												  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1},
+
+												  //bonus
+												  {name: 'Bonus 1 Red', code: 'BONUS 1 RED', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 2 Red', code: 'BONUS 2 RED', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 3 Red', code: 'BONUS 3 RED', number_of_points: 500, compteur: 1},
+
+												  {name: 'Bonus 1 Black', code: 'http://', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 2 Black', code: 'BONUS 2 BLACK', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 3 Black', code: 'BONUS 3 BLACK', number_of_points: 500, compteur: 1}
+
+
+
 												  ,(err) => {
 												      RGProps.set_active_template('black_shadow');
 												      socket.emit('get_active_template', 'black_shadow');
@@ -144,20 +156,20 @@ function _loadJungle(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "Frontline", started: true}, (err, party) => {
-			    Player.create({name: 'rleader', role: 'Leader', password: 'leader'},
-					  {name: 'rradio', role: 'Radio', password: 'radio'},
-					  {name: 'rhacker', role: 'Hacker', password: 'hacker'},
-					  {name: 'rcharoniard', role: 'Charoniard', password: 'charoniard'},
+			    Player.create({name: 'cleader', role: 'Leader', password: 'leader'},
+					  {name: 'cradio', role: 'Radio', password: 'radio'},
+					  {name: 'chacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'ccharoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-					  {name: 'bleader', role: 'Leader', password: 'leader'},
-					  {name: 'bradio', role: 'Radio', password: 'radio'},
-					  {name: 'bhacker', role: 'Hacker', password: 'hacker'},
-					  {name: 'bcharoniard', role: 'Charoniard', password: 'charoniard'},
+					  {name: 'tsleader', role: 'Leader', password: 'leader'},
+					  {name: 'tsradio', role: 'Radio', password: 'radio'},
+					  {name: 'tshacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'tscharoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
 					  (err, p1, p2, p3, p4, /*p5,*/ p6, p7, p8, p9/*, p10*/) => {
-					      Team.create({name: "RG Seals",
+					      Team.create({name: "Contractor",
 							   user_list: [p1._id, p2._id, p3._id, p4._id/*, p5._id*/], party_id: party._id}, 
-							  {name: "RG Mercenaires",
+							  {name: "Task Force",
 							   user_list: [p6._id, p7._id, p8._id, p9._id/*, p10._id*/], party_id: party._id},
 							  (err, t1, t2) => {
 							      Player.addToTeam(p1._id, t1._id, ()=>{
@@ -229,7 +241,17 @@ function _loadJungle(socket) {
 												  {name: 'Red mitrailleur', code: 'MITRAILLEUR ROUGE', number_of_points: 500, compteur: 1},
 												  {name: 'Red demineur', code: 'DEMINEUR ROUGE', number_of_points: 500, compteur: 1},
 												  {name: 'Red radio', code: 'RADIO ROUGE', number_of_points: 500, compteur: 1},
-												  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1}
+												  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1},
+
+												  //bonus
+												  {name: 'Bonus 1 Red', code: 'BONUS 1 RED', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 2 Red', code: 'BONUS 2 RED', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 3 Red', code: 'BONUS 3 RED', number_of_points: 500, compteur: 1},
+												  
+												  {name: 'Bonus 1 Black', code: 'http://', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 2 Black', code: 'BONUS 2 BLACK', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 3 Black', code: 'BONUS 3 BLACK', number_of_points: 500, compteur: 1}
+
 												  , (err) => {
 												      RGProps.set_active_template('jungle');
 												      socket.emit('get_active_template', 'jungle');
@@ -264,20 +286,20 @@ function _loadFire(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "TSS", started: true}, (err, party) => {
-			    Player.create({name: 'rleader', role: 'Leader', password: 'leader'},
-					  {name: 'rradio', role: 'Radio', password: 'radio'},
-					  {name: 'rhacker', role: 'Hacker', password: 'hacker'},
-					  {name: 'rcharoniard', role: 'Charoniard', password: 'charoniard'},
+			    Player.create({name: 'cleader', role: 'Leader', password: 'leader'},
+					  {name: 'cradio', role: 'Radio', password: 'radio'},
+					  {name: 'chacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'ccharoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Sean', role: 'Medic', password: 'charoniard'},
-					  {name: 'bleader', role: 'Leader', password: 'leader'},
-					  {name: 'bradio', role: 'Radio', password: 'radio'},
-					  {name: 'bhacker', role: 'Hacker', password: 'hacker'},
-					  {name: 'bcharoniard', role: 'Charoniard', password: 'charoniard'},
+					  {name: 'tsleader', role: 'Leader', password: 'leader'},
+					  {name: 'tsradio', role: 'Radio', password: 'radio'},
+					  {name: 'tshacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'tscharoniard', role: 'Charoniard', password: 'charoniard'},
 					  //{name: 'Cisse', role: 'Medic', password: 'charoniard'},
 					  (err, p1, p2, p3, p4, /*p5, */p6, p7, p8, p9/*, p10*/) => {
-					      Team.create({name: "Task Force",
+					      Team.create({name: "Contractor",
 							   user_list: [p1._id, p2._id, p3._id, p4._id/*, p5._id*/], party_id: party._id}, 
-							  {name: "MI6",
+							  {name: "Task Force",
 							   user_list: [p6._id, p7._id, p8._id, p9._id/*, p10._id*/], party_id: party._id},
 							  (err, t1, t2) => {
 
@@ -350,7 +372,17 @@ function _loadFire(socket) {
 												  {name: 'Red mitrailleur', code: 'MITRAILLEUR ROUGE', number_of_points: 500, compteur: 1},
 												  {name: 'Red demineur', code: 'DEMINEUR ROUGE', number_of_points: 500, compteur: 1},
 												  {name: 'Red radio', code: 'RADIO ROUGE', number_of_points: 500, compteur: 1},
-												  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1}
+												  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1},
+
+												  //bonus
+												  {name: 'Bonus 1 Red', code: 'BONUS 1 RED', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 2 Red', code: 'BONUS 2 RED', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 3 Red', code: 'BONUS 3 RED', number_of_points: 500, compteur: 1},
+												  
+												  {name: 'Bonus 1 Black', code: 'http://', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 2 Black', code: 'BONUS 2 BLACK', number_of_points: 500, compteur: 1},
+												  {name: 'Bonus 3 Black', code: 'BONUS 3 BLACK', number_of_points: 500, compteur: 1}
+
 												  , (err) => {
 												      RGProps.set_active_template('fire');
 												      socket.emit('get_active_template', 'fire');
@@ -496,7 +528,18 @@ function _load4x4(socket) {
 																  {name: 'Red mitrailleur', code: 'MITRAILLEUR ROUGE', number_of_points: 500, compteur: 1},
 																  {name: 'Red demineur', code: 'DEMINEUR ROUGE', number_of_points: 500, compteur: 1},
 																  {name: 'Red radio', code: 'RADIO ROUGE', number_of_points: 500, compteur: 1},
-																  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1}
+																  {name: 'Red sapeur', code: 'SAPEUR ROUGE', number_of_points: 500, compteur: 1},
+
+																  //bonus
+																  {name: 'Bonus 1 Red', code: 'BONUS 1 RED', number_of_points: 500, compteur: 1},
+																  {name: 'Bonus 2 Red', code: 'BONUS 2 RED', number_of_points: 500, compteur: 1},
+																  {name: 'Bonus 3 Red', code: 'BONUS 3 RED', number_of_points: 500, compteur: 1},
+																  
+																  {name: 'Bonus 1 Black', code: 'http://', number_of_points: 500, compteur: 1},
+																  {name: 'Bonus 2 Black', code: 'BONUS 2 BLACK', number_of_points: 500, compteur: 1},
+																  {name: 'Bonus 3 Black', code: 'BONUS 3 BLACK', number_of_points: 500, compteur: 1}
+
+																  
 																  , (err) => {
 																      RGProps.set_active_template('4x4');
 																      socket.emit('get_active_template', '4x4');
