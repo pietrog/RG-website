@@ -257,9 +257,9 @@ io.on('connection', (socket) => {
 	{
 	    RGTemplates.loadFire(socket);
 	}
-	else if (data.name === "4x4")
+	else if (data.name === "Airsoft League")
 	{
-	    RGTemplates.load4x4(socket);
+	    RGTemplates.loadAirsoftLeague(socket);
 	}
 	else
 	{

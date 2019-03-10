@@ -29,13 +29,11 @@
   <div class="messages">
     <table>
       <tr>
-	<th>Date</th>
 	<th>Type</th>
 	<th>Description</th>
       </tr>
       
       <tr *ngFor="let message of messages">
-	<td>{{message.date}}</td>
 	<td>{{message.type_event}}</td>
 	<td>{{message.description}}</td>
       </tr>
