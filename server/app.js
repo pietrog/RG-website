@@ -261,13 +261,13 @@ io.on('connection', (socket) => {
 	{
 	    RGTemplates.loadAirsoftLeague(socket);
 	}
-	else if (data.name === "Airsoft League Pool 1")
+	else if (data.name === "Airsoft League Pool A")
 	{
-	    RGTemplates.loadPool1(socket);
+	    RGTemplates.loadPoola(socket);
 	}
-	else if (data.name === "Airsoft League Pool 2")
+	else if (data.name === "Airsoft League Pool B")
 	{
-	    RGTemplates.loadPool2(socket);
+	    RGTemplates.loadPoolb(socket);
 	}
 	else
 	{

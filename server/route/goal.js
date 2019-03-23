@@ -10,7 +10,12 @@ var fs = require('fs');
 //var barc = new Barc();
 
 router.get('/all', function(req,res,next) {
-    Goal.find({}, null, function(err, goals){
+    Goal.find({},
+	      null,
+	      {
+		  sort: {name: 1}
+	      },
+	      function(err, goals){
 	if (err)
 	    httphandler.answerJSonFailure(res, err.toString());
 	else

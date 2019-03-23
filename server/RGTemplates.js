@@ -13,8 +13,8 @@ global.RGTemplates =
     loadJungle: _loadJungle,
     loadFire: _loadFire,
     loadAirsoftLeague: _loadAirsoftLeague,
-    loadPool1: _loadAirsoftLeague_poule1,
-    loadPool2: _loadAirsoftLeague_poule2,
+    loadPoola: _loadAirsoftLeague_poulea,
+    loadPoolb: _loadAirsoftLeague_pouleb,
 };
 
 function _loadBlackShadow(socket) {
@@ -561,13 +561,13 @@ function _loadAirsoftLeague(socket) {
     });
 }
 
-function _loadAirsoftLeague_poule1(socket) {
+function _loadAirsoftLeague_poulea(socket) {
     Player.remove({}, () => {
 	Goal.remove({}, () => {
 	    Player.remove({}, () => {
 		Team.remove({}, () => {
 		    Party.remove(() => {
-			Party.create({name: "Airsoft League Pool 1", started: true}, (err, party) => {
+			Party.create({name: "Airsoft League Pool A", started: true}, (err, party) => {
 			    Player.create({name: 'uleader', role: 'Leader', password: 'leader'},
 					  {name: 'uhacker', role: 'Hacker', password: 'hacker'},
 
@@ -585,7 +585,7 @@ function _loadAirsoftLeague_poule1(socket) {
 							   user_list: [p1._id, p2._id], party_id: party._id}, 
 							  {name: "FAST27",
 							   user_list: [p3._id, p4._id], party_id: party._id},
-							  {name: "EI1",
+							  {name: "EIA",
 							   user_list: [p5._id, p6._id], party_id: party._id},
 							  {name: "GHOST SHELL",
 							   user_list: [p7._id, p8._id], party_id: party._id},
@@ -674,21 +674,13 @@ function _loadAirsoftLeague_poule1(socket) {
 												  {name: 'Kaki sapeur', code: 'ksapeur', number_of_points: 80, compteur: 1},
 												  
 												  //bonus
-												  {name: 'Bonus 1 Red', code: 'rbonus_1', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 2 Red', code: 'rbonus_2', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 3 Red', code: 'rbonus_3', number_of_points: 500, compteur: 1},
-												  
-												  {name: 'Bonus 1 Black', code: 'bbonus_1', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 2 Black', code: 'bbonus_2', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 3 Black', code: 'bbonus_3', number_of_points: 500, compteur: 1},
-
 												  {name: 'Penalité team', code: 'rgp', number_of_points: -3000, compteur: 1},
 												  {name: 'Transport de marchandise', code: 'tdm', number_of_points: 1000, compteur: 1}
 												  
 												  
 												  , (err) => {
-												      RGProps.set_active_template('Airsoft League Pool 1');
-												      socket.emit('get_active_template', 'Airsoft League Pool 1');
+												      RGProps.set_active_template('Airsoft League Pool A');
+												      socket.emit('get_active_template', 'Airsoft League Pool A');
 												  }																  
 											      );
 											  });
@@ -711,13 +703,13 @@ function _loadAirsoftLeague_poule1(socket) {
     });
 }
 
-function _loadAirsoftLeague_poule2(socket) {
+function _loadAirsoftLeague_pouleb(socket) {
     Player.remove({}, () => {
 	Goal.remove({}, () => {
 	    Player.remove({}, () => {
 		Team.remove({}, () => {
 		    Party.remove(() => {
-			Party.create({name: "Airsoft League Pool 2", started: true}, (err, party) => {
+			Party.create({name: "Airsoft League Pool B", started: true}, (err, party) => {
 			    Player.create({name: 'fleader', role: 'Leader', password: 'leader'},
 					  {name: 'fhacker', role: 'Hacker', password: 'hacker'},
 
@@ -824,21 +816,13 @@ function _loadAirsoftLeague_poule2(socket) {
 												  {name: 'Kaki sapeur', code: 'ksapeur', number_of_points: 80, compteur: 1},
 												  
 												  //bonus
-												  {name: 'Bonus 1 Red', code: 'rbonus_1', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 2 Red', code: 'rbonus_2', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 3 Red', code: 'rbonus_3', number_of_points: 500, compteur: 1},
-												  
-												  {name: 'Bonus 1 Black', code: 'bbonus_1', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 2 Black', code: 'bbonus_2', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 3 Black', code: 'bbonus_3', number_of_points: 500, compteur: 1},
-
 												  {name: 'Penalité team', code: 'rgp', number_of_points: -3000, compteur: 1},
 												  {name: 'Transport de marchandise', code: 'tdm', number_of_points: 1000, compteur: 1}
 												  
 												  
 												  , (err) => {
-												      RGProps.set_active_template('Airsoft League Pool 2');
-												      socket.emit('get_active_template', 'Airsoft League Pool 2');
+												      RGProps.set_active_template('Airsoft League Pool B');
+												      socket.emit('get_active_template', 'Airsoft League Pool B');
 												  }																  
 											      );
 											  });
