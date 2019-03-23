@@ -261,6 +261,14 @@ io.on('connection', (socket) => {
 	{
 	    RGTemplates.loadAirsoftLeague(socket);
 	}
+	else if (data.name === "Airsoft League Pool 1")
+	{
+	    RGTemplates.loadPool1(socket);
+	}
+	else if (data.name === "Airsoft League Pool 2")
+	{
+	    RGTemplates.loadPool2(socket);
+	}
 	else
 	{
 	    console.log("unknown template");
