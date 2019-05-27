@@ -119,7 +119,9 @@ function _loadBlackShadow(socket) {
 
 												  {name: 'Bonus 1 Black', code: 'bbonus_1', number_of_points: 500, compteur: 1},
 												  {name: 'Bonus 2 Black', code: 'bbonus_2', number_of_points: 500, compteur: 1},
-												  {name: 'Bonus 3 Black', code: 'bbonus_3', number_of_points: 500, compteur: 1}
+												  {name: 'Bonus 3 Black', code: 'bbonus_3', number_of_points: 500, compteur: 1},
+
+												  {name: 'Penalite', code: 'penality', number_of_points: -3000, compteur: 1}
 
 
 
@@ -679,7 +681,7 @@ function _loadAirsoftLeague_poulea(socket) {
 												  
 												  //bonus
 												  {name: 'Penalité team', code: 'rgp', number_of_points: -3000, compteur: 1},
-												  {name: 'Transport de marchandise', code: 'tdm', number_of_points: 1000, compteur: 1}
+												  {name: 'Transport de marchandise', code: 'tdm', number_of_points: 700, compteur: 1}
 												  
 												  
 												  , (err) => {
@@ -823,7 +825,7 @@ function _loadAirsoftLeague_pouleb(socket) {
 												  
 												  //bonus
 												  {name: 'Penalité team', code: 'rgp', number_of_points: -3000, compteur: 1},
-												  {name: 'Transport de marchandise', code: 'tdm', number_of_points: 1000, compteur: 1}
+												  {name: 'Transport de marchandise', code: 'tdm', number_of_points: 700, compteur: 1}
 												  
 												  
 												  , (err) => {
