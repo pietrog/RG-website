@@ -12,12 +12,16 @@ var GoalSchema = new Schema({
     },
     number_of_points: {
 	type: Number,
-	require: true
+	required: true
     },
     compteur: {
 	type: Number,
-	require: true,
+	required: true,
 	default: -1
+    },
+    label: {
+	type: String,
+	default: "Divers"	
     },
     list_party: [ Schema.Types.ObjectId ]
 

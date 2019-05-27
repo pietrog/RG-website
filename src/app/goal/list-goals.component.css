@@ -4,6 +4,14 @@
     max-width: 1000px;
 }
 
+.goals-table-c
+{
+    margin: 5px;
+    width: 20%;
+    float: left
+}
+
+
 .delete-button {
     width: 2em;
 }
@@ -17,3 +25,49 @@
 {
     width: 3em;        
 }
+
+.goal-button
+{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.activated
+{
+    color: yellow;
+    background-color: green;
+}
+
+.deactivated
+{
+    background-color: red;
+}
+
+.compressed-div
+{
+    display: block;
+}
+
+.btn-green
+{
+    background-color: green;
+
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    width: 100px;
+
+}
+
+.btn-red
+{
+    background-color: red;
+
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    width: 100px;
+
+}
+

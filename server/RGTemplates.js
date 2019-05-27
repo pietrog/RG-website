@@ -184,46 +184,46 @@ function _loadJungle(socket) {
 											  Player.addToTeam(p9._id, t2._id, ()=>{
 											      Goal.create(
 												  //secteur V
-												  {name: '1.1', code: '1.1', number_of_points: 1000, compteur: 1},
-												  {name: '1.2', code: '1.2', number_of_points: 1000, compteur: 1},
-												  {name: '1.3', code: '1.3', number_of_points: 1000, compteur: 1},
-												  {name: '1.4', code: '1.4', number_of_points: 1000, compteur: 1},
-												  {name: '1.5', code: '1.5', number_of_points: 1000, compteur: 1},
-												  {name: '1.6', code: '1.6', number_of_points: 1000, compteur: 1},
+												  {name: '1.1', code: '1.1', label: "1 - Secteur V",  number_of_points: 1000, compteur: 1},
+												  {name: '1.2', code: '1.2', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.3', code: '1.3', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.4', code: '1.4', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.5', code: '1.5', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.6', code: '1.6', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
 
 												  //zero
-												  {name: '2.1', code: '2.1', number_of_points: 1000, compteur: 1},
-												  {name: '2.2', code: '2.2', number_of_points: 1000, compteur: 1},
-												  {name: '2.3', code: '2.3', number_of_points: 1000, compteur: 1},
-												  {name: '2.4', code: '2.4', number_of_points: 1000, compteur: 1},
-												  {name: '2.5', code: '2.5', number_of_points: 1000, compteur: 1},
-												  {name: '2.6', code: '2.6', number_of_points: 1000, compteur: 1},
-												  {name: '2.7', code: '2.7', number_of_points: 1000, compteur: 1},
-												  {name: '2.8', code: '2.8', number_of_points: 1000, compteur: 1},
+												  {name: '2.1', code: '2.1', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.2', code: '2.2', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.3', code: '2.3', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.4', code: '2.4', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.5', code: '2.5', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.6', code: '2.6', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.7', code: '2.7', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.8', code: '2.8', label: "2 - Zero", number_of_points: 1000, compteur: 1},
 												  
 												  //camps mili
-												  {name: '3.1', code: '3.1', number_of_points: 1000, compteur: 1},
-												  {name: '3.2', code: '3.2', number_of_points: 1000, compteur: 1},
-												  {name: '3.3', code: '3.3', number_of_points: 1000, compteur: 1},
-												  {name: '3.4', code: '3.4', number_of_points: 1000, compteur: 1},
-												  {name: '3.5', code: '3.5', number_of_points: 1000, compteur: 1},
-												  {name: '3.6', code: '3.6', number_of_points: 1000, compteur: 1},
+												  {name: '3.1', code: '3.1', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.2', code: '3.2', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.3', code: '3.3', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.4', code: '3.4', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.5', code: '3.5', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.6', code: '3.6', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
 
 												  //lost
-												  {name: '4.1', code: '4.1', number_of_points: 1000, compteur: 1},
-												  {name: '4.2', code: '4.2', number_of_points: 1000, compteur: 1},
-												  {name: '4.3', code: '4.3', number_of_points: 1000, compteur: 1},
+												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 
 												  //fort
-												  {name: '5.1', code: '5.1', number_of_points: 1000, compteur: 1},
-												  {name: '5.2', code: '5.2', number_of_points: 1000, compteur: 1},
-												  {name: '5.3', code: '5.3', number_of_points: 1000, compteur: 1},
-												  {name: '5.4', code: '5.4', number_of_points: 1000, compteur: 1},
-												  {name: '5.5', code: '5.5', number_of_points: 1000, compteur: 1},
-												  {name: '5.6', code: '5.6', number_of_points: 1000, compteur: 1},
-												  {name: '5.7', code: '5.7', number_of_points: 1000, compteur: 1},
-												  {name: '5.8', code: '5.8', number_of_points: 1000, compteur: 1},
-												  {name: '5.9', code: '5.9', number_of_points: 1000, compteur: 1},
+												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.2', code: '5.2', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.3', code: '5.3', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.4', code: '5.4', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.5', code: '5.5', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.6', code: '5.6', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.7', code: '5.7', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.8', code: '5.8', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.9', code: '5.9', label: "5 - Fort", number_of_points: 1000, compteur: 1},
 
 												  //black
 												  {name: 'Black leader', code: 'bleader', number_of_points: 500, compteur: 1},
@@ -315,46 +315,46 @@ function _loadFire(socket) {
 											  Player.addToTeam(p9._id, t2._id, ()=>{
 											      Goal.create(
 												  //secteur V
-												  {name: '1.1', code: '1.1', number_of_points: 1000, compteur: 1},
-												  {name: '1.2', code: '1.2', number_of_points: 1000, compteur: 1},
-												  {name: '1.3', code: '1.3', number_of_points: 1000, compteur: 1},
-												  {name: '1.4', code: '1.4', number_of_points: 1000, compteur: 1},
-												  {name: '1.5', code: '1.5', number_of_points: 1000, compteur: 1},
-												  {name: '1.6', code: '1.6', number_of_points: 1000, compteur: 1},
+												  {name: '1.1', code: '1.1', label: "1 - Secteur V",  number_of_points: 1000, compteur: 1},
+												  {name: '1.2', code: '1.2', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.3', code: '1.3', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.4', code: '1.4', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.5', code: '1.5', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.6', code: '1.6', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
 
 												  //zero
-												  {name: '2.1', code: '2.1', number_of_points: 1000, compteur: 1},
-												  {name: '2.2', code: '2.2', number_of_points: 1000, compteur: 1},
-												  {name: '2.3', code: '2.3', number_of_points: 1000, compteur: 1},
-												  {name: '2.4', code: '2.4', number_of_points: 1000, compteur: 1},
-												  {name: '2.5', code: '2.5', number_of_points: 1000, compteur: 1},
-												  {name: '2.6', code: '2.6', number_of_points: 1000, compteur: 1},
-												  {name: '2.7', code: '2.7', number_of_points: 1000, compteur: 1},
-												  {name: '2.8', code: '2.8', number_of_points: 1000, compteur: 1},
+												  {name: '2.1', code: '2.1', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.2', code: '2.2', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.3', code: '2.3', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.4', code: '2.4', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.5', code: '2.5', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.6', code: '2.6', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.7', code: '2.7', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.8', code: '2.8', label: "2 - Zero", number_of_points: 1000, compteur: 1},
 												  
 												  //camps mili
-												  {name: '3.1', code: '3.1', number_of_points: 1000, compteur: 1},
-												  {name: '3.2', code: '3.2', number_of_points: 1000, compteur: 1},
-												  {name: '3.3', code: '3.3', number_of_points: 1000, compteur: 1},
-												  {name: '3.4', code: '3.4', number_of_points: 1000, compteur: 1},
-												  {name: '3.5', code: '3.5', number_of_points: 1000, compteur: 1},
-												  {name: '3.6', code: '3.6', number_of_points: 1000, compteur: 1},
+												  {name: '3.1', code: '3.1', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.2', code: '3.2', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.3', code: '3.3', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.4', code: '3.4', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.5', code: '3.5', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.6', code: '3.6', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
 
 												  //lost
-												  {name: '4.1', code: '4.1', number_of_points: 1000, compteur: 1},
-												  {name: '4.2', code: '4.2', number_of_points: 1000, compteur: 1},
-												  {name: '4.3', code: '4.3', number_of_points: 1000, compteur: 1},
+												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 
 												  //fort
-												  {name: '5.1', code: '5.1', number_of_points: 1000, compteur: 1},
-												  {name: '5.2', code: '5.2', number_of_points: 1000, compteur: 1},
-												  {name: '5.3', code: '5.3', number_of_points: 1000, compteur: 1},
-												  {name: '5.4', code: '5.4', number_of_points: 1000, compteur: 1},
-												  {name: '5.5', code: '5.5', number_of_points: 1000, compteur: 1},
-												  {name: '5.6', code: '5.6', number_of_points: 1000, compteur: 1},
-												  {name: '5.7', code: '5.7', number_of_points: 1000, compteur: 1},
-												  {name: '5.8', code: '5.8', number_of_points: 1000, compteur: 1},
-												  {name: '5.9', code: '5.9', number_of_points: 1000, compteur: 1},
+												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.2', code: '5.2', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.3', code: '5.3', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.4', code: '5.4', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.5', code: '5.5', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.6', code: '5.6', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.7', code: '5.7', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.8', code: '5.8', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.9', code: '5.9', label: "5 - Fort", number_of_points: 1000, compteur: 1},
 
 												  //black
 												  {name: 'Black leader', code: 'bleader', number_of_points: 500, compteur: 1},
@@ -455,44 +455,46 @@ function _loadAirsoftLeague(socket) {
 											      
 											      Goal.create(
 												  //secteur V
-												  {name: '1.1', code: '1.1', number_of_points: 1000, compteur: 1},
-												  {name: '1.2', code: '1.2', number_of_points: 1000, compteur: 1},
-												  {name: '1.3', code: '1.3', number_of_points: 1000, compteur: 1},
-												  {name: '1.4', code: '1.4', number_of_points: 1000, compteur: 1},
-												  {name: '1.5', code: '1.5', number_of_points: 1000, compteur: 1},
-												  {name: '1.6', code: '1.6', number_of_points: 1000, compteur: 1},
-												  
+												  {name: '1.1', code: '1.1', label: "1 - Secteur V",  number_of_points: 1000, compteur: 1},
+												  {name: '1.2', code: '1.2', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.3', code: '1.3', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.4', code: '1.4', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.5', code: '1.5', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.6', code: '1.6', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+
 												  //zero
-												  {name: '2.1', code: '2.1', number_of_points: 1000, compteur: 1},
-												  {name: '2.2', code: '2.2', number_of_points: 1000, compteur: 1},
-												  {name: '2.3', code: '2.3', number_of_points: 1000, compteur: 1},
-												  {name: '2.4', code: '2.4', number_of_points: 1000, compteur: 1},
-												  {name: '2.5', code: '2.5', number_of_points: 1000, compteur: 1},
-												  {name: '2.6', code: '2.6', number_of_points: 1000, compteur: 1},
+												  {name: '2.1', code: '2.1', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.2', code: '2.2', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.3', code: '2.3', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.4', code: '2.4', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.5', code: '2.5', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.6', code: '2.6', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.7', code: '2.7', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.8', code: '2.8', label: "2 - Zero", number_of_points: 1000, compteur: 1},
 												  
 												  //camps mili
-												  {name: '3.1', code: '3.1', number_of_points: 1000, compteur: 1},
-												  {name: '3.2', code: '3.2', number_of_points: 1000, compteur: 1},
-												  {name: '3.3', code: '3.3', number_of_points: 1000, compteur: 1},
-												  {name: '3.4', code: '3.4', number_of_points: 1000, compteur: 1},
-												  {name: '3.5', code: '3.5', number_of_points: 1000, compteur: 1},
-												  {name: '3.6', code: '3.6', number_of_points: 1000, compteur: 1},
-												  
+												  {name: '3.1', code: '3.1', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.2', code: '3.2', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.3', code: '3.3', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.4', code: '3.4', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.5', code: '3.5', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.6', code: '3.6', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+
 												  //lost
-												  {name: '4.1', code: '4.1', number_of_points: 1000, compteur: 1},
-												  {name: '4.2', code: '4.2', number_of_points: 1000, compteur: 1},
-												  {name: '4.3', code: '4.3', number_of_points: 1000, compteur: 1},
-												  {name: '4.4', code: '4.4', number_of_points: 1000, compteur: 1},
-												  {name: '4.5', code: '4.5', number_of_points: 1000, compteur: 1},
-												  {name: '4.6', code: '4.6', number_of_points: 1000, compteur: 1},		  
-												  
+												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+
 												  //fort
-												  {name: '5.1', code: '5.1', number_of_points: 1000, compteur: 1},
-												  {name: '5.2', code: '5.2', number_of_points: 1000, compteur: 1},
-												  {name: '5.3', code: '5.3', number_of_points: 1000, compteur: 1},
-												  {name: '5.4', code: '5.4', number_of_points: 1000, compteur: 1},
-												  {name: '5.5', code: '5.5', number_of_points: 1000, compteur: 1},
-												  {name: '5.6', code: '5.6', number_of_points: 1000, compteur: 1},
+												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.2', code: '5.2', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.3', code: '5.3', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.4', code: '5.4', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.5', code: '5.5', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.6', code: '5.6', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.7', code: '5.7', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.8', code: '5.8', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.9', code: '5.9', label: "5 - Fort", number_of_points: 1000, compteur: 1},
 												  
 												  //black
 												  {name: 'Black leader', code: 'bleader', number_of_points: 200, compteur: 1},
@@ -605,44 +607,46 @@ function _loadAirsoftLeague_poulea(socket) {
 											      
 											      Goal.create(
 												  //secteur V
-												  {name: '1.1', code: '1.1', number_of_points: 1000, compteur: 1},
-												  {name: '1.2', code: '1.2', number_of_points: 1000, compteur: 1},
-												  {name: '1.3', code: '1.3', number_of_points: 1000, compteur: 1},
-												  {name: '1.4', code: '1.4', number_of_points: 1000, compteur: 1},
-												  {name: '1.5', code: '1.5', number_of_points: 1000, compteur: 1},
-												  {name: '1.6', code: '1.6', number_of_points: 1000, compteur: 1},
-												  
+												  {name: '1.1', code: '1.1', label: "1 - Secteur V",  number_of_points: 1000, compteur: 1},
+												  {name: '1.2', code: '1.2', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.3', code: '1.3', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.4', code: '1.4', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.5', code: '1.5', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.6', code: '1.6', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+
 												  //zero
-												  {name: '2.1', code: '2.1', number_of_points: 1000, compteur: 1},
-												  {name: '2.2', code: '2.2', number_of_points: 1000, compteur: 1},
-												  {name: '2.3', code: '2.3', number_of_points: 1000, compteur: 1},
-												  {name: '2.4', code: '2.4', number_of_points: 1000, compteur: 1},
-												  {name: '2.5', code: '2.5', number_of_points: 1000, compteur: 1},
-												  {name: '2.6', code: '2.6', number_of_points: 1000, compteur: 1},
+												  {name: '2.1', code: '2.1', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.2', code: '2.2', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.3', code: '2.3', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.4', code: '2.4', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.5', code: '2.5', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.6', code: '2.6', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.7', code: '2.7', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.8', code: '2.8', label: "2 - Zero", number_of_points: 1000, compteur: 1},
 												  
 												  //camps mili
-												  {name: '3.1', code: '3.1', number_of_points: 1000, compteur: 1},
-												  {name: '3.2', code: '3.2', number_of_points: 1000, compteur: 1},
-												  {name: '3.3', code: '3.3', number_of_points: 1000, compteur: 1},
-												  {name: '3.4', code: '3.4', number_of_points: 1000, compteur: 1},
-												  {name: '3.5', code: '3.5', number_of_points: 1000, compteur: 1},
-												  {name: '3.6', code: '3.6', number_of_points: 1000, compteur: 1},
-												  
+												  {name: '3.1', code: '3.1', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.2', code: '3.2', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.3', code: '3.3', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.4', code: '3.4', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.5', code: '3.5', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.6', code: '3.6', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+
 												  //lost
-												  {name: '4.1', code: '4.1', number_of_points: 1000, compteur: 1},
-												  {name: '4.2', code: '4.2', number_of_points: 1000, compteur: 1},
-												  {name: '4.3', code: '4.3', number_of_points: 1000, compteur: 1},
-												  {name: '4.4', code: '4.4', number_of_points: 1000, compteur: 1},
-												  {name: '4.5', code: '4.5', number_of_points: 1000, compteur: 1},
-												  {name: '4.6', code: '4.6', number_of_points: 1000, compteur: 1},		  
-												  
+												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+
 												  //fort
-												  {name: '5.1', code: '5.1', number_of_points: 1000, compteur: 1},
-												  {name: '5.2', code: '5.2', number_of_points: 1000, compteur: 1},
-												  {name: '5.3', code: '5.3', number_of_points: 1000, compteur: 1},
-												  {name: '5.4', code: '5.4', number_of_points: 1000, compteur: 1},
-												  {name: '5.5', code: '5.5', number_of_points: 1000, compteur: 1},
-												  {name: '5.6', code: '5.6', number_of_points: 1000, compteur: 1},
+												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.2', code: '5.2', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.3', code: '5.3', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.4', code: '5.4', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.5', code: '5.5', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.6', code: '5.6', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.7', code: '5.7', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.8', code: '5.8', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.9', code: '5.9', label: "5 - Fort", number_of_points: 1000, compteur: 1},
 												  
 												  //black
 												  {name: 'Black leader', code: 'bleader', number_of_points: 200, compteur: 1},
@@ -747,44 +751,46 @@ function _loadAirsoftLeague_pouleb(socket) {
 											      
 											      Goal.create(
 												  //secteur V
-												  {name: '1.1', code: '1.1', number_of_points: 1000, compteur: 1},
-												  {name: '1.2', code: '1.2', number_of_points: 1000, compteur: 1},
-												  {name: '1.3', code: '1.3', number_of_points: 1000, compteur: 1},
-												  {name: '1.4', code: '1.4', number_of_points: 1000, compteur: 1},
-												  {name: '1.5', code: '1.5', number_of_points: 1000, compteur: 1},
-												  {name: '1.6', code: '1.6', number_of_points: 1000, compteur: 1},
-												  
+												  {name: '1.1', code: '1.1', label: "1 - Secteur V",  number_of_points: 1000, compteur: 1},
+												  {name: '1.2', code: '1.2', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.3', code: '1.3', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.4', code: '1.4', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.5', code: '1.5', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+												  {name: '1.6', code: '1.6', label: "1 - Secteur V", number_of_points: 1000, compteur: 1},
+
 												  //zero
-												  {name: '2.1', code: '2.1', number_of_points: 1000, compteur: 1},
-												  {name: '2.2', code: '2.2', number_of_points: 1000, compteur: 1},
-												  {name: '2.3', code: '2.3', number_of_points: 1000, compteur: 1},
-												  {name: '2.4', code: '2.4', number_of_points: 1000, compteur: 1},
-												  {name: '2.5', code: '2.5', number_of_points: 1000, compteur: 1},
-												  {name: '2.6', code: '2.6', number_of_points: 1000, compteur: 1},
+												  {name: '2.1', code: '2.1', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.2', code: '2.2', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.3', code: '2.3', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.4', code: '2.4', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.5', code: '2.5', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.6', code: '2.6', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.7', code: '2.7', label: "2 - Zero", number_of_points: 1000, compteur: 1},
+												  {name: '2.8', code: '2.8', label: "2 - Zero", number_of_points: 1000, compteur: 1},
 												  
 												  //camps mili
-												  {name: '3.1', code: '3.1', number_of_points: 1000, compteur: 1},
-												  {name: '3.2', code: '3.2', number_of_points: 1000, compteur: 1},
-												  {name: '3.3', code: '3.3', number_of_points: 1000, compteur: 1},
-												  {name: '3.4', code: '3.4', number_of_points: 1000, compteur: 1},
-												  {name: '3.5', code: '3.5', number_of_points: 1000, compteur: 1},
-												  {name: '3.6', code: '3.6', number_of_points: 1000, compteur: 1},
-												  
+												  {name: '3.1', code: '3.1', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.2', code: '3.2', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.3', code: '3.3', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.4', code: '3.4', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.5', code: '3.5', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+												  {name: '3.6', code: '3.6', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
+
 												  //lost
-												  {name: '4.1', code: '4.1', number_of_points: 1000, compteur: 1},
-												  {name: '4.2', code: '4.2', number_of_points: 1000, compteur: 1},
-												  {name: '4.3', code: '4.3', number_of_points: 1000, compteur: 1},
-												  {name: '4.4', code: '4.4', number_of_points: 1000, compteur: 1},
-												  {name: '4.5', code: '4.5', number_of_points: 1000, compteur: 1},
-												  {name: '4.6', code: '4.6', number_of_points: 1000, compteur: 1},		  
-												  
+												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+
 												  //fort
-												  {name: '5.1', code: '5.1', number_of_points: 1000, compteur: 1},
-												  {name: '5.2', code: '5.2', number_of_points: 1000, compteur: 1},
-												  {name: '5.3', code: '5.3', number_of_points: 1000, compteur: 1},
-												  {name: '5.4', code: '5.4', number_of_points: 1000, compteur: 1},
-												  {name: '5.5', code: '5.5', number_of_points: 1000, compteur: 1},
-												  {name: '5.6', code: '5.6', number_of_points: 1000, compteur: 1},
+												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.2', code: '5.2', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.3', code: '5.3', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.4', code: '5.4', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.5', code: '5.5', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.6', code: '5.6', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.7', code: '5.7', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.8', code: '5.8', label: "5 - Fort", number_of_points: 1000, compteur: 1},
+												  {name: '5.9', code: '5.9', label: "5 - Fort", number_of_points: 1000, compteur: 1},
 												  
 												  //black
 												  {name: 'Black leader', code: 'bleader', number_of_points: 200, compteur: 1},

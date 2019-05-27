@@ -1,59 +1,215 @@
+<div>
 
-<div class="add-goal">
-  <table class="goals-table">
-    <tr>
-      <td><label>Nom</label></td>
-      <td><input [(ngModel)]="goal.name" placeholder="Nom de l'objectif"></td>
-    </tr>
-    <tr>
-      <td><label>Score</label></td>
-      <td><input [(ngModel)]="goal.number_of_points" type="number" placeholder="Nombre de points"></td>
-    </tr>
-    <tr>
-      <td><label>Code validation</label></td>
-      <td><input [(ngModel)]="goal.code" placeholder="Code de validation" ></td>
-    </tr>
-    <tr>
-      <td><label>Nombre de validations(arrivé à 0, ne rapporte plus de points (-1 validation infinie))</label></td>
-      <td><input [(ngModel)]="goal.compteur" type="number" placeholder="Compteur de validation de l'objectif"></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><button (click)="save()" ngDefaultControl>Ajouter</button></td>
-    </tr>
+  <div class="goal-button">
+    <button (click)="toggleButton()">{{toggleBtn}}</button>    
+  </div>
+
+  <div *ngIf="extended" class="goal-container-extended" >
     
-  </table>
-</div>  
-  
-<table class="goals-table">
-  <tr>
-    <th>Nom</th>
-    <th>Nombre de points</th>
-    <th>Compteur</th>
-    <th>Delete</th>
-  </tr>
-  <tr *ngFor="let goal of goals"
-      [class.selected]="goal === selectedGoal"
-      (click)="onSelect(goal)"
-      >
-    <td>{{goal.name}}</td>
-    <td>
-      <div class="count-div">
-	<span>{{goal.number_of_points}}</span>
-	<input  class="count-input"  id="`goal._id`" [(ngModel)]="scores[goal._id]" size="3"/>
-	<button class="w3-padding w3-xlarge fa fa-caret-right count-button" (click)="setGoalScore(goal); $event.stopPropagation()"></button>
-      </div>
-    </td>    
-    <td>
-      <div class="count-div">
-	<span>{{goal.compteur}}</span>
-	<input  class="count-input"  id="`goal._id`" [(ngModel)]="compteurs[goal._id]" size="3"/>
-	<button class="w3-padding w3-xlarge fa fa-caret-right count-button" (click)="setGoalCompteur(goal); $event.stopPropagation()"></button>
-      </div>
-    </td>
+    <div class="add-goal">
+      <table class="goals-table">
+	<tr>
+	  <td><label>Nom</label></td>
+	  <td><input [(ngModel)]="goal.name" placeholder="Nom de l'objectif"></td>
+	</tr>
+	<tr>
+	  <td><label>Score</label></td>
+	  <td><input [(ngModel)]="goal.number_of_points" type="number" placeholder="Nombre de points"></td>
+	</tr>
+	<tr>
+	  <td><label>Code validation</label></td>
+	  <td><input [(ngModel)]="goal.code" placeholder="Code de validation" ></td>
+	</tr>
+	<tr>
+	  <td><label>Nombre de validations(arrivé à 0, ne rapporte plus de points (-1 validation infinie))</label></td>
+	  <td><input [(ngModel)]="goal.compteur" type="number" placeholder="Compteur de validation de l'objectif"></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td><button (click)="save()" ngDefaultControl>Ajouter</button></td>
+	</tr>
+	
+      </table>
+    </div>  
     
-    <td>
-      <button type="button" class="w3-padding w3-xlarge w3-red fa fa-trash delete-button" (click)="delete(goal); $event.stopPropagation()"></button>
-    </td>
-  </tr>
-</table>
+    <table class="goals-table">
+      <tr>
+	<th>Nom</th>
+	<th>Nombre de points</th>
+	<th>Compteur</th>
+	<th>Delete</th>
+      </tr>
+      <tr *ngFor="let goal of goals"
+	  [class.selected]="goal === selectedGoal"
+	  (click)="onSelect(goal)"
+	  >
+	<td>{{goal.name}}</td>
+	<td>
+	  <div class="count-div">
+	    <span>{{goal.number_of_points}}</span>
+	    <input  class="count-input"  id="`goal._id`" [(ngModel)]="scores[goal._id]" size="3"/>
+	    <button class="w3-padding w3-xlarge fa fa-caret-right count-button" (click)="setGoalScore(goal); $event.stopPropagation()"></button>
+	  </div>
+	</td>    
+	<td>
+	  <div class="count-div">
+	    <span>{{goal.compteur}}</span>
+	    <input  class="count-input"  id="`goal._id`" [(ngModel)]="compteurs[goal._id]" size="3"/>
+	    <button class="w3-padding w3-xlarge fa fa-caret-right count-button" (click)="setGoalCompteur(goal); $event.stopPropagation()"></button>
+	  </div>
+	</td>
+	
+	<td>
+	  <button type="button" class="w3-padding w3-xlarge w3-red fa fa-trash delete-button" (click)="delete(goal); $event.stopPropagation()"></button>
+	</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="compressed-div">
+
+      <table class="goals-table-c">
+	<caption>1 - Secteur V</caption>
+	<tr>
+	  <th>Nom</th>
+	  <th>Compteur</th>
+	</tr>
+	<tr *ngFor="let goal of get1()"
+	    [class.selected]="goal === selectedGoal"
+	    (click)="onSelect(goal)"
+	    >
+	  <td>{{goal.name}}</td>
+	  <td>
+	    <button *ngIf="goal.compteur == 0"
+		    (click)="activateGoal(goal)"
+		    class="btn-red">GO</button>
+	    <button *ngIf="goal.compteur > 0"
+		    (click)="deactivateGoal(goal)"
+		    class="btn-green">STOP</button>
+	  </td>
+	</tr>
+      </table>
+
+      <table class="goals-table-c">
+	<caption>2 - Zero</caption>
+	<tr>
+	  <th>Nom</th>
+	  <th>Compteur</th>
+	</tr>
+	<tr *ngFor="let goal of get2()"
+	    [class.selected]="goal === selectedGoal"
+	    (click)="onSelect(goal)"
+	    >
+	  <td>{{goal.name}}</td>
+	  <td>
+	    <button *ngIf="goal.compteur == 0"
+		    (click)="activateGoal(goal)"
+		    class="btn-red">GO</button>
+	    <button *ngIf="goal.compteur > 0"
+		    (click)="deactivateGoal(goal)"
+		    class="btn-green">STOP</button>
+	  </td>
+	</tr>
+      </table>
+
+    
+
+
+
+    <table class="goals-table-c">
+      <caption>3 - Camps mili</caption>
+      <tr>
+	<th>Nom</th>
+	<th>Compteur</th>
+      </tr>
+      <tr *ngFor="let goal of get3()"
+	  [class.selected]="goal === selectedGoal"
+	  (click)="onSelect(goal)"
+	  >
+	<td>{{goal.name}}</td>
+	<td>
+	    <button *ngIf="goal.compteur == 0"
+		    (click)="activateGoal(goal)"
+		    class="btn-red">GO</button>
+	    <button *ngIf="goal.compteur > 0"
+		    (click)="deactivateGoal(goal)"
+		    class="btn-green">STOP</button>
+	  
+	</td>
+      </tr>
+    </table>
+
+    <table class="goals-table-c">
+      <caption>4 - Lost</caption>
+      <tr>
+	<th>Nom</th>
+	<th>Compteur</th>
+      </tr>
+      <tr *ngFor="let goal of get4()"
+	  [class.selected]="goal === selectedGoal"
+	  (click)="onSelect(goal)"
+	  >
+	<td>{{goal.name}}</td>
+	<td>
+	    <button *ngIf="goal.compteur == 0"
+		    (click)="activateGoal(goal)"
+		    class="btn-red">GO</button>
+	    <button *ngIf="goal.compteur > 0"
+		    (click)="deactivateGoal(goal)"
+		    class="btn-green">STOP</button>
+	  
+	</td>
+      </tr>
+    </table>
+
+    <table class="goals-table-c">
+      <caption>5 - Fort</caption>
+      <tr>
+	<th>Nom</th>
+	<th>Compteur</th>
+      </tr>
+      <tr *ngFor="let goal of get5()"
+	  [class.selected]="goal === selectedGoal"
+	  (click)="onSelect(goal)"
+	  >
+	<td>{{goal.name}}</td>
+	<td>
+	    <button *ngIf="goal.compteur == 0"
+		    (click)="activateGoal(goal)"
+		    class="btn-red">GO</button>
+	    <button *ngIf="goal.compteur > 0"
+		    (click)="deactivateGoal(goal)"
+		    class="btn-green">STOP</button>
+	  
+	</td>
+      </tr>
+    </table>
+
+    <table class="goals-table-c">
+      <caption>Divers</caption>
+      <tr>
+	<th>Nom</th>
+	<th>Compteur</th>
+      </tr>
+      <tr *ngFor="let goal of getd()"
+	  [class.selected]="goal === selectedGoal"
+	  (click)="onSelect(goal)"
+	  >
+	<td>{{goal.name}}</td>
+	<td>
+	    <button *ngIf="goal.compteur == 0"
+		    (click)="activateGoal(goal)"
+		    class="btn-red">GO</button>
+	    <button *ngIf="goal.compteur > 0"
+		    (click)="deactivateGoal(goal)"
+		    class="btn-green">STOP</button>
+	  
+	</td>
+      </tr>
+    </table>
+
+
+    
+  </div>
+</div>
