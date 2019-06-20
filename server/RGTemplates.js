@@ -478,9 +478,9 @@ function _load_poola(socket) {
 												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
-												  {name: '4.4', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
-												  {name: '4.5', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
-												  {name: '4.6', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.4', code: '4.4', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.5', code: '4.5', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.6', code: '4.6', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 
 												  //fort
 												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
@@ -558,26 +558,26 @@ function _load_poolb(socket) {
 		Team.remove({}, () => {
 		    Party.remove(() => {
 			Party.create({name: "Airsoft League Pool B", started: true}, (err, party) => {
-			    Player.create({name: 'uleader', role: 'Leader', password: 'leader'},
-					  {name: 'uhacker', role: 'Hacker', password: 'hacker'},
-
-					  {name: 'fleader', role: 'Leader', password: 'leader'},
+			    Player.create({name: 'fleader', role: 'Leader', password: 'leader'},
 					  {name: 'fhacker', role: 'Hacker', password: 'hacker'},
 
-					  {name: 'eleader', role: 'Leader', password: 'leader'},
-					  {name: 'ehacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'bleader', role: 'Leader', password: 'leader'},
+					  {name: 'bhacker', role: 'Hacker', password: 'hacker'},
 
-					  {name: 'gleader', role: 'Leader', password: 'leader'},
-					  {name: 'ghacker', role: 'Hacker', password: 'hacker'},
+					  {name: 'sleader', role: 'Leader', password: 'leader'},
+					  {name: 'shacker', role: 'Hacker', password: 'hacker'},
+
+					  {name: 'wleader', role: 'Leader', password: 'leader'},
+					  {name: 'whacker', role: 'Hacker', password: 'hacker'},
 
 					  (err, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16) => {
-					      Team.create({name: "USJTF",
+					      Team.create({name: "FRAP",
 							   user_list: [p1._id, p2._id], party_id: party._id}, 
-							  {name: "FAST27",
+							  {name: "BIA",
 							   user_list: [p3._id, p4._id], party_id: party._id},
-							  {name: "EIA",
+							  {name: "SMAUG",
 							   user_list: [p5._id, p6._id], party_id: party._id},
-							  {name: "GHOST SHELL",
+							  {name: "WAS",
 							   user_list: [p7._id, p8._id], party_id: party._id},
 							  (err, t1, t2, t3, t4) => {
 							      
@@ -617,14 +617,14 @@ function _load_poolb(socket) {
 												  {name: '3.4', code: '3.4', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
 												  {name: '3.5', code: '3.5', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
 												  {name: '3.6', code: '3.6', label: "3 - Camps mili", number_of_points: 1000, compteur: 1},
-												  
+
 												  //lost
 												  {name: '4.1', code: '4.1', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 												  {name: '4.2', code: '4.2', label: "4 - Lost", number_of_points: 1000, compteur: 1},
 												  {name: '4.3', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
-												  {name: '4.4', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
-												  {name: '4.5', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
-												  {name: '4.6', code: '4.3', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.4', code: '4.4', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.5', code: '4.5', label: "4 - Lost", number_of_points: 1000, compteur: 1},
+												  {name: '4.6', code: '4.6', label: "4 - Lost", number_of_points: 1000, compteur: 1},												  
 
 												  //fort
 												  {name: '5.1', code: '5.1', label: "5 - Fort", number_of_points: 1000, compteur: 1},
@@ -691,8 +691,6 @@ function _load_poolb(socket) {
 	    });
 	});
     });
-
-
 }
 
 
