@@ -4,7 +4,11 @@
 @import url("classes.css");
 
 body {    
-    background-image: url("assets/origin/fond_dashboard.jpg");
+    /*background-image: url("assets/origin/fond_dashboard.jpg");*/
+    background-image:
+    linear-gradient(grey, grey),
+    url("assets/origin/back_website.jpg");
+    background-blend-mode: saturation;
 
     /* Set a specific height */
     height: 100%; 
